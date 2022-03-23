@@ -12,5 +12,6 @@ namespace LB1
         public int UserID { get; set; }
         public string moneyType { get; set; }
         public float balance { get; set; }
+        public DateTime creationTime { get; set; }
     }
 }

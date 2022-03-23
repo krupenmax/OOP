@@ -12,5 +12,6 @@ namespace LB1
         int UserID { get; set; }
         string moneyType { get; set; }
         float balance { get; set; }
+        DateTime creationTime { get; set; }
     }
 }

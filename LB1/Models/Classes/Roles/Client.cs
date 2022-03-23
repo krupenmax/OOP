@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 
 namespace LB1
 {
@@ -18,33 +19,19 @@ namespace LB1
 
         public Client()
         {
-            ClientTables.BuiltBankTable();
             ClientTables.BuildAccountTable();
         }
 
-        public void AddBank(Bank bank)
+        public void getAccounts(Bank bank)
         {
-            ClientTables.Data.Tables["Banks"].Rows.Add(new object[] { bank.Type, bank.urName, bank.UNP, bank.BIK, bank.adress });
-        }
-        public void AddAcc(string accNum)
-        {
-
-        }
-        public void closeAccount()
-        {
-
-        }
-        public void takeCredit()
-        {
-
-        }
-        public void takePayByInstalments()
-        {
-
-        }
-        public void requestForCompanySalary()
-        {
-             
+            DataRow[] row = bank.bankData.Data.Tables["Accounts"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToInt16(row[i]["UserID"]) == UserID)
+                {
+                    ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[i]["accNum"], row[i]["UserID"], row[i]["moneyType"], row[i]["balance"], row[i]["creationTime"] });
+                }
+            }
         }
     }
 }

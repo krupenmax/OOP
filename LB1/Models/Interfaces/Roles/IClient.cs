@@ -12,9 +12,5 @@ namespace LB1
         string idNumber { get; set; }
         string phoneNumber { get; set; }
         string email { get; set; }
-        void closeAccount();
-        void takeCredit();
-        void takePayByInstalments();
-        void requestForCompanySalary();
     }
 }

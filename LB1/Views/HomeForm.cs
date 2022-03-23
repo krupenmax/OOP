@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace LB1
 {
@@ -19,6 +20,7 @@ namespace LB1
         {
             InitializeComponent();
             clientController.GetClient(login, password);
+            clientController.getAccounts();
             bankController.SetBanks(BankBox);
             this.accForm = new AccountForm(this);
         }
@@ -35,10 +37,17 @@ namespace LB1
 
         private void CreateAccount_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Подтвердите действие", "Подтверждение", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
+            if (BankBox.Text != "")
             {
-                accForm.Show();
+                DialogResult result = MessageBox.Show("Подтвердите действие", "Подтверждение", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    accForm.Show();
+                }
+            }
+            else
+            {
+                WarningLabel.Visible = true;
             }
         }
         public void CreateAcc()
@@ -46,6 +55,20 @@ namespace LB1
             CreateAccountController createAccController = new CreateAccountController();
             createAccController.CreateAccount(bankController.getBank(BankBox.Text), clientController.ActiveClient.UserID, (accForm.getMoneyType()));
             clientController.addAccToClient(bankController.getBank(BankBox.Text));
+        }
+
+        private void AccInfoBtn_Click(object sender, EventArgs e)
+        {
+            AccInfoForm AccInfoForm = new AccInfoForm(clientController);
+            Thread myThread1 = new Thread(AccInfoForm.Open);
+            myThread1.Start();
+            this.Close();
+            this.Dispose();
+        }
+
+        private void BankBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            WarningLabel.Visible = false;
         }
     }
 }

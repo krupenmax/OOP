@@ -29,19 +29,18 @@ namespace LB1
 
                 while (parser.Read())
                 {
-                    bankData.Data.Tables["Accounts"].Rows.Add(new object[] { parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]) });
+                    bankData.Data.Tables["Accounts"].Rows.Add(new object[] { parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]), DateTime.Now });
                 }
             }
         }
         public void addAcc(int UserID, string moneyType)
         {
-            Random rnd = new Random();
             int accNum = 0;
             bool Check = false;
             DataRow[] row = bankData.Data.Tables["Accounts"].Select();
             while (Check == false)
             {
-                accNum = rnd.Next(0, 99);
+                accNum = row.Length + 10;
                 bool Check2 = false;
                 for(int i = 0; i < row.Length; i++)
                 {
@@ -55,7 +54,7 @@ namespace LB1
                     Check = true;
                 }
             }
-            bankData.Data.Tables["Accounts"].Rows.Add(new object[] { UserID, Convert.ToString(accNum), moneyType, 0 });
+            bankData.Data.Tables["Accounts"].Rows.Add(new object[] { accNum, UserID, moneyType, 0, DateTime.Now });
         }
     }
 }

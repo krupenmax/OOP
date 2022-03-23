@@ -169,7 +169,6 @@ namespace LB1
             column.DataType = System.Type.GetType("System.Int16");
             column.ColumnName = "UserID";
             column.ReadOnly = true;
-            column.Unique = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
@@ -182,8 +181,14 @@ namespace LB1
             column.DataType = System.Type.GetType("System.Single");
             column.ColumnName = "balance";
             column.ReadOnly = true;
-
             table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.DateTime");
+            column.ColumnName = "creationTime";
+            column.ReadOnly = true;
+            table.Columns.Add(column);
+
             Data.Tables.Add(table);
         }
     }

@@ -78,5 +78,28 @@ namespace LB1
             }
             return NewClient;
         }
+
+        public void SetBanks(System.Windows.Forms.ComboBox comboBox)
+        {
+            DataRow[] row = tableSet.Data.Tables["Banks"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                comboBox.Items.Add(row[i]["urName"]);
+            }
+        }
+
+        public Bank getBank(string bankName)
+        {
+            Bank bank = null;
+
+            for (int i = 0; i < BankSet.Length; i++)
+            {
+                if (bankName == Convert.ToString(BankSet[i].urName))
+                {
+                    bank = BankSet[i];
+                }
+            }
+            return bank;
+        }
     }
 }

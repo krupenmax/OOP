@@ -28,7 +28,6 @@ namespace LB1
             LoginController loginController = new LoginController();
             if (loginController.Login(LoginBox.Text, PasswordBox.Text).firstName != null)
             {
-                MessageBox.Show("Вы успешно авторизировались");
                 this.Hide();
                 HomeForm HomeForm = new HomeForm(LoginBox.Text, PasswordBox.Text);
                 Thread myThread1 = new Thread(HomeForm.Open);

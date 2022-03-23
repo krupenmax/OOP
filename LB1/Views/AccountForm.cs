@@ -16,9 +16,9 @@ namespace LB1
         public AccountForm(HomeForm homeForm)
         {
             InitializeComponent();
-            moneyTypeBox.Items.Add("US");
-            moneyTypeBox.Items.Add("EU");
-            moneyTypeBox.Items.Add("BY");
+            moneyTypeBox.Items.Add("USD");
+            moneyTypeBox.Items.Add("EUR");
+            moneyTypeBox.Items.Add("BYR");
             moneyTypeBox.Items.Add("RUB");
             this.homeForm = homeForm;
         }
@@ -30,8 +30,7 @@ namespace LB1
         private void moneyTypeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             homeForm.CreateAcc();
-            this.Close();
-            this.Dispose();
+            this.Visible = false;
         }
     }
 }

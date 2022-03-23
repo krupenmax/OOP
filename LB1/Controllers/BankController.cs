@@ -9,27 +9,13 @@ namespace LB1
 {
     class BankController
     {
-        Bank ActiveBank;
         public void SetBanks(System.Windows.Forms.ComboBox comboBox)
         {
-            DataRow[] row = Program.database.tableSet.Data.Tables["Banks"].Select();
-            for (int i = 0; i < row.Length; i++)
-            {
-                comboBox.Items.Add(row[i]["urName"]);
-            }
+            Program.database.SetBanks(comboBox);
         }
         public Bank getBank(string bankName)
         {
-            Bank bank = null;
-
-            for (int i = 0; i < Program.database.BankSet.Length; i++)
-            {
-                if (bankName == Convert.ToString(Program.database.BankSet[i].urName))
-                {
-                    bank = Program.database.BankSet[i];
-                }
-            }
-            return bank;
+            return Program.database.getBank(bankName);
         }
     }
 }
