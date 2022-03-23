@@ -1,0 +1,16 @@
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\bin\Debug\LB1.exe.config
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.csprojResolveAssemblyReference.cache
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.Properties.Resources.resources
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.csproj.GenerateResource.Cache
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\bin\Debug\LB1.exe
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\bin\Debug\LB1.pdb
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.exe
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.pdb
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.RegisterForm.resources
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.StartForm.resources
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.LoginForm.resources
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\bin\Debug\GenericParsing.dll
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\bin\Debug\System.Data.Common.dll
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\bin\Debug\GenericParsing.xml
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.HomeForm.resources
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.AccountForm.resources

@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace LB1
+{
+    public partial class AccountForm : Form
+    {
+        HomeForm homeForm;
+        public AccountForm(HomeForm homeForm)
+        {
+            InitializeComponent();
+            moneyTypeBox.Items.Add("US");
+            moneyTypeBox.Items.Add("EU");
+            moneyTypeBox.Items.Add("BY");
+            moneyTypeBox.Items.Add("RUB");
+            this.homeForm = homeForm;
+        }
+        public string getMoneyType()
+        {
+            return Convert.ToString(moneyTypeBox.SelectedItem);
+        }
+
+        private void moneyTypeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            homeForm.CreateAcc();
+            this.Close();
+            this.Dispose();
+        }
+    }
+}
