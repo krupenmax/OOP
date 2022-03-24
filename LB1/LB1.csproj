@@ -57,6 +57,7 @@
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CreateAccountController.cs" />
+    <Compile Include="Controllers\DeletingController.cs" />
     <Compile Include="Controllers\Interfaces\ILoginController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />

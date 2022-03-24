@@ -16,14 +16,16 @@ namespace LB1
         ClientController clientController = new ClientController();
         BankController bankController = new BankController();
         AccountForm accForm;
+       
         public HomeForm(string login, string password)
         {
             InitializeComponent();
             clientController.GetClient(login, password);
             clientController.getAccounts();
             bankController.SetBanks(BankBox);
-            this.accForm = new AccountForm(this);
+            BankBox.DropDownStyle = ComboBoxStyle.DropDownList;       
         }
+
 
         public void Open()
         {
@@ -39,11 +41,8 @@ namespace LB1
         {
             if (BankBox.Text != "")
             {
-                DialogResult result = MessageBox.Show("Подтвердите действие", "Подтверждение", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                {
+                    accForm = new AccountForm(this);
                     accForm.Show();
-                }
             }
             else
             {

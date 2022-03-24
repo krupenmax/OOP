@@ -32,7 +32,6 @@
             this.BankText = new System.Windows.Forms.Label();
             this.CreateAccount = new System.Windows.Forms.Button();
             this.AccInfoBtn = new System.Windows.Forms.Button();
-            this.CloseAccBtn = new System.Windows.Forms.Button();
             this.TranserBtn = new System.Windows.Forms.Button();
             this.SalaryProjectBtn = new System.Windows.Forms.Button();
             this.CreditsPibBtn = new System.Windows.Forms.Button();
@@ -91,20 +90,6 @@
             this.AccInfoBtn.UseVisualStyleBackColor = true;
             this.AccInfoBtn.Click += new System.EventHandler(this.AccInfoBtn_Click);
             // 
-            // CloseAccBtn
-            // 
-            this.CloseAccBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseAccBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CloseAccBtn.Location = new System.Drawing.Point(495, 120);
-            this.CloseAccBtn.Margin = new System.Windows.Forms.Padding(0);
-            this.CloseAccBtn.Name = "CloseAccBtn";
-            this.CloseAccBtn.Size = new System.Drawing.Size(200, 100);
-            this.CloseAccBtn.TabIndex = 4;
-            this.CloseAccBtn.Text = "Закрыть счет";
-            this.CloseAccBtn.UseVisualStyleBackColor = true;
-            // 
             // TranserBtn
             // 
             this.TranserBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -137,7 +122,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CreditsPibBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.CreditsPibBtn.Location = new System.Drawing.Point(495, 223);
+            this.CreditsPibBtn.Location = new System.Drawing.Point(498, 120);
             this.CreditsPibBtn.Name = "CreditsPibBtn";
             this.CreditsPibBtn.Size = new System.Drawing.Size(200, 100);
             this.CreditsPibBtn.TabIndex = 7;
@@ -147,7 +132,7 @@
             // WarningLabel
             // 
             this.WarningLabel.AutoSize = true;
-            this.WarningLabel.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.WarningLabel.BackColor = System.Drawing.SystemColors.Control;
             this.WarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.WarningLabel.ForeColor = System.Drawing.Color.Red;
             this.WarningLabel.Location = new System.Drawing.Point(257, 37);
@@ -166,7 +151,6 @@
             this.Controls.Add(this.CreditsPibBtn);
             this.Controls.Add(this.SalaryProjectBtn);
             this.Controls.Add(this.TranserBtn);
-            this.Controls.Add(this.CloseAccBtn);
             this.Controls.Add(this.AccInfoBtn);
             this.Controls.Add(this.CreateAccount);
             this.Controls.Add(this.BankText);
@@ -186,7 +170,6 @@
         private System.Windows.Forms.Label BankText;
         private System.Windows.Forms.Button CreateAccount;
         private System.Windows.Forms.Button AccInfoBtn;
-        private System.Windows.Forms.Button CloseAccBtn;
         private System.Windows.Forms.Button TranserBtn;
         private System.Windows.Forms.Button SalaryProjectBtn;
         private System.Windows.Forms.Button CreditsPibBtn;

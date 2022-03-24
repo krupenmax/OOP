@@ -33,5 +33,11 @@ namespace LB1
                 }
             }
         }
+        public void deleteAccount(string accNum, string urName)
+        {
+            DataRow[] row = ClientTables.Data.Tables["Accounts"].Select(" accNum = '" + accNum + "' AND urName = '" + urName + "'");
+            row[0].Delete();
+            ClientTables.Data.Tables["Accounts"].AcceptChanges();
+        }
     }
 }

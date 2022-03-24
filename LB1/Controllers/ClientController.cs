@@ -51,5 +51,9 @@ namespace LB1
             }
             return acc;
         }
+        public void deleteAcc(string accNum, string urName)
+        {
+            ActiveClient.deleteAccount(accNum, urName);
+        }
     }
 }

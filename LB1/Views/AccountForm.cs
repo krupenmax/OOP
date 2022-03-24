@@ -21,6 +21,7 @@ namespace LB1
             moneyTypeBox.Items.Add("BYR");
             moneyTypeBox.Items.Add("RUB");
             this.homeForm = homeForm;
+            moneyTypeBox.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         public string getMoneyType()
         {
@@ -29,8 +30,13 @@ namespace LB1
 
         private void moneyTypeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            homeForm.CreateAcc();
-            this.Visible = false;
+            DialogResult result = MessageBox.Show("Подтвердите действие", "Подтверждение", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                homeForm.CreateAcc();
+            }
+            this.Close();
+            this.Dispose();         
         }
     }
 }

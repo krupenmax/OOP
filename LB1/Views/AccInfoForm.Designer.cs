@@ -39,16 +39,17 @@
             this.balanceBox = new System.Windows.Forms.TextBox();
             this.moneyTypeBox = new System.Windows.Forms.TextBox();
             this.dataCreationBox = new System.Windows.Forms.TextBox();
+            this.deleteBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // accBox
             // 
-            this.accBox.FormattingEnabled = true;
             this.accBox.Location = new System.Drawing.Point(250, 100);
             this.accBox.Name = "accBox";
             this.accBox.Size = new System.Drawing.Size(300, 21);
             this.accBox.TabIndex = 0;
             this.accBox.SelectedIndexChanged += new System.EventHandler(this.accBox_SelectedIndexChanged);
+            this.accBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // accLabel
             // 
@@ -142,11 +143,22 @@
             this.dataCreationBox.Size = new System.Drawing.Size(145, 20);
             this.dataCreationBox.TabIndex = 11;
             // 
+            // deleteBtn
+            // 
+            this.deleteBtn.Location = new System.Drawing.Point(431, 171);
+            this.deleteBtn.Name = "deleteBtn";
+            this.deleteBtn.Size = new System.Drawing.Size(119, 23);
+            this.deleteBtn.TabIndex = 12;
+            this.deleteBtn.Text = "Удалить счет";
+            this.deleteBtn.UseVisualStyleBackColor = true;
+            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
+            // 
             // AccInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.dataCreationBox);
             this.Controls.Add(this.moneyTypeBox);
             this.Controls.Add(this.balanceBox);
@@ -180,5 +192,6 @@
         private System.Windows.Forms.TextBox balanceBox;
         private System.Windows.Forms.TextBox moneyTypeBox;
         private System.Windows.Forms.TextBox dataCreationBox;
+        private System.Windows.Forms.Button deleteBtn;
     }
 }

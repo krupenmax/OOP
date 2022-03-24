@@ -56,5 +56,12 @@ namespace LB1
             }
             bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, accNum, UserID, moneyType, 0, DateTime.Now });
         }
+        
+        public void deleteAcc(string accNum)
+        {
+            DataRow[] row = bankData.Data.Tables["Accounts"].Select("accNum = " + accNum);
+            row[0].Delete();
+            bankData.Data.Tables["Accounts"].AcceptChanges();
+        }
     }
 }

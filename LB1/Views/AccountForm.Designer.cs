@@ -69,5 +69,6 @@
 
         private System.Windows.Forms.ComboBox moneyTypeBox;
         private System.Windows.Forms.Label label1;
+
     }
 }
