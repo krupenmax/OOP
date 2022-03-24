@@ -55,15 +55,15 @@ namespace LB1
             CreateAccountController createAccController = new CreateAccountController();
             createAccController.CreateAccount(bankController.getBank(BankBox.Text), clientController.ActiveClient.UserID, (accForm.getMoneyType()));
             clientController.addAccToClient(bankController.getBank(BankBox.Text));
+            MessageBox.Show("Счет создан");
         }
 
         private void AccInfoBtn_Click(object sender, EventArgs e)
         {
-            AccInfoForm AccInfoForm = new AccInfoForm(clientController);
+            AccInfoForm AccInfoForm = new AccInfoForm(clientController, this);
             Thread myThread1 = new Thread(AccInfoForm.Open);
             myThread1.Start();
-            this.Close();
-            this.Dispose();
+            this.Hide();
         }
 
         private void BankBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -157,12 +157,18 @@ namespace LB1
         public void BuildAccountTable()
         {
             DataTable table = new DataTable("Accounts");
-            DataColumn column = new DataColumn();
 
+            DataColumn column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "urName";
+            column.ReadOnly = true;
+            table.Columns.Add(column);
+
+
+            column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "accNum";
             column.ReadOnly = true;
-            column.Unique = true;
             table.Columns.Add(column);
 
             column = new DataColumn();

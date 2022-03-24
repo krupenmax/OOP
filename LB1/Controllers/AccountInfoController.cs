@@ -19,8 +19,13 @@ namespace LB1
             DataRow[] row = clientController.ActiveClient.ClientTables.Data.Tables["Accounts"].Select();
             for (int i = 0; i < row.Length; i++)
             {
-                comboBox.Items.Add(row[i]["accNum"]);
+                comboBox.Items.Add(Convert.ToString(row[i]["accNum"]) + ", " + Convert.ToString(row[i]["urName"]));
             }
+        }
+
+        public Account getActiveAccount(string accNum, string urName)
+        {
+            return clientController.getActiveAcc(accNum, urName);
         }
     }
 }

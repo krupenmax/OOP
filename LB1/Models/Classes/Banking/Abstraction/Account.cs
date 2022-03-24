@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LB1
 {
-    class Account : IAccount
+    public class Account : IAccount
     {
         public string accNum { get; set; }
         public int UserID { get; set; }

@@ -29,7 +29,7 @@ namespace LB1
             {
                 if (Convert.ToInt16(row[i]["UserID"]) == UserID)
                 {
-                    ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[i]["accNum"], row[i]["UserID"], row[i]["moneyType"], row[i]["balance"], row[i]["creationTime"] });
+                    ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[i]["urName"] , row[i]["accNum"], row[i]["UserID"], row[i]["moneyType"], row[i]["balance"], row[i]["creationTime"] });
                 }
             }
         }

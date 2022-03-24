@@ -29,7 +29,7 @@ namespace LB1
 
                 while (parser.Read())
                 {
-                    bankData.Data.Tables["Accounts"].Rows.Add(new object[] { parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]), DateTime.Now });
+                    bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]), DateTime.Now });
                 }
             }
         }
@@ -40,7 +40,7 @@ namespace LB1
             DataRow[] row = bankData.Data.Tables["Accounts"].Select();
             while (Check == false)
             {
-                accNum = row.Length + 10;
+                accNum = row.Length + 1;
                 bool Check2 = false;
                 for(int i = 0; i < row.Length; i++)
                 {
@@ -54,7 +54,7 @@ namespace LB1
                     Check = true;
                 }
             }
-            bankData.Data.Tables["Accounts"].Rows.Add(new object[] { accNum, UserID, moneyType, 0, DateTime.Now });
+            bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, accNum, UserID, moneyType, 0, DateTime.Now });
         }
     }
 }
