@@ -41,8 +41,8 @@ namespace LB1
         {
             if (BankBox.Text != "")
             {
-                    accForm = new AccountForm(this);
-                    accForm.Show();
+                accForm = new AccountForm(this);
+                accForm.ShowDialog();            
             }
             else
             {
@@ -52,7 +52,7 @@ namespace LB1
         public void CreateAcc()
         {
             CreateAccountController createAccController = new CreateAccountController();
-            createAccController.CreateAccount(bankController.getBank(BankBox.Text), clientController.ActiveClient.UserID, (accForm.getMoneyType()));
+            createAccController.CreateAccount(bankController.getBank(BankBox.Text), clientController.ActiveClient.getUserId(), (accForm.getMoneyType()));
             clientController.addAccToClient(bankController.getBank(BankBox.Text));
             MessageBox.Show("Счет создан");
         }
@@ -68,6 +68,14 @@ namespace LB1
         private void BankBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             WarningLabel.Visible = false;
+        }
+
+        private void TranserBtn_Click(object sender, EventArgs e)
+        {
+            TransferForm TransferForm = new TransferForm(clientController, this);
+            Thread myThread1 = new Thread(TransferForm.Open);
+            myThread1.Start();
+            this.Hide();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LB1
 {
-    interface IOperator : IUser
+    interface IOperator
     {
         void checkStatistics();
         void cancelAction();

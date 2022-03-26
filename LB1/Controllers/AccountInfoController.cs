@@ -16,7 +16,7 @@ namespace LB1
         }
         public void setBox(System.Windows.Forms.ComboBox comboBox)
         {
-            DataRow[] row = clientController.ActiveClient.ClientTables.Data.Tables["Accounts"].Select();
+            DataRow[] row = clientController.ActiveClient.getClientTables().Data.Tables["Accounts"].Select();
             for (int i = 0; i < row.Length; i++)
             {
                 comboBox.Items.Add(Convert.ToString(row[i]["accNum"]) + ", " + Convert.ToString(row[i]["urName"]));

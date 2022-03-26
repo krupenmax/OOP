@@ -26,7 +26,7 @@ namespace LB1
         private void AuthorizeBtn_Click(object sender, EventArgs e)
         {
             LoginController loginController = new LoginController();
-            if (loginController.Login(LoginBox.Text, PasswordBox.Text).firstName != null)
+            if (loginController.Login(LoginBox.Text, PasswordBox.Text).getFirstName() != null)
             {
                 this.Hide();
                 HomeForm HomeForm = new HomeForm(LoginBox.Text, PasswordBox.Text);

@@ -102,6 +102,7 @@
             this.TranserBtn.TabIndex = 5;
             this.TranserBtn.Text = "Переводы";
             this.TranserBtn.UseVisualStyleBackColor = true;
+            this.TranserBtn.Click += new System.EventHandler(this.TranserBtn_Click);
             // 
             // SalaryProjectBtn
             // 

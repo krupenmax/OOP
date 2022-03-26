@@ -6,12 +6,58 @@ using System.Threading.Tasks;
 
 namespace LB1
 {
-    public abstract class User : IUser
+    public abstract class User
     {
-        public string password { get; set; }
-        public string login { get; set; }
-        public string firstName { get; set; }
-        public string secondName { get; set; }
-        public string fatherName { get; set; }
+        string password;
+        string login;
+        string firstName;
+        string secondName;
+        string fatherName;
+
+        public string getFatherName()
+        {
+            return fatherName;
+        }
+        public void setFatherName(string fatherName)
+        {
+            this.fatherName = fatherName;
+        }
+
+        public string getSecondName()
+        {
+            return secondName;
+        }
+        public void setSecondName(string secondName)
+        {
+            this.secondName = secondName;
+        }
+
+        public string getFirstName()
+        {
+            return firstName;
+        }
+        public void setFirstName(string firstName)
+        {
+            this.firstName = firstName;
+        }
+
+        public string getPassword()
+        {
+            return password;
+        }
+        public void setPassword(string password)
+        {
+            this.password = password;
+        }
+
+        public string getLogin()
+        {
+            return login;
+        }
+        public void setLogin(string login)
+        {
+            this.login = login;
+        }
+
     }
 }

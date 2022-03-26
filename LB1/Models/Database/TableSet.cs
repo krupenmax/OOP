@@ -17,13 +17,11 @@ namespace LB1
             column.DataType = System.Type.GetType("System.Int16");
             column.ColumnName = "UserID";
             column.Unique = true;
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "login";
-            column.ReadOnly = true;
             column.Unique = true;
             table.Columns.Add(column);
 
@@ -37,43 +35,36 @@ namespace LB1
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "firstName";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "secondName";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "fatherName";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "passportData";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "idNumber";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "phoneNumber";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "email";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
 
@@ -86,31 +77,26 @@ namespace LB1
 
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "Type";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "urName";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.UInt32");
             column.ColumnName = "UNP";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.UInt32");
             column.ColumnName = "BIK";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "adress";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             Data.Tables.Add(table);
@@ -123,32 +109,27 @@ namespace LB1
 
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "Type";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "urName";
-            column.ReadOnly = true;
             column.Unique = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.UInt32");
             column.ColumnName = "UNP";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.UInt32");
             column.ColumnName = "BIK";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "adress";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             Data.Tables.Add(table);
@@ -161,38 +142,31 @@ namespace LB1
             DataColumn column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "urName";
-            column.ReadOnly = true;
             table.Columns.Add(column);
-
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "accNum";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.Int16");
             column.ColumnName = "UserID";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.String");
             column.ColumnName = "moneyType";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.Single");
             column.ColumnName = "balance";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.DateTime");
             column.ColumnName = "creationTime";
-            column.ReadOnly = true;
             table.Columns.Add(column);
 
             Data.Tables.Add(table);

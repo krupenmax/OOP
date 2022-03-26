@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LB1
 {
-    abstract class Company : ICompany
+    abstract class Company
     {
         public string Type { get; set; }
         public string urName { get; set; }

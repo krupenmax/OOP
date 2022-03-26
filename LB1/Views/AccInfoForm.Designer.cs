@@ -40,16 +40,17 @@
             this.moneyTypeBox = new System.Windows.Forms.TextBox();
             this.dataCreationBox = new System.Windows.Forms.TextBox();
             this.deleteBtn = new System.Windows.Forms.Button();
+            this.depositBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // accBox
             // 
+            this.accBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.accBox.Location = new System.Drawing.Point(250, 100);
             this.accBox.Name = "accBox";
             this.accBox.Size = new System.Drawing.Size(300, 21);
             this.accBox.TabIndex = 0;
             this.accBox.SelectedIndexChanged += new System.EventHandler(this.accBox_SelectedIndexChanged);
-            this.accBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // accLabel
             // 
@@ -113,7 +114,7 @@
             this.ownerBox.Name = "ownerBox";
             this.ownerBox.ReadOnly = true;
             this.ownerBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.ownerBox.Size = new System.Drawing.Size(145, 20);
+            this.ownerBox.Size = new System.Drawing.Size(257, 20);
             this.ownerBox.TabIndex = 8;
             // 
             // balanceBox
@@ -122,7 +123,7 @@
             this.balanceBox.Name = "balanceBox";
             this.balanceBox.ReadOnly = true;
             this.balanceBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.balanceBox.Size = new System.Drawing.Size(145, 20);
+            this.balanceBox.Size = new System.Drawing.Size(257, 20);
             this.balanceBox.TabIndex = 9;
             // 
             // moneyTypeBox
@@ -131,7 +132,7 @@
             this.moneyTypeBox.Name = "moneyTypeBox";
             this.moneyTypeBox.ReadOnly = true;
             this.moneyTypeBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.moneyTypeBox.Size = new System.Drawing.Size(145, 20);
+            this.moneyTypeBox.Size = new System.Drawing.Size(257, 20);
             this.moneyTypeBox.TabIndex = 10;
             // 
             // dataCreationBox
@@ -140,12 +141,12 @@
             this.dataCreationBox.Name = "dataCreationBox";
             this.dataCreationBox.ReadOnly = true;
             this.dataCreationBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.dataCreationBox.Size = new System.Drawing.Size(145, 20);
+            this.dataCreationBox.Size = new System.Drawing.Size(257, 20);
             this.dataCreationBox.TabIndex = 11;
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(431, 171);
+            this.deleteBtn.Location = new System.Drawing.Point(431, 206);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(119, 23);
             this.deleteBtn.TabIndex = 12;
@@ -153,11 +154,22 @@
             this.deleteBtn.UseVisualStyleBackColor = true;
             this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
+            // depositBtn
+            // 
+            this.depositBtn.Location = new System.Drawing.Point(431, 174);
+            this.depositBtn.Name = "depositBtn";
+            this.depositBtn.Size = new System.Drawing.Size(119, 23);
+            this.depositBtn.TabIndex = 13;
+            this.depositBtn.Text = "Пополнить";
+            this.depositBtn.UseVisualStyleBackColor = true;
+            this.depositBtn.Click += new System.EventHandler(this.depositBtn_Click);
+            // 
             // AccInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.depositBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.dataCreationBox);
             this.Controls.Add(this.moneyTypeBox);
@@ -193,5 +205,6 @@
         private System.Windows.Forms.TextBox moneyTypeBox;
         private System.Windows.Forms.TextBox dataCreationBox;
         private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.Button depositBtn;
     }
 }

@@ -64,9 +64,10 @@ namespace LB1
                 urName += accBox.Text[i];
                 i++;
             }
-            balanceBox.Text = Convert.ToString(accountInfoController.getActiveAccount(accNum, urName).balance);
-            dataCreationBox.Text = Convert.ToString(accountInfoController.getActiveAccount(accNum, urName).creationTime);
-            moneyTypeBox.Text = Convert.ToString(accountInfoController.getActiveAccount(accNum, urName).moneyType);
+            balanceBox.Text = Convert.ToString(accountInfoController.getActiveAccount(accNum, urName).getBalance());
+            dataCreationBox.Text = Convert.ToString(accountInfoController.getActiveAccount(accNum, urName).getCreationTime());
+            moneyTypeBox.Text = Convert.ToString(accountInfoController.getActiveAccount(accNum, urName).getMoneyType());
+            ownerBox.Text = clientController.ActiveClient.getSecondName() + " " + clientController.ActiveClient.getFirstName() + " " + clientController.ActiveClient.getFatherName();
             switch (moneyTypeBox.Text)
             {
                 case "USD":
@@ -114,8 +115,45 @@ namespace LB1
             }
             else
             {
-
+                MessageBox.Show("Выберите счет, который хотите удалить");
             }
+        }
+
+        private void depositBtn_Click(object sender, EventArgs e)
+        {
+            if (accBox.Text != "")
+            {
+                DepositForm DepositForm = new DepositForm(this);
+            }
+            else
+            {
+                MessageBox.Show("Выберите счет, который хотите пополнить");
+            }
+        }
+        public void deposit(double amount)
+        {
+            string accNum = "";
+            string urName = "";
+            int i = 0;
+            while (accBox.Text[i] != ',')
+            {
+                accNum += accBox.Text[i];
+                i++;
+            }
+            i += 2;
+            while (i < accBox.Text.Length)
+            {
+                urName += accBox.Text[i];
+                i++;
+            }
+            TransferController transferController = new TransferController(accountInfoController.getActiveAccount(accNum, urName), null, null, clientController.ActiveClient);
+            transferController.deposit(amount);
+            accBox.Text = "";
+            accBox.Text = "";
+            moneyTypeBox.Text = "";
+            balanceBox.Text = "";
+            ownerBox.Text = "";
+            dataCreationBox.Text = "";
         }
     }
 }

@@ -21,8 +21,7 @@ namespace LB1
         }
         public void addAccToClient(Bank bank)
         {
-            DataRow[] row = bank.bankData.Data.Tables["Accounts"].Select();
-            ActiveClient.ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[row.Length - 1]["urName"], row[row.Length - 1]["accNum"], row[row.Length - 1]["UserID"], row[row.Length - 1]["moneyType"], row[row.Length - 1]["balance"], row[row.Length - 1]["creationTime"] });
+            ActiveClient.addAccToClient(bank);
         }
         
         public void getAccounts()
@@ -34,22 +33,7 @@ namespace LB1
         
         public Account getActiveAcc(string accNum, string urName)
         {
-            Account acc = new Account();
-            DataRow[] row = ActiveClient.ClientTables.Data.Tables["Accounts"].Select();
-            for (int i = 0; i < row.Length; i++)
-            {
-                if (accNum == Convert.ToString(row[i]["accNum"]) && urName == Convert.ToString(row[i]["urName"]))
-                {
-                    acc.accNum = Convert.ToString(row[i]["accNum"]);
-                    acc.UserID = Convert.ToInt16(row[i]["UserID"]);
-                    acc.moneyType = Convert.ToString(row[i]["moneyType"]);
-                    acc.balance = Convert.ToInt16(row[i]["balance"]);
-                    acc.creationTime = Convert.ToDateTime(row[i]["creationTime"]);
-
-                    break;
-                }
-            }
-            return acc;
+            return ActiveClient.getActiveAcc(accNum, urName);
         }
         public void deleteAcc(string accNum, string urName)
         {

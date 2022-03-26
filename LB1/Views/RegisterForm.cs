@@ -29,6 +29,13 @@ namespace LB1
 
         }
 
+        private void myTextBox_KeyPress(
+    object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
+                e.Handled = true;
+        }
+
         private void RegistrateButton_Click(object sender, EventArgs e)
         {
             RegistrationController registrationController = new RegistrationController();

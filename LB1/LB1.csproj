@@ -61,6 +61,7 @@
     <Compile Include="Controllers\Interfaces\ILoginController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\TransferController.cs" />
     <Compile Include="Models\Classes\Banking\Abstraction\Account.cs" />
     <Compile Include="Models\Classes\Banking\Bank.cs" />
     <Compile Include="Models\Classes\Roles\Admin.cs" />
@@ -70,18 +71,14 @@
     <Compile Include="Models\Classes\Banking\Abstraction\Transfer.cs" />
     <Compile Include="Models\Database\TableSet.cs" />
     <Compile Include="Models\Database\Database.cs" />
-    <Compile Include="Models\Interfaces\Banking\ICompany.cs" />
-    <Compile Include="Models\Interfaces\Banking\IAccount.cs" />
     <Compile Include="Models\Classes\Banking\Abstraction\Company.cs" />
     <Compile Include="Models\Classes\Roles\Client.cs" />
     <Compile Include="Models\Classes\Roles\Model.cs" />
     <Compile Include="Models\Interfaces\Roles\IAdmin.cs" />
-    <Compile Include="Models\Interfaces\Roles\IClient.cs" />
     <Compile Include="Models\Interfaces\Banking\ICredit.cs" />
     <Compile Include="Models\Interfaces\Roles\IManager.cs" />
     <Compile Include="Models\Interfaces\Roles\ISideSpecialist.cs" />
     <Compile Include="Models\Interfaces\Banking\ITransfer.cs" />
-    <Compile Include="Models\Interfaces\Roles\IUser.cs" />
     <Compile Include="Models\Classes\Roles\Manager.cs" />
     <Compile Include="Models\Interfaces\Roles\IOperator.cs" />
     <Compile Include="Models\Classes\Roles\Operator.cs" />
@@ -100,6 +97,12 @@
     </Compile>
     <Compile Include="Views\AccountForm.Designer.cs">
       <DependentUpon>AccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DepositForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\DepositForm.Designer.cs">
+      <DependentUpon>DepositForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\HomeForm.cs">
       <SubType>Form</SubType>
@@ -125,6 +128,12 @@
     <Compile Include="Views\StartForm.Designer.cs">
       <DependentUpon>StartForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\TransferForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\TransferForm.Designer.cs">
+      <DependentUpon>TransferForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -140,6 +149,9 @@
     <EmbeddedResource Include="Views\AccountForm.resx">
       <DependentUpon>AccountForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\DepositForm.resx">
+      <DependentUpon>DepositForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\TransferForm.resx">
+      <DependentUpon>TransferForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

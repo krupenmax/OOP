@@ -8,14 +8,75 @@ using System.Data;
 
 namespace LB1
 {
-    public class Bank : ICompany
+    public class Bank
     {
-        public string Type { get; set; }
-        public string urName { get; set; }
-        public uint UNP { get; set; }
-        public uint BIK { get; set; }
-        public string adress { get; set; }
-        public TableSet bankData = new TableSet();
+        string Type;
+        string urName;
+        uint UNP;
+        uint BIK;
+        string adress;
+        TableSet bankData = new TableSet();
+
+        public TableSet getBankData()
+        {
+            return bankData;
+        }
+
+        public void setBankData(TableSet bankData)
+        {
+            this.bankData = bankData;
+        }
+
+        public string getAdress()
+        {
+            return adress;
+        }
+
+        public void setAdress(string adress)
+        {
+            this.adress = adress;
+        }
+
+        public uint getBIK()
+        {
+            return BIK;
+        }
+
+        public void setBIK(uint BIK)
+        {
+            this.BIK = BIK;
+        }
+
+        public uint getUNP()
+        {
+            return UNP;
+        }
+
+        public void setUNP(uint UNP)
+        {
+            this.UNP = UNP;
+        }
+
+        public string getType()
+        {
+            return Type;
+        }
+
+        public void setType(string Type)
+        {
+            this.Type = Type;
+        }
+
+        public string getUrName()
+        {
+            return urName;
+        }
+
+        public void setUrName(string urName)
+        {
+            this.urName = urName;
+        }
+
         public void getBank()
         {   
             bankData.BuildAccountTable();
@@ -36,23 +97,24 @@ namespace LB1
         public void addAcc(int UserID, string moneyType)
         {
             int accNum = 0;
-            bool Check = false;
+            int i = 1;
             DataRow[] row = bankData.Data.Tables["Accounts"].Select();
-            while (Check == false)
+            while (true)
             {
-                accNum = row.Length + 1;
-                bool Check2 = false;
-                for(int i = 0; i < row.Length; i++)
+                bool Check = false;
+                for (int j = 0; j < row.Length; j++)
                 {
-                    if(Convert.ToInt16(row[i]["UserID"]) == accNum)
+                    if (Convert.ToString(i) == Convert.ToString(row[j]["accNum"]))
                     {
-                        Check2 = true;
+                        Check = true;
                     }
                 }
-                if(Check2 == false)
+                if (Check == false)
                 {
-                    Check = true;
+                    accNum = i;
+                    break;
                 }
+                i++;
             }
             bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, accNum, UserID, moneyType, 0, DateTime.Now });
         }
@@ -61,6 +123,30 @@ namespace LB1
         {
             DataRow[] row = bankData.Data.Tables["Accounts"].Select("accNum = " + accNum);
             row[0].Delete();
+            bankData.Data.Tables["Accounts"].AcceptChanges();
+        }
+
+        public Account findAcc(string accNum)
+        {
+            DataRow[] row = bankData.Data.Tables["Accounts"].Select("accNum = " + accNum);
+            Account acc = new Account();
+            acc.setAccNum(accNum);
+            acc.setMoneyType(Convert.ToString(row[0]["moneyType"]));
+            acc.setBalance(Convert.ToDouble(row[0]["balance"]));
+            acc.setUserID(Convert.ToInt16(row[0]["UserID"]));
+            acc.setCreationTime(Convert.ToDateTime(row[0]["creationTime"]));
+            acc.setUrName(Convert.ToString(row[0]["urName"]));
+            return acc;
+        }
+
+        public void overwriteAcc(Account acc, string accNum)
+        {
+            DataRow[] row = bankData.Data.Tables["Accounts"].Select("accNum = " + accNum);
+            row[0]["accNum"] = acc.getAccNum();
+            row[0]["userID"] = acc.getUserID();
+            row[0]["moneyType"] = acc.getMoneyType();
+            row[0]["balance"] = acc.getBalance();
+            row[0]["creationTime"] = acc.getCreationTime();
             bankData.Data.Tables["Accounts"].AcceptChanges();
         }
     }

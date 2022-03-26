@@ -44,11 +44,11 @@ namespace LB1
                     tableSet.Data.Tables["Banks"].Rows.Add(new object[] { parser["Type"], parser["urName"], Convert.ToUInt32(parser["UNP"]), Convert.ToUInt32(parser["BIK"]), parser["adress"] });
 
                     BankSet[i] = new Bank();
-                    BankSet[i].Type = parser["Type"];
-                    BankSet[i].urName = parser["urName"];
-                    BankSet[i].UNP = Convert.ToUInt32(parser["UNP"]);
-                    BankSet[i].BIK = Convert.ToUInt32(parser["BIK"]);
-                    BankSet[i].adress = parser["adress"];
+                    BankSet[i].setType(parser["Type"]);
+                    BankSet[i].setUrName(parser["urName"]);
+                    BankSet[i].setUNP(Convert.ToUInt32(parser["UNP"]));
+                    BankSet[i].setBIK(Convert.ToUInt32(parser["BIK"]));
+                    BankSet[i].setAdress(parser["adress"]);
                     BankSet[i].getBank();
                     i++;
                 }
@@ -66,15 +66,15 @@ namespace LB1
             DataRow[] row = tableSet.Data.Tables["Clients"].Select(" login = '" + login + "' AND Password = '" + password + "'");
             if (row.Length != 0)
             {
-                NewClient.login = Convert.ToString(row[0]["login"]);
-                NewClient.password = Convert.ToString(row[0]["password"]);
-                NewClient.firstName = Convert.ToString(row[0]["firstName"]);
-                NewClient.secondName = Convert.ToString(row[0]["secondName"]);
-                NewClient.fatherName = Convert.ToString(row[0]["fatherName"]);
-                NewClient.passportData = Convert.ToString(row[0]["passportData"]);
-                NewClient.idNumber = Convert.ToString(row[0]["idNumber"]);
-                NewClient.phoneNumber = Convert.ToString(row[0]["phoneNumber"]);
-                NewClient.email = Convert.ToString(row[0]["email"]);
+                NewClient.setLogin(Convert.ToString(row[0]["login"]));
+                NewClient.setPassword(Convert.ToString(row[0]["password"]));
+                NewClient.setFirstName(Convert.ToString(row[0]["firstName"]));
+                NewClient.setSecondName(Convert.ToString(row[0]["secondName"]));
+                NewClient.setFatherName(Convert.ToString(row[0]["fatherName"]));
+                NewClient.setPassportData(Convert.ToString(row[0]["passportData"]));
+                NewClient.setIdNumber(Convert.ToString(row[0]["idNumber"]));
+                NewClient.setPhoneNumber(Convert.ToString(row[0]["phoneNumber"]));
+                NewClient.setEmail(Convert.ToString(row[0]["email"]));
             }
             return NewClient;
         }
@@ -94,7 +94,7 @@ namespace LB1
 
             for (int i = 0; i < BankSet.Length; i++)
             {
-                if (bankName == Convert.ToString(BankSet[i].urName))
+                if (bankName == Convert.ToString(BankSet[i].getUrName()))
                 {
                     bank = BankSet[i];
                 }

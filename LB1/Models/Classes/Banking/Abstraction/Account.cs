@@ -6,12 +6,73 @@ using System.Threading.Tasks;
 
 namespace LB1
 {
-    public class Account : IAccount
+    public class Account
     {
-        public string accNum { get; set; }
-        public int UserID { get; set; }
-        public string moneyType { get; set; }
-        public float balance { get; set; }
-        public DateTime creationTime { get; set; }
+        string accNum;
+        int UserID;
+        string moneyType;
+        double balance;
+        DateTime creationTime;
+        string urName;
+
+        public string getUrName()
+        {
+            return urName;
+        }
+
+        public void setUrName(string urName)
+        {
+            this.urName = urName;
+        }
+
+        public DateTime getCreationTime()
+        {
+            return creationTime;
+        }
+
+        public void setCreationTime(DateTime creationTime)
+        {
+            this.creationTime = creationTime;
+        }
+
+        public double getBalance()
+        {
+            return balance;
+        }
+
+        public void setBalance(double balance)
+        {
+            this.balance = balance;
+        }
+
+        public string getMoneyType()
+        {
+            return moneyType;
+        }
+
+        public void setMoneyType(string moneyType)
+        {
+            this.moneyType = moneyType;
+        }
+
+        public string getAccNum()
+        {
+            return accNum;
+        }
+
+        public void setAccNum(string accNum)
+        {
+            this.accNum = accNum;
+        }
+
+        public int getUserID()
+        {
+            return UserID;
+        }
+
+        public void setUserID(int UserID)
+        {
+            this.UserID = UserID;
+        }
     }
 }

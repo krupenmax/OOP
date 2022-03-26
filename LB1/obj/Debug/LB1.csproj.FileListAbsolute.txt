@@ -15,3 +15,5 @@ C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\bin\D
 C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.HomeForm.resources
 C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.AccountForm.resources
 C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.AccInfoForm.resources
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.TransferForm.resources
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.DepositForm.resources
