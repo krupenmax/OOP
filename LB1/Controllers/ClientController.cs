@@ -24,20 +24,34 @@ namespace LB1
             ActiveClient.addAccToClient(bank);
         }
         
+
         public void getAccounts()
         {
             ActiveClient.getAccounts(Program.database.BankSet[0]);
             ActiveClient.getAccounts(Program.database.BankSet[1]);
             ActiveClient.getAccounts(Program.database.BankSet[2]);
         }
+
+        public void getCredits()
+        {
+            ActiveClient.getCredits(Program.database.BankSet[0]);
+            ActiveClient.getCredits(Program.database.BankSet[1]);
+            ActiveClient.getCredits(Program.database.BankSet[2]);
+        }
         
         public Account getActiveAcc(string accNum, string urName)
         {
             return ActiveClient.getActiveAcc(accNum, urName);
         }
+
         public void deleteAcc(string accNum, string urName)
         {
             ActiveClient.deleteAccount(accNum, urName);
+        }
+
+        public void addCreditToClient(Bank bank)
+        {
+            ActiveClient.addCreditToClient(bank);
         }
     }
 }

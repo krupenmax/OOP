@@ -36,19 +36,22 @@
             this.amountBox = new System.Windows.Forms.TextBox();
             this.bankBox = new System.Windows.Forms.ComboBox();
             this.backBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // senderBox
             // 
+            this.senderBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.senderBox.FormattingEnabled = true;
-            this.senderBox.Location = new System.Drawing.Point(63, 108);
+            this.senderBox.Location = new System.Drawing.Point(17, 110);
             this.senderBox.Name = "senderBox";
             this.senderBox.Size = new System.Drawing.Size(121, 21);
             this.senderBox.TabIndex = 0;
             // 
             // receiverBox
             // 
-            this.receiverBox.Location = new System.Drawing.Point(328, 108);
+            this.receiverBox.Location = new System.Drawing.Point(17, 180);
             this.receiverBox.Name = "receiverBox";
             this.receiverBox.Size = new System.Drawing.Size(121, 20);
             this.receiverBox.TabIndex = 1;
@@ -56,7 +59,7 @@
             // senderText
             // 
             this.senderText.AutoSize = true;
-            this.senderText.Location = new System.Drawing.Point(60, 82);
+            this.senderText.Location = new System.Drawing.Point(14, 84);
             this.senderText.Name = "senderText";
             this.senderText.Size = new System.Drawing.Size(152, 13);
             this.senderText.TabIndex = 2;
@@ -65,7 +68,7 @@
             // receiverText
             // 
             this.receiverText.AutoSize = true;
-            this.receiverText.Location = new System.Drawing.Point(325, 81);
+            this.receiverText.Location = new System.Drawing.Point(12, 152);
             this.receiverText.Name = "receiverText";
             this.receiverText.Size = new System.Drawing.Size(178, 13);
             this.receiverText.TabIndex = 3;
@@ -73,9 +76,9 @@
             // 
             // TransferBtn
             // 
-            this.TransferBtn.Location = new System.Drawing.Point(503, 108);
+            this.TransferBtn.Location = new System.Drawing.Point(17, 237);
             this.TransferBtn.Name = "TransferBtn";
-            this.TransferBtn.Size = new System.Drawing.Size(75, 23);
+            this.TransferBtn.Size = new System.Drawing.Size(302, 23);
             this.TransferBtn.TabIndex = 4;
             this.TransferBtn.Text = "Перевести";
             this.TransferBtn.UseVisualStyleBackColor = true;
@@ -83,22 +86,23 @@
             // 
             // amountBox
             // 
-            this.amountBox.Location = new System.Drawing.Point(209, 108);
+            this.amountBox.Location = new System.Drawing.Point(198, 110);
             this.amountBox.Name = "amountBox";
-            this.amountBox.Size = new System.Drawing.Size(100, 20);
+            this.amountBox.Size = new System.Drawing.Size(121, 20);
             this.amountBox.TabIndex = 5;
             // 
             // bankBox
             // 
+            this.bankBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.bankBox.FormattingEnabled = true;
-            this.bankBox.Location = new System.Drawing.Point(328, 134);
+            this.bankBox.Location = new System.Drawing.Point(198, 180);
             this.bankBox.Name = "bankBox";
             this.bankBox.Size = new System.Drawing.Size(121, 21);
             this.bankBox.TabIndex = 6;
             // 
             // backBtn
             // 
-            this.backBtn.Location = new System.Drawing.Point(63, 26);
+            this.backBtn.Location = new System.Drawing.Point(17, 28);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(75, 23);
             this.backBtn.TabIndex = 7;
@@ -106,11 +110,31 @@
             this.backBtn.UseVisualStyleBackColor = true;
             this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(216, 153);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Банк:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(195, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Сумма перевода:";
+            // 
             // TransferForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 561);
+            this.ClientSize = new System.Drawing.Size(337, 315);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.bankBox);
             this.Controls.Add(this.amountBox);
@@ -137,5 +161,7 @@
         private System.Windows.Forms.TextBox amountBox;
         private System.Windows.Forms.ComboBox bankBox;
         private System.Windows.Forms.Button backBtn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

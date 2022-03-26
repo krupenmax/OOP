@@ -16,6 +16,9 @@ namespace LB1
         public RegisterForm()
         {
             InitializeComponent();
+            this.FirstNameBox.KeyDown += new KeyEventHandler(FirstNameBox_KeyDown);
+            this.SecondNameBox.KeyDown += new KeyEventHandler(SecondNameBox_KeyDown);
+            this.FatherNameBox.KeyDown += new KeyEventHandler(FatherNameBox_KeyDown);
         }
 
 
@@ -29,12 +32,7 @@ namespace LB1
 
         }
 
-        private void myTextBox_KeyPress(
-    object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar != 8 && (e.KeyChar < 48 || e.KeyChar > 57))
-                e.Handled = true;
-        }
+
 
         private void RegistrateButton_Click(object sender, EventArgs e)
         {
@@ -51,13 +49,46 @@ namespace LB1
             }
             else
             {
-                MessageBox.Show("Пароли не совпадают");               
+                MessageBox.Show("Пароли не совпадают");
             }
         }
 
         private void ConfirmLabel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void FirstNameBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3 || e.KeyCode == Keys.D4
+                || e.KeyCode == Keys.D5 || e.KeyCode == Keys.D6 || e.KeyCode == Keys.D7 || e.KeyCode == Keys.D8 || e.KeyCode == Keys.D9)
+            {
+                MessageBox.Show("Некорректный символ");
+                FirstNameBox.Text = "";
+                e.Handled = true;
+            }
+        }
+
+        private void SecondNameBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3 || e.KeyCode == Keys.D4
+                || e.KeyCode == Keys.D5 || e.KeyCode == Keys.D6 || e.KeyCode == Keys.D7 || e.KeyCode == Keys.D8 || e.KeyCode == Keys.D9)
+            {
+                MessageBox.Show("Некорректный символ");
+                SecondNameBox.Text = "";
+                e.Handled = true;
+            }
+        }
+
+        private void FatherNameBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.D2 || e.KeyCode == Keys.D3 || e.KeyCode == Keys.D4
+                || e.KeyCode == Keys.D5 || e.KeyCode == Keys.D6 || e.KeyCode == Keys.D7 || e.KeyCode == Keys.D8 || e.KeyCode == Keys.D9)
+            {
+                MessageBox.Show("Некорректный символ");
+                FatherNameBox.Text = "";
+                e.Handled = true;
+            }
         }
 
         private void BackBtn_Click(object sender, EventArgs e)

@@ -80,6 +80,7 @@ namespace LB1
         public void getBank()
         {   
             bankData.BuildAccountTable();
+            bankData.BuildCreditTable();
             using (GenericParser parser = new GenericParser())
             {
                 parser.SetDataSource("Accounts.txt");
@@ -90,7 +91,18 @@ namespace LB1
 
                 while (parser.Read())
                 {
-                    bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]), DateTime.Now });
+                    bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]), DateTime.Now, Convert.ToBoolean(parser["isFreezed"]) });
+                }
+
+                parser.SetDataSource("Credits.txt");
+
+                parser.ColumnDelimiter = ',';
+                parser.FirstRowHasHeader = true;
+                parser.TextQualifier = '\"';
+
+                while (parser.Read())
+                {
+                    bankData.Data.Tables["Credits"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"] });
                 }
             }
         }
@@ -116,7 +128,7 @@ namespace LB1
                 }
                 i++;
             }
-            bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, accNum, UserID, moneyType, 0, DateTime.Now });
+            bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, accNum, UserID, moneyType, 0, DateTime.Now, false });
         }
         
         public void deleteAcc(string accNum)
@@ -130,12 +142,16 @@ namespace LB1
         {
             DataRow[] row = bankData.Data.Tables["Accounts"].Select("accNum = " + accNum);
             Account acc = new Account();
-            acc.setAccNum(accNum);
-            acc.setMoneyType(Convert.ToString(row[0]["moneyType"]));
-            acc.setBalance(Convert.ToDouble(row[0]["balance"]));
-            acc.setUserID(Convert.ToInt16(row[0]["UserID"]));
-            acc.setCreationTime(Convert.ToDateTime(row[0]["creationTime"]));
-            acc.setUrName(Convert.ToString(row[0]["urName"]));
+            if (row.Length != 0)
+            {
+                acc.setAccNum(accNum);
+                acc.setMoneyType(Convert.ToString(row[0]["moneyType"]));
+                acc.setBalance(Convert.ToDouble(row[0]["balance"]));
+                acc.setUserID(Convert.ToInt16(row[0]["UserID"]));
+                acc.setCreationTime(Convert.ToDateTime(row[0]["creationTime"]));
+                acc.setUrName(Convert.ToString(row[0]["urName"]));
+                acc.setIsFreezed(Convert.ToBoolean(row[0]["isFreezed"]));
+            }
             return acc;
         }
 
@@ -147,7 +163,48 @@ namespace LB1
             row[0]["moneyType"] = acc.getMoneyType();
             row[0]["balance"] = acc.getBalance();
             row[0]["creationTime"] = acc.getCreationTime();
+            row[0]["isFreezed"] = acc.getIsFreezed();
             bankData.Data.Tables["Accounts"].AcceptChanges();
+        }
+
+        public void addCredit(double amount, double percent, int period, int UserID, bool isApproved, DateTime creationTime)
+        {
+            int creditNum = 0;
+            int i = 1;
+            DataRow[] row = bankData.Data.Tables["Credits"].Select();
+            while (true)
+            {
+                bool Check = false;
+                for (int j = 0; j < row.Length; j++)
+                {
+                    if (Convert.ToString(i) == Convert.ToString(row[j]["creditNum"]))
+                    {
+                        Check = true;
+                    }
+                }
+                if (Check == false)
+                {
+                    creditNum = i;
+                    break;
+                }
+                i++;
+            }
+            bankData.Data.Tables["Credits"].Rows.Add(new object[] { creditNum, amount, percent, period, urName, UserID, isApproved, creationTime });
+        }
+
+        public Credit findCredit(string creditNum, string urName)
+        {
+            DataRow[] row = bankData.Data.Tables["Credits"].Select(" creditNum = '" + creditNum + "' AND bank = '" + urName + "'");
+            Credit credit = new Credit();
+            credit.setCreditNum(Convert.ToString(row[0]["creditNum"]));
+            credit.setAmount(Convert.ToDouble(row[0]["amount"]));
+            credit.setPercent(Convert.ToDouble(row[0]["percent"]));
+            credit.setPeriod(Convert.ToInt16(row[0]["period"]));
+            credit.setUserID(Convert.ToInt16(row[0]["UserID"]));
+            credit.setBank(Convert.ToString(row[0]["bank"]));
+            credit.setIsApproved(Convert.ToBoolean(row[0]["isApproved"]));
+            credit.setCreationTime(Convert.ToDateTime(row[0]["creationTime"]));
+            return credit;
         }
     }
 }

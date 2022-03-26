@@ -36,7 +36,6 @@
             this.SecondNameBox = new System.Windows.Forms.TextBox();
             this.FatherNameBox = new System.Windows.Forms.TextBox();
             this.PassportDataLabel = new System.Windows.Forms.Label();
-            this.IdNumberBox = new System.Windows.Forms.TextBox();
             this.IdNumberLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
             this.PhoneNumLabel = new System.Windows.Forms.Label();
@@ -50,6 +49,7 @@
             this.PassportDataBox = new System.Windows.Forms.MaskedTextBox();
             this.PhoneNumBox = new System.Windows.Forms.MaskedTextBox();
             this.EmailBox = new System.Windows.Forms.MaskedTextBox();
+            this.IdNumberBox = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // RegistrateButton
@@ -118,13 +118,6 @@
             this.PassportDataLabel.Size = new System.Drawing.Size(132, 13);
             this.PassportDataLabel.TabIndex = 8;
             this.PassportDataLabel.Text = "Серия и номер паспорта";
-            // 
-            // IdNumberBox
-            // 
-            this.IdNumberBox.Location = new System.Drawing.Point(444, 213);
-            this.IdNumberBox.Name = "IdNumberBox";
-            this.IdNumberBox.Size = new System.Drawing.Size(100, 20);
-            this.IdNumberBox.TabIndex = 8;
             // 
             // IdNumberLabel
             // 
@@ -237,11 +230,20 @@
             this.EmailBox.Size = new System.Drawing.Size(100, 20);
             this.EmailBox.TabIndex = 22;
             // 
+            // IdNumberBox
+            // 
+            this.IdNumberBox.Location = new System.Drawing.Point(444, 213);
+            this.IdNumberBox.Mask = ">0000000L000LL0";
+            this.IdNumberBox.Name = "IdNumberBox";
+            this.IdNumberBox.Size = new System.Drawing.Size(100, 20);
+            this.IdNumberBox.TabIndex = 23;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.IdNumberBox);
             this.Controls.Add(this.EmailBox);
             this.Controls.Add(this.PhoneNumBox);
             this.Controls.Add(this.PassportDataBox);
@@ -255,7 +257,6 @@
             this.Controls.Add(this.PhoneNumLabel);
             this.Controls.Add(this.EmailLabel);
             this.Controls.Add(this.IdNumberLabel);
-            this.Controls.Add(this.IdNumberBox);
             this.Controls.Add(this.PassportDataLabel);
             this.Controls.Add(this.FatherNameBox);
             this.Controls.Add(this.SecondNameBox);
@@ -283,7 +284,6 @@
         private System.Windows.Forms.TextBox SecondNameBox;
         private System.Windows.Forms.TextBox FatherNameBox;
         private System.Windows.Forms.Label PassportDataLabel;
-        private System.Windows.Forms.TextBox IdNumberBox;
         private System.Windows.Forms.Label IdNumberLabel;
         private System.Windows.Forms.Label EmailLabel;
         private System.Windows.Forms.Label PhoneNumLabel;
@@ -297,5 +297,6 @@
         private System.Windows.Forms.MaskedTextBox PassportDataBox;
         private System.Windows.Forms.MaskedTextBox PhoneNumBox;
         private System.Windows.Forms.MaskedTextBox EmailBox;
+        private System.Windows.Forms.MaskedTextBox IdNumberBox;
     }
 }

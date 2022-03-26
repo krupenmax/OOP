@@ -169,6 +169,58 @@ namespace LB1
             column.ColumnName = "creationTime";
             table.Columns.Add(column);
 
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Boolean");
+            column.ColumnName = "isFreezed";
+            table.Columns.Add(column);
+
+            Data.Tables.Add(table);
+        }
+
+        public void BuildCreditTable()
+        {
+            DataTable table = new DataTable("Credits");
+            DataColumn column = new DataColumn();
+
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "creditNum";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "amount";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "percent";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int32");
+            column.ColumnName = "period";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "urName";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "UserID";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Boolean");
+            column.ColumnName = "isApproved";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.DateTime");
+            column.ColumnName = "creationTime";
+            table.Columns.Add(column);
+
             Data.Tables.Add(table);
         }
     }

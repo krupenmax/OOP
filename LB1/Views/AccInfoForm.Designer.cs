@@ -41,6 +41,11 @@
             this.dataCreationBox = new System.Windows.Forms.TextBox();
             this.deleteBtn = new System.Windows.Forms.Button();
             this.depositBtn = new System.Windows.Forms.Button();
+            this.freezeBtn = new System.Windows.Forms.Button();
+            this.isFreezedBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.activateBtn = new System.Windows.Forms.Button();
+            this.cashOutBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // accBox
@@ -102,7 +107,7 @@
             // dataCreationLabel
             // 
             this.dataCreationLabel.AutoSize = true;
-            this.dataCreationLabel.Location = new System.Drawing.Point(42, 275);
+            this.dataCreationLabel.Location = new System.Drawing.Point(42, 271);
             this.dataCreationLabel.Name = "dataCreationLabel";
             this.dataCreationLabel.Size = new System.Drawing.Size(87, 13);
             this.dataCreationLabel.TabIndex = 6;
@@ -146,7 +151,7 @@
             // 
             // deleteBtn
             // 
-            this.deleteBtn.Location = new System.Drawing.Point(431, 206);
+            this.deleteBtn.Location = new System.Drawing.Point(431, 266);
             this.deleteBtn.Name = "deleteBtn";
             this.deleteBtn.Size = new System.Drawing.Size(119, 23);
             this.deleteBtn.TabIndex = 12;
@@ -156,7 +161,7 @@
             // 
             // depositBtn
             // 
-            this.depositBtn.Location = new System.Drawing.Point(431, 174);
+            this.depositBtn.Location = new System.Drawing.Point(431, 171);
             this.depositBtn.Name = "depositBtn";
             this.depositBtn.Size = new System.Drawing.Size(119, 23);
             this.depositBtn.TabIndex = 13;
@@ -164,11 +169,64 @@
             this.depositBtn.UseVisualStyleBackColor = true;
             this.depositBtn.Click += new System.EventHandler(this.depositBtn_Click);
             // 
+            // freezeBtn
+            // 
+            this.freezeBtn.Location = new System.Drawing.Point(431, 203);
+            this.freezeBtn.Name = "freezeBtn";
+            this.freezeBtn.Size = new System.Drawing.Size(119, 23);
+            this.freezeBtn.TabIndex = 14;
+            this.freezeBtn.Text = "Заморозить счет";
+            this.freezeBtn.UseVisualStyleBackColor = true;
+            this.freezeBtn.Click += new System.EventHandler(this.freezeBtn_Click);
+            // 
+            // isFreezedBox
+            // 
+            this.isFreezedBox.Location = new System.Drawing.Point(164, 297);
+            this.isFreezedBox.Name = "isFreezedBox";
+            this.isFreezedBox.ReadOnly = true;
+            this.isFreezedBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.isFreezedBox.Size = new System.Drawing.Size(257, 20);
+            this.isFreezedBox.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(42, 304);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "Статус:";
+            // 
+            // activateBtn
+            // 
+            this.activateBtn.Location = new System.Drawing.Point(431, 236);
+            this.activateBtn.Name = "activateBtn";
+            this.activateBtn.Size = new System.Drawing.Size(119, 23);
+            this.activateBtn.TabIndex = 17;
+            this.activateBtn.Text = "Активировать счет";
+            this.activateBtn.UseVisualStyleBackColor = true;
+            this.activateBtn.Click += new System.EventHandler(this.activateBtn_Click);
+            // 
+            // cashOutBtn
+            // 
+            this.cashOutBtn.Location = new System.Drawing.Point(431, 295);
+            this.cashOutBtn.Name = "cashOutBtn";
+            this.cashOutBtn.Size = new System.Drawing.Size(119, 23);
+            this.cashOutBtn.TabIndex = 18;
+            this.cashOutBtn.Text = "Снять";
+            this.cashOutBtn.UseVisualStyleBackColor = true;
+            this.cashOutBtn.Click += new System.EventHandler(this.cashOutBtn_Click);
+            // 
             // AccInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.cashOutBtn);
+            this.Controls.Add(this.activateBtn);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.isFreezedBox);
+            this.Controls.Add(this.freezeBtn);
             this.Controls.Add(this.depositBtn);
             this.Controls.Add(this.deleteBtn);
             this.Controls.Add(this.dataCreationBox);
@@ -206,5 +264,10 @@
         private System.Windows.Forms.TextBox dataCreationBox;
         private System.Windows.Forms.Button deleteBtn;
         private System.Windows.Forms.Button depositBtn;
+        private System.Windows.Forms.Button freezeBtn;
+        private System.Windows.Forms.TextBox isFreezedBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button activateBtn;
+        private System.Windows.Forms.Button cashOutBtn;
     }
 }

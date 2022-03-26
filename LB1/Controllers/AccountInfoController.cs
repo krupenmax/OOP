@@ -27,5 +27,19 @@ namespace LB1
         {
             return clientController.getActiveAcc(accNum, urName);
         }
+
+        public void freezeAcc(string accNum, string urName)
+        {
+            Account acc = getActiveAccount(accNum, urName);
+            acc.setIsFreezed(true);
+            clientController.ActiveClient.overwriteAcc(acc, accNum, urName);
+        }
+
+        public void activateAcc(string accNum, string urName)
+        {
+            Account acc = getActiveAccount(accNum, urName);
+            acc.setIsFreezed(false);
+            clientController.ActiveClient.overwriteAcc(acc, accNum, urName);
+        }
     }
 }

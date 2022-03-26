@@ -77,5 +77,13 @@ namespace LB1
             myThread1.Start();
             this.Hide();
         }
+
+        private void CreditsPibBtn_Click(object sender, EventArgs e)
+        {
+            CreditForm CreditForm = new CreditForm(clientController);
+            Thread myThread1 = new Thread(CreditForm.Open);
+            myThread1.Start();
+            this.Hide();
+        }
     }
 }

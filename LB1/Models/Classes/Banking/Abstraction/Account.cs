@@ -14,6 +14,17 @@ namespace LB1
         double balance;
         DateTime creationTime;
         string urName;
+        bool isFreezed;
+
+        public bool getIsFreezed()
+        {
+            return isFreezed;
+        }
+
+        public void setIsFreezed(bool isFreezed)
+        {
+            this.isFreezed = isFreezed;
+        }
 
         public string getUrName()
         {
@@ -74,5 +85,7 @@ namespace LB1
         {
             this.UserID = UserID;
         }
+
+
     }
 }

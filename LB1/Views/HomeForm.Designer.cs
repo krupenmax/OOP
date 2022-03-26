@@ -129,6 +129,7 @@
             this.CreditsPibBtn.TabIndex = 7;
             this.CreditsPibBtn.Text = "Кредиты / рассрочки";
             this.CreditsPibBtn.UseVisualStyleBackColor = true;
+            this.CreditsPibBtn.Click += new System.EventHandler(this.CreditsPibBtn_Click);
             // 
             // WarningLabel
             // 

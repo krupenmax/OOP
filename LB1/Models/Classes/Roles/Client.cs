@@ -20,6 +20,7 @@ namespace LB1
         public Client()
         {
             ClientTables.BuildAccountTable();
+            ClientTables.BuildCreditTable();
         }
 
         public TableSet getClientTables()
@@ -89,10 +90,23 @@ namespace LB1
             {
                 if (Convert.ToInt16(row[i]["UserID"]) == UserID)
                 {
-                    ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[i]["urName"] , row[i]["accNum"], row[i]["UserID"], row[i]["moneyType"], row[i]["balance"], row[i]["creationTime"] });
+                    ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[i]["urName"] , row[i]["accNum"], row[i]["UserID"], row[i]["moneyType"], row[i]["balance"], row[i]["creationTime"], row[i]["isFreezed"] });
                 }
             }
         }
+
+        public void getCredits(Bank bank)
+        {
+            DataRow[] row = bank.getBankData().Data.Tables["Credits"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToInt16(row[i]["UserID"]) == UserID)
+                {
+                    ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["owner"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"] });
+                }
+            }
+        }
+
         public void deleteAccount(string accNum, string urName)
         {
             DataRow[] row = ClientTables.Data.Tables["Accounts"].Select(" accNum = '" + accNum + "' AND urName = '" + urName + "'");
@@ -103,7 +117,7 @@ namespace LB1
         public void addAccToClient(Bank bank)
         {
             DataRow[] row = bank.getBankData().Data.Tables["Accounts"].Select();
-            ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[row.Length - 1]["urName"], row[row.Length - 1]["accNum"], row[row.Length - 1]["UserID"], row[row.Length - 1]["moneyType"], row[row.Length - 1]["balance"], row[row.Length - 1]["creationTime"] });
+            ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[row.Length - 1]["urName"], row[row.Length - 1]["accNum"], row[row.Length - 1]["UserID"], row[row.Length - 1]["moneyType"], row[row.Length - 1]["balance"], row[row.Length - 1]["creationTime"], row[row.Length - 1]["isFreezed"] });
         }
 
         public Account getActiveAcc(string accNum, string urName)
@@ -120,6 +134,7 @@ namespace LB1
                     acc.setBalance(Convert.ToInt16(row[i]["balance"]));
                     acc.setCreationTime(Convert.ToDateTime(row[i]["creationTime"]));
                     acc.setUrName(Convert.ToString(row[i]["urName"]));
+                    acc.setIsFreezed(Convert.ToBoolean(row[i]["isFreezed"]));
                     break;
                 }
             }
@@ -138,9 +153,16 @@ namespace LB1
                     row[i]["moneyType"] = acc.getMoneyType();
                     row[i]["balance"] = acc.getBalance();
                     row[i]["creationTime"] = acc.getCreationTime();
+                    row[i]["isFreezed"] = acc.getIsFreezed();
                     ClientTables.Data.Tables["Accounts"].AcceptChanges();
                 }
             }
+        }
+
+        public void addCreditToClient(Bank bank)
+        {
+            DataRow[] row = bank.getBankData().Data.Tables["Credits"].Select();
+            ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[row.Length - 1]["creditNum"], row[row.Length - 1]["amount"], row[row.Length - 1]["percent"], row[row.Length - 1]["period"], bank.getUrName(),row[row.Length - 1]["UserId"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["creationTime"] });
         }
     }
 }
