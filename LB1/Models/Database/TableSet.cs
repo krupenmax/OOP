@@ -99,6 +99,16 @@ namespace LB1
             column.ColumnName = "adress";
             table.Columns.Add(column);
 
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "bank";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int16");
+            column.ColumnName = "UserID";
+            table.Columns.Add(column);
+
             Data.Tables.Add(table);
         }
 
@@ -219,6 +229,90 @@ namespace LB1
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.DateTime");
             column.ColumnName = "creationTime";
+            table.Columns.Add(column);
+
+            Data.Tables.Add(table);
+        }
+
+        public void BuildInstalmentPayTable()
+        {
+            DataTable table = new DataTable("InstalmentPayments");
+            DataColumn column = new DataColumn();
+
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "creditNum";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "amount";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "percent";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int32");
+            column.ColumnName = "period";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "urName";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "UserID";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Boolean");
+            column.ColumnName = "isApproved";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.DateTime");
+            column.ColumnName = "creationTime";
+            table.Columns.Add(column);
+
+            Data.Tables.Add(table);
+        }
+
+        public void BuildSalaryProjectTable()
+        {
+            DataTable table = new DataTable("SalaryProjects");
+            DataColumn column = new DataColumn();
+
+            column.DataType = System.Type.GetType("System.Int16");
+            column.ColumnName = "ID";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "companyName";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int16");
+            column.ColumnName = "period";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Double");
+            column.ColumnName = "amount";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Boolean");
+            column.ColumnName = "isApproved";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int16");
+            column.ColumnName = "UserID";
             table.Columns.Add(column);
 
             Data.Tables.Add(table);

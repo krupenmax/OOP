@@ -21,6 +21,8 @@ namespace LB1
         {
             ClientTables.BuildAccountTable();
             ClientTables.BuildCreditTable();
+            ClientTables.BuildInstalmentPayTable();
+            ClientTables.BuildSalaryProjectTable();
         }
 
         public TableSet getClientTables()
@@ -88,7 +90,7 @@ namespace LB1
             DataRow[] row = bank.getBankData().Data.Tables["Accounts"].Select();
             for (int i = 0; i < row.Length; i++)
             {
-                if (Convert.ToInt16(row[i]["UserID"]) == UserID)
+                if (Convert.ToInt16(row[i]["UserID"]) == UserID + 1)
                 {
                     ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[i]["urName"] , row[i]["accNum"], row[i]["UserID"], row[i]["moneyType"], row[i]["balance"], row[i]["creationTime"], row[i]["isFreezed"] });
                 }
@@ -100,11 +102,34 @@ namespace LB1
             DataRow[] row = bank.getBankData().Data.Tables["Credits"].Select();
             for (int i = 0; i < row.Length; i++)
             {
-                if (Convert.ToInt16(row[i]["UserID"]) == UserID)
+                if (Convert.ToInt16(row[i]["UserID"]) == UserID + 1)
                 {
                     ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["owner"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"] });
                 }
             }
+        }
+
+        public void getInstalmentPayments(Bank bank)
+        {
+            DataRow[] row = bank.getBankData().Data.Tables["InstalmentPayments"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToInt16(row[i]["UserID"]) == UserID + 1)
+                {
+                    ClientTables.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["owner"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"] });
+                }
+            }
+        }
+
+        public void getSalaryProjects(Company company)
+        {
+            DataRow[] row = company.getCompanyTables().Data.Tables["SalaryProjects"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+
+                ClientTables.Data.Tables["SalaryProjects"].Rows.Add(new object[] { row[i]["ID"], row[i]["companyName"], row[i]["period"], row[i]["amount"], row[i]["isApproved"], row[i]["UserID"]});
+            }
+            
         }
 
         public void deleteAccount(string accNum, string urName)
@@ -162,7 +187,61 @@ namespace LB1
         public void addCreditToClient(Bank bank)
         {
             DataRow[] row = bank.getBankData().Data.Tables["Credits"].Select();
-            ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[row.Length - 1]["creditNum"], row[row.Length - 1]["amount"], row[row.Length - 1]["percent"], row[row.Length - 1]["period"], bank.getUrName(),row[row.Length - 1]["UserId"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["creationTime"] });
+            ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[row.Length - 1]["creditNum"], row[row.Length - 1]["amount"], row[row.Length - 1]["percent"], row[row.Length - 1]["period"], bank.getUrName(),row[row.Length - 1]["UserID"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["creationTime"] });
+        }
+
+        public void addInstalmentPaymentToClient(Bank bank)
+        {
+            DataRow[] row = bank.getBankData().Data.Tables["InstalmentPayments"].Select();
+            ClientTables.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { row[row.Length - 1]["creditNum"], row[row.Length - 1]["amount"], row[row.Length - 1]["percent"], row[row.Length - 1]["period"], bank.getUrName(), row[row.Length - 1]["UserID"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["creationTime"] });
+        }
+
+        public void addSalaryProject(Company company)
+        {
+            DataRow[] row = company.getCompanyTables().Data.Tables["SalaryProjects"].Select();
+            ClientTables.Data.Tables["SalaryProjects"].Rows.Add(new object[] { row[row.Length - 1]["ID"], row[row.Length - 1]["companyName"], row[row.Length - 1]["period"], row[row.Length - 1]["amount"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["UserID"] });
+        }
+
+        public Credit getActiveCredit(string creditNum, string urName)
+        {
+            Credit credit = new Credit();
+            DataRow[] row = ClientTables.Data.Tables["Credits"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (creditNum == Convert.ToString(row[i]["creditNum"]) && urName == Convert.ToString(row[i]["urName"]))
+                {
+                    credit.setCreditNum(Convert.ToString(row[i]["creditNum"]));
+                    credit.setAmount(Convert.ToInt16(row[i]["amount"]));
+                    credit.setPercent(Convert.ToDouble(row[i]["percent"]));
+                    credit.setUserID(Convert.ToInt16(row[i]["UserID"]));
+                    credit.setCreationTime(Convert.ToDateTime(row[i]["creationTime"]));
+                    credit.setPeriod(Convert.ToInt16(row[i]["period"]));
+                    credit.setIsApproved(Convert.ToBoolean(row[i]["isApproved"]));
+                    break;
+                }
+            }
+            return credit;
+        }
+
+        public PayByInstalments getActivePayment(string creditNum, string urName)
+        {
+            PayByInstalments payByInstalments = new PayByInstalments();
+            DataRow[] row = ClientTables.Data.Tables["InstalmentPayments"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (creditNum == Convert.ToString(row[i]["creditNum"]) && urName == Convert.ToString(row[i]["urName"]))
+                {
+                    payByInstalments.setCreditNum(Convert.ToString(row[i]["creditNum"]));
+                    payByInstalments.setAmount(Convert.ToInt16(row[i]["amount"]));
+                    payByInstalments.setPercent(Convert.ToDouble(row[i]["percent"]));
+                    payByInstalments.setUserID(Convert.ToInt16(row[i]["UserID"]));
+                    payByInstalments.setCreationTime(Convert.ToDateTime(row[i]["creationTime"]));
+                    payByInstalments.setPeriod(Convert.ToInt16(row[i]["period"]));
+                    payByInstalments.setIsApproved(Convert.ToBoolean(row[i]["isApproved"]));
+                    break;
+                }
+            }
+            return payByInstalments;
         }
     }
 }

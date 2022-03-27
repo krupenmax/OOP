@@ -22,7 +22,10 @@ namespace LB1
             InitializeComponent();
             clientController.GetClient(login, password);
             clientController.getAccounts();
+            clientController.getCredits();
+            clientController.getInstalmentPayments();
             bankController.SetBanks(BankBox);
+            clientController.getSalaryProjects();
             BankBox.DropDownStyle = ComboBoxStyle.DropDownList;       
         }
 
@@ -80,10 +83,28 @@ namespace LB1
 
         private void CreditsPibBtn_Click(object sender, EventArgs e)
         {
-            CreditForm CreditForm = new CreditForm(clientController);
+            CreditForm CreditForm = new CreditForm(clientController, this);
             Thread myThread1 = new Thread(CreditForm.Open);
             myThread1.Start();
             this.Hide();
+        }
+
+        private void SalaryProjectBtn_Click(object sender, EventArgs e)
+        {
+            SalaryProjectForm SalaryProjectForm = new SalaryProjectForm(clientController, this);
+            Thread myThread1 = new Thread(SalaryProjectForm.Open);
+            myThread1.Start();
+            this.Hide();
+        }
+
+        private void BackBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            StartForm StartForm = new StartForm();
+            Thread myThread1 = new Thread(StartForm.Open);
+            myThread1.Start();
+            this.Close();
+            this.Dispose();
         }
     }
 }

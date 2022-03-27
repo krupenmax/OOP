@@ -56,13 +56,18 @@
     <Compile Include="Controllers\AccountInfoController.cs" />
     <Compile Include="Controllers\BankController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CreateAccountController.cs" />
+    <Compile Include="Controllers\CreditController.cs" />
     <Compile Include="Controllers\DeletingController.cs" />
+    <Compile Include="Controllers\InstalmentController.cs" />
     <Compile Include="Controllers\Interfaces\ILoginController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
+    <Compile Include="Controllers\SalaryProjectController.cs" />
     <Compile Include="Controllers\TransferController.cs" />
     <Compile Include="Models\Classes\Banking\Abstraction\Account.cs" />
+    <Compile Include="Models\Classes\Banking\Abstraction\SalaryProject.cs" />
     <Compile Include="Models\Classes\Banking\Bank.cs" />
     <Compile Include="Models\Classes\Roles\Admin.cs" />
     <Compile Include="Models\Classes\Banking\Abstraction\Credit.cs" />
@@ -134,6 +139,12 @@
     <Compile Include="Views\RegisterForm.Designer.cs">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\SalaryProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SalaryProjectForm.Designer.cs">
+      <DependentUpon>SalaryProjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SalaryProjectForm.resx">
+      <DependentUpon>SalaryProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>

@@ -81,6 +81,7 @@ namespace LB1
         {   
             bankData.BuildAccountTable();
             bankData.BuildCreditTable();
+            bankData.BuildInstalmentPayTable();
             using (GenericParser parser = new GenericParser())
             {
                 parser.SetDataSource("Accounts.txt");
@@ -91,7 +92,10 @@ namespace LB1
 
                 while (parser.Read())
                 {
-                    bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]), DateTime.Now, Convert.ToBoolean(parser["isFreezed"]) });
+                    if (Convert.ToString(parser["urName"]) == urName)
+                    {
+                        bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]), DateTime.Now, Convert.ToBoolean(parser["isFreezed"]) });
+                    }
                 }
 
                 parser.SetDataSource("Credits.txt");
@@ -102,7 +106,25 @@ namespace LB1
 
                 while (parser.Read())
                 {
-                    bankData.Data.Tables["Credits"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"] });
+                    if (Convert.ToString(parser["bank"]) == urName)
+                    {
+                        bankData.Data.Tables["Credits"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"] });
+
+                    }
+                }
+
+                parser.SetDataSource("InstalmentPayments.txt");
+
+                parser.ColumnDelimiter = ',';
+                parser.FirstRowHasHeader = true;
+                parser.TextQualifier = '\"';
+
+                while (parser.Read())
+                {
+                    if (Convert.ToString(parser["bank"]) == urName)
+                    {
+                        bankData.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"] });
+                    }
                 }
             }
         }
@@ -205,6 +227,46 @@ namespace LB1
             credit.setIsApproved(Convert.ToBoolean(row[0]["isApproved"]));
             credit.setCreationTime(Convert.ToDateTime(row[0]["creationTime"]));
             return credit;
+        }
+
+        public void addInstalmentPayment(double amount, double percent, int period, int UserID, bool isApproved, DateTime creationTime)
+        {
+            int creditNum = 0;
+            int i = 1;
+            DataRow[] row = bankData.Data.Tables["InstalmentPayments"].Select();
+            while (true)
+            {
+                bool Check = false;
+                for (int j = 0; j < row.Length; j++)
+                {
+                    if (Convert.ToString(i) == Convert.ToString(row[j]["creditNum"]))
+                    {
+                        Check = true;
+                    }
+                }
+                if (Check == false)
+                {
+                    creditNum = i;
+                    break;
+                }
+                i++;
+            }
+            bankData.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { creditNum, amount, percent, period, urName, UserID, isApproved, creationTime });
+        }
+
+        public PayByInstalments findInstalmentPayment(string creditNum, string urName)
+        {
+            DataRow[] row = bankData.Data.Tables["Credits"].Select(" creditNum = '" + creditNum + "' AND bank = '" + urName + "'");
+            PayByInstalments instalmentPayment = new PayByInstalments();
+            instalmentPayment.setCreditNum(Convert.ToString(row[0]["creditNum"]));
+            instalmentPayment.setAmount(Convert.ToDouble(row[0]["amount"]));
+            instalmentPayment.setPercent(Convert.ToDouble(row[0]["percent"]));
+            instalmentPayment.setPeriod(Convert.ToInt16(row[0]["period"]));
+            instalmentPayment.setUserID(Convert.ToInt16(row[0]["UserID"]));
+            instalmentPayment.setBank(Convert.ToString(row[0]["bank"]));
+            instalmentPayment.setIsApproved(Convert.ToBoolean(row[0]["isApproved"]));
+            instalmentPayment.setCreationTime(Convert.ToDateTime(row[0]["creationTime"]));
+            return instalmentPayment;
         }
     }
 }

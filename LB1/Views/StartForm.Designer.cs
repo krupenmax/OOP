@@ -30,6 +30,7 @@
         {
             this.RegisterButton = new System.Windows.Forms.Button();
             this.LoginButton = new System.Windows.Forms.Button();
+            this.killBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // RegisterButton
@@ -52,11 +53,22 @@
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
+            // killBtn
+            // 
+            this.killBtn.Location = new System.Drawing.Point(225, 200);
+            this.killBtn.Name = "killBtn";
+            this.killBtn.Size = new System.Drawing.Size(150, 33);
+            this.killBtn.TabIndex = 4;
+            this.killBtn.Text = "Закрыть программу";
+            this.killBtn.UseVisualStyleBackColor = true;
+            this.killBtn.Click += new System.EventHandler(this.killBtn_Click);
+            // 
             // StartForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.killBtn);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.RegisterButton);
             this.Name = "StartForm";
@@ -71,5 +83,6 @@
 
         private System.Windows.Forms.Button RegisterButton;
         private System.Windows.Forms.Button LoginButton;
+        private System.Windows.Forms.Button killBtn;
     }
 }

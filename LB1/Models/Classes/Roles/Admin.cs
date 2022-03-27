@@ -8,21 +8,6 @@ namespace LB1
 {
     class Admin : User, IAdmin
     {
-        public void checkLog()
-        {
-
-        }
-        public void cancelLast()
-        {
-
-        }
-        public void cancelAll()
-        {
-
-        }
-        public void cancelAction()
-        {
-
-        }
+        
     }
 }

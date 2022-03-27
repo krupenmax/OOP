@@ -49,5 +49,10 @@ namespace LB1
             this.Close();
             this.Dispose();
         }
+
+        private void killBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

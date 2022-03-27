@@ -1,0 +1,2 @@
+ID,companyName,period,amount,isApproved, UserID
+"1","Евроопт","3","300","false","1"

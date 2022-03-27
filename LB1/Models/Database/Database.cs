@@ -19,25 +19,12 @@ namespace LB1
             tableSet.BuiltBankTable();
             using (GenericParser parser = new GenericParser())
             {
-                 parser.SetDataSource("Clients.txt");
-
-                 parser.ColumnDelimiter = ',';
-                 parser.FirstRowHasHeader = true;
-                 parser.TextQualifier = '\"';
-
-                 while (parser.Read())
-                 {
-                    tableSet.Data.Tables["Clients"].Rows.Add(new object[] { Convert.ToInt16(parser["UserID"]), parser["login"], parser["password"], parser["firstName"], parser["secondName"], parser["fatherName"], parser["passportData"], parser["idNumber"], parser["phoneNumber"], parser["email"] });
-                 }
-
-                parser.SetDataSource("Companies.txt");
-
-                while (parser.Read())
-                {
-                    tableSet.Data.Tables["Companies"].Rows.Add(new object[] { parser["Type"], parser["urName"], parser["UNP"], parser["BIK"], parser["adress"] });
-                }
-
                 parser.SetDataSource("Banks.txt");
+
+                parser.ColumnDelimiter = ',';
+                parser.FirstRowHasHeader = true;
+                parser.TextQualifier = '\"';
+
                 int i = 0;
                 while (parser.Read())
                 {
@@ -52,6 +39,24 @@ namespace LB1
                     BankSet[i].getBank();
                     i++;
                 }
+
+                parser.SetDataSource("Companies.txt");
+
+                while (parser.Read())
+                {
+                    tableSet.Data.Tables["Companies"].Rows.Add(new object[] { parser["Type"], parser["urName"], parser["UNP"], parser["BIK"], parser["adress"], parser["bank"], parser["UserID"] });
+                }
+
+                 parser.SetDataSource("Clients.txt");
+
+                
+
+                 while (parser.Read())
+                 {
+                    tableSet.Data.Tables["Clients"].Rows.Add(new object[] { Convert.ToInt16(parser["UserID"]), parser["login"], parser["password"], parser["firstName"], parser["secondName"], parser["fatherName"], parser["passportData"], parser["idNumber"], parser["phoneNumber"], parser["email"] });
+                 }
+
+
             }
         }
 
@@ -100,6 +105,37 @@ namespace LB1
                 }
             }
             return bank;
+        }
+
+        public void getCompaniesToBox(System.Windows.Forms.ComboBox comboBox)
+        {
+            DataRow[] row = tableSet.Data.Tables["Companies"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                comboBox.Items.Add(Convert.ToString(row[i]["urName"]));
+            }
+        }
+
+        public Company getCompany(string urName)
+        {
+            Company company = new Company();
+            DataRow[] row = tableSet.Data.Tables["Companies"].Select();
+
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (urName == Convert.ToString(row[i]["urName"]))
+                {
+                    company.setType(Convert.ToString(row[i]["Type"]));
+                    company.setUrName(urName);
+                    company.setUNP(Convert.ToUInt16(row[i]["UNP"]));
+                    company.setBIK(Convert.ToUInt16(row[i]["BIK"]));
+                    company.setAdress(Convert.ToString(row[i]["adress"]));
+                    company.setBank(Convert.ToString(row[i]["bank"]));
+                    company.setUserID(Convert.ToInt16(row[i]["UserID"]));
+                    company.loadData();
+                }
+            }
+            return company;
         }
     }
 }

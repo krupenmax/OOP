@@ -39,10 +39,18 @@ namespace LB1
             {
                 if (double.TryParse(amountBox.Text, out num))
                 {
-                    double amount = Convert.ToInt16(amountBox.Text);
-                    accInfoForm.deposit(amount);
-                    this.Close();
-                    this.Dispose();
+                    if (Convert.ToInt64(amountBox.Text) <= Int16.MaxValue)
+                    {
+                        double amount = Convert.ToInt16(amountBox.Text);
+
+                        accInfoForm.deposit(amount);
+                        this.Close();
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Слишком большая сумма перевода.");
+                    }
                 }
                 else
                 {

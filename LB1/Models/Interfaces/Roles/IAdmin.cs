@@ -8,9 +8,6 @@ namespace LB1
 {
     public interface IAdmin
     {
-        void checkLog();
-        void cancelLast();
-        void cancelAction();
-        void cancelAll();
+        
     }
 }

@@ -36,6 +36,7 @@
             this.SalaryProjectBtn = new System.Windows.Forms.Button();
             this.CreditsPibBtn = new System.Windows.Forms.Button();
             this.WarningLabel = new System.Windows.Forms.Label();
+            this.BackBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // BankBox
@@ -116,6 +117,7 @@
             this.SalaryProjectBtn.TabIndex = 6;
             this.SalaryProjectBtn.Text = "Заявка на зарплатный проект";
             this.SalaryProjectBtn.UseVisualStyleBackColor = true;
+            this.SalaryProjectBtn.Click += new System.EventHandler(this.SalaryProjectBtn_Click);
             // 
             // CreditsPibBtn
             // 
@@ -144,11 +146,23 @@
             this.WarningLabel.Text = "Выберите банк";
             this.WarningLabel.Visible = false;
             // 
+            // BackBtn
+            // 
+            this.BackBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BackBtn.Location = new System.Drawing.Point(498, 223);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(200, 100);
+            this.BackBtn.TabIndex = 9;
+            this.BackBtn.Text = "Выход";
+            this.BackBtn.UseVisualStyleBackColor = true;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.WarningLabel);
             this.Controls.Add(this.CreditsPibBtn);
             this.Controls.Add(this.SalaryProjectBtn);
@@ -176,5 +190,6 @@
         private System.Windows.Forms.Button SalaryProjectBtn;
         private System.Windows.Forms.Button CreditsPibBtn;
         private System.Windows.Forms.Label WarningLabel;
+        private System.Windows.Forms.Button BackBtn;
     }
 }

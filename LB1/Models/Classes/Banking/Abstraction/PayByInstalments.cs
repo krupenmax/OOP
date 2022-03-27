@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LB1
 {
-    abstract class PayByInstalments : IPayByInstalments
+    public class PayByInstalments : Credit, ICredit
     {
     }
 }
