@@ -26,7 +26,7 @@ namespace LB1
         }
 
 
-        private void cancelBtn_Click(object sender, EventArgs e)
+        private void cancelBtn_Click(object sender, EventArgs e)    
         {
             this.Close();
             this.Dispose();

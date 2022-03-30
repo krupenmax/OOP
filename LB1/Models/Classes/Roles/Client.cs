@@ -104,7 +104,7 @@ namespace LB1
             {
                 if (Convert.ToInt16(row[i]["UserID"]) == UserID + 1)
                 {
-                    ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["owner"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"] });
+                    ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["owner"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"], row[i]["moneyType"] });
                 }
             }
         }
@@ -116,7 +116,7 @@ namespace LB1
             {
                 if (Convert.ToInt16(row[i]["UserID"]) == UserID + 1)
                 {
-                    ClientTables.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["owner"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"] });
+                    ClientTables.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["owner"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"], row[i]["moneyType"] });
                 }
             }
         }
@@ -187,13 +187,13 @@ namespace LB1
         public void addCreditToClient(Bank bank)
         {
             DataRow[] row = bank.getBankData().Data.Tables["Credits"].Select();
-            ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[row.Length - 1]["creditNum"], row[row.Length - 1]["amount"], row[row.Length - 1]["percent"], row[row.Length - 1]["period"], bank.getUrName(),row[row.Length - 1]["UserID"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["creationTime"] });
+            ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[row.Length - 1]["creditNum"], row[row.Length - 1]["amount"], row[row.Length - 1]["percent"], row[row.Length - 1]["period"], bank.getUrName(),row[row.Length - 1]["UserID"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["creationTime"], row[row.Length - 1]["moneyType"] });
         }
 
         public void addInstalmentPaymentToClient(Bank bank)
         {
             DataRow[] row = bank.getBankData().Data.Tables["InstalmentPayments"].Select();
-            ClientTables.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { row[row.Length - 1]["creditNum"], row[row.Length - 1]["amount"], row[row.Length - 1]["percent"], row[row.Length - 1]["period"], bank.getUrName(), row[row.Length - 1]["UserID"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["creationTime"] });
+            ClientTables.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { row[row.Length - 1]["creditNum"], row[row.Length - 1]["amount"], row[row.Length - 1]["percent"], row[row.Length - 1]["period"], bank.getUrName(), row[row.Length - 1]["UserID"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["creationTime"], row[row.Length - 1]["moneyType"] });
         }
 
         public void addSalaryProject(Company company)
@@ -217,6 +217,7 @@ namespace LB1
                     credit.setCreationTime(Convert.ToDateTime(row[i]["creationTime"]));
                     credit.setPeriod(Convert.ToInt16(row[i]["period"]));
                     credit.setIsApproved(Convert.ToBoolean(row[i]["isApproved"]));
+                    credit.setMoneyType(Convert.ToString(row[i]["moneyType"]));
                     break;
                 }
             }
@@ -238,6 +239,7 @@ namespace LB1
                     payByInstalments.setCreationTime(Convert.ToDateTime(row[i]["creationTime"]));
                     payByInstalments.setPeriod(Convert.ToInt16(row[i]["period"]));
                     payByInstalments.setIsApproved(Convert.ToBoolean(row[i]["isApproved"]));
+                    payByInstalments.setMoneyType(Convert.ToString(row[i]["moneyType"]));
                     break;
                 }
             }

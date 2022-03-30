@@ -44,7 +44,7 @@
             this.BankBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.BankBox.FormattingEnabled = true;
             this.BankBox.ItemHeight = 31;
-            this.BankBox.Location = new System.Drawing.Point(252, 31);
+            this.BankBox.Location = new System.Drawing.Point(329, 37);
             this.BankBox.Name = "BankBox";
             this.BankBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.BankBox.Size = new System.Drawing.Size(204, 39);
@@ -55,7 +55,7 @@
             // 
             this.BankText.AutoSize = true;
             this.BankText.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BankText.Location = new System.Drawing.Point(12, 31);
+            this.BankText.Location = new System.Drawing.Point(89, 37);
             this.BankText.Name = "BankText";
             this.BankText.Size = new System.Drawing.Size(213, 31);
             this.BankText.TabIndex = 1;
@@ -139,7 +139,7 @@
             this.WarningLabel.BackColor = System.Drawing.SystemColors.Control;
             this.WarningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.WarningLabel.ForeColor = System.Drawing.Color.Red;
-            this.WarningLabel.Location = new System.Drawing.Point(257, 37);
+            this.WarningLabel.Location = new System.Drawing.Point(334, 43);
             this.WarningLabel.Name = "WarningLabel";
             this.WarningLabel.Size = new System.Drawing.Size(177, 25);
             this.WarningLabel.TabIndex = 8;

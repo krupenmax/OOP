@@ -16,6 +16,17 @@ namespace LB1
         int UserID;
         bool isApproved;
         DateTime creationTime;
+        string moneyType;
+
+        public string getMoneyType()
+        {
+            return moneyType;
+        }
+
+        public void setMoneyType(string moneyType)
+        {
+            this.moneyType = moneyType;
+        }
 
         public DateTime getCreationTime()
         {

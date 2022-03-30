@@ -57,7 +57,7 @@ namespace LB1
 
         private void applyBtn_Click(object sender, EventArgs e)
         {
-            if (companyBox.Text == "" && amountBox.Text == "" && periodBox.Text == "")
+            if (companyBox.Text != "" && amountBox.Text != "" && periodBox.Text != "")
             {
                 double num = 0.0;
                 if (Double.TryParse(amountBox.Text, out num))

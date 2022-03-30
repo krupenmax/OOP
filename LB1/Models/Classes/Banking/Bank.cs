@@ -108,7 +108,7 @@ namespace LB1
                 {
                     if (Convert.ToString(parser["bank"]) == urName)
                     {
-                        bankData.Data.Tables["Credits"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"] });
+                        bankData.Data.Tables["Credits"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"], parser["moneyType"] });
 
                     }
                 }
@@ -123,7 +123,7 @@ namespace LB1
                 {
                     if (Convert.ToString(parser["bank"]) == urName)
                     {
-                        bankData.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"] });
+                        bankData.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"], parser["moneyType"] });
                     }
                 }
             }
@@ -189,7 +189,7 @@ namespace LB1
             bankData.Data.Tables["Accounts"].AcceptChanges();
         }
 
-        public void addCredit(double amount, double percent, int period, int UserID, bool isApproved, DateTime creationTime)
+        public void addCredit(double amount, double percent, int period, int UserID, bool isApproved, DateTime creationTime, string moneyType)
         {
             int creditNum = 0;
             int i = 1;
@@ -211,7 +211,7 @@ namespace LB1
                 }
                 i++;
             }
-            bankData.Data.Tables["Credits"].Rows.Add(new object[] { creditNum, amount, percent, period, urName, UserID, isApproved, creationTime });
+            bankData.Data.Tables["Credits"].Rows.Add(new object[] { creditNum, amount, percent, period, urName, UserID, isApproved, creationTime, moneyType });
         }
 
         public Credit findCredit(string creditNum, string urName)

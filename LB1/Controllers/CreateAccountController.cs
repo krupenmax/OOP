@@ -10,7 +10,7 @@ namespace LB1
     {
         public void CreateAccount(Bank bank, int UserID, string moneyType)
         {
-            bank.addAcc(UserID, moneyType);
+            bank.addAcc(UserID + 1, moneyType);
         }
     }
 }

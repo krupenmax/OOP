@@ -35,6 +35,10 @@ namespace LB1
             pickBox.Items.Add("Кредит");
             pickBox.Items.Add("Рассрочка");
             this.homeForm = homeForm;
+            moneyTypeBox.Items.Add("USD");
+            moneyTypeBox.Items.Add("EUR");
+            moneyTypeBox.Items.Add("BYR");
+            moneyTypeBox.Items.Add("RUB");
         }
 
         public void Open()
@@ -78,29 +82,44 @@ namespace LB1
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            if (pickBox.Text == "Кредит")
+            if (pickBox.Text != "" && amountBox.Text != "" && periodBox.Text != "" && percentBox.Text != "" && moneyTypeBox.Text != "" && bankBox.Text != "")
             {
-                bankController.getBank(bankBox.Text).addCredit(Convert.ToDouble(amountBox.Text), getPercent(), getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now);
-                clientController.addCreditToClient(bankController.getBank(bankBox.Text));
-                MessageBox.Show("Кредит успешно оформлен");
-                InfoBox.Items.Clear();
-                creditController.getCreditsToBox(InfoBox);
-                amountInfoBox.Text = "";
-                percentInfoBox.Text = "";
-                periodInfoBox.Text = "";
-                creationTimeInfoBox.Text = "";
+                double num = 0.0;
+                if (double.TryParse(amountBox.Text, out num))
+                {
+                    if (pickBox.Text == "Кредит")
+                    {
+                        bankController.getBank(bankBox.Text).addCredit(Convert.ToDouble(amountBox.Text), getPercent(), getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now, moneyTypeBox.Text);
+                        clientController.addCreditToClient(bankController.getBank(bankBox.Text));
+                        MessageBox.Show("Кредит успешно оформлен");
+                        InfoBox.Items.Clear();
+                        creditController.getCreditsToBox(InfoBox);
+                        amountInfoBox.Text = "";
+                        percentInfoBox.Text = "";
+                        periodInfoBox.Text = "";
+                        creationTimeInfoBox.Text = "";
+                    }
+                    else
+                    {
+                        bankController.getBank(bankBox.Text).addInstalmentPayment(Convert.ToDouble(amountBox.Text), 0, getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now);
+                        clientController.addInstalmentPaymentToClient(bankController.getBank(bankBox.Text));
+                        MessageBox.Show("Рассрочка успешно оформлена ");
+                        InstalInfoBox.Items.Clear();
+                        instalmentController.getInstalmentPaymentsToBox(InstalInfoBox);
+                        amountInfoBox.Text = "";
+                        percentInfoBox.Text = "";
+                        periodInfoBox.Text = "";
+                        creationTimeInfoBox.Text = "";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Вводите только цифры в поле сумма.");
+                }
             }
             else
             {
-                bankController.getBank(bankBox.Text).addInstalmentPayment(Convert.ToDouble(amountBox.Text), 0, getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now);
-                clientController.addInstalmentPaymentToClient(bankController.getBank(bankBox.Text));
-                MessageBox.Show("Рассрочка успешно оформлена ");
-                InstalInfoBox.Items.Clear();
-                instalmentController.getInstalmentPaymentsToBox(InstalInfoBox);
-                amountInfoBox.Text = "";
-                percentInfoBox.Text = "";
-                periodInfoBox.Text = "";
-                creationTimeInfoBox.Text = "";
+                MessageBox.Show("Заполните все поля");
             }
         }
 
@@ -151,7 +170,23 @@ namespace LB1
                 urName += InfoBox.Text[i];
                 i++;
             }
-            amountInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getAmount());
+            string moneyType = "";
+            switch(creditController.getActiveCredit(creditNum, urName).getMoneyType())
+            {
+                case "USD":
+                    moneyType = " $";
+                    break;
+                case "EUR":
+                    moneyType = " €";
+                    break;
+                case "BYR":
+                    moneyType = " BYR";
+                    break;
+                case "RUB":
+                    moneyType = " RUB";
+                    break;
+            }
+            amountInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getAmount()) + moneyType;
             percentInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getPercent());
             periodInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getPeriod());
             creationTimeInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getCreationTime());
@@ -173,7 +208,25 @@ namespace LB1
                 urName += InstalInfoBox.Text[i];
                 i++;
             }
-            amountInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getAmount());
+
+            string moneyType = "";
+            switch (creditController.getActivePayment(creditNum, urName).getMoneyType())
+            {
+                case "USD":
+                    moneyType = " $";
+                    break;
+                case "EUR":
+                    moneyType = " €";
+                    break;
+                case "BYR":
+                    moneyType = " BYR";
+                    break;
+                case "RUB":
+                    moneyType = " RUB";
+                    break;
+            }
+
+            amountInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getAmount()) + moneyType;
             percentInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getPercent());
             periodInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getPeriod());
             creationTimeInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getCreationTime());

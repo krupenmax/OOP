@@ -1,0 +1,1 @@
+creditNum,amount,percent,period,bank,UserID,isApproved,creationTime,moneyType

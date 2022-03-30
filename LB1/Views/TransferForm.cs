@@ -66,12 +66,19 @@ namespace LB1
                             {
                                 if (accountInfoController.getActiveAccount(accNum, urName).getIsFreezed() == false)
                                 {
-                                    TransferController transferController = new TransferController(accountInfoController.getActiveAccount(accNum, urName),
-                                    bankController.getBank(bankBox.Text).findAcc(Convert.ToString(receiverBox.Text)),
-                                    bankController.getBank(bankBox.Text),
-                                    clientController.ActiveClient);
-                                    transferController.doTransfer(Convert.ToDouble(amountBox.Text));
-                                    MessageBox.Show("Перевод выполнен успешно.");
+                                    if (receiverBox.Text + ", " + bankBox.Text != senderBox.Text)
+                                    {
+                                        TransferController transferController = new TransferController(accountInfoController.getActiveAccount(accNum, urName),
+                                        bankController.getBank(bankBox.Text).findAcc(Convert.ToString(receiverBox.Text)),
+                                        bankController.getBank(bankBox.Text),
+                                        clientController.ActiveClient);
+                                        transferController.doTransfer(Convert.ToDouble(amountBox.Text));
+                                        MessageBox.Show("Перевод выполнен успешно.");
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Невозможно совершить перевод с одного счета на тот же.");
+                                    }
                                 }
                                 else
                                 {

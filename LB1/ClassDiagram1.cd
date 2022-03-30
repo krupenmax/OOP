@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="LB1.AccountInfoController" Collapsed="true">
+    <Position X="15.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIACAAAAAABAgAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\AccountInfoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.BankController" Collapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAECAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\BankController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.ClientController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CIAAAIABCAAAAABAAAAAIACAAAEAAAAAIIAQAIlAAAA=</HashCode>
+      <FileName>Controllers\ClientController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LB1.CompaniesController" Collapsed="true">
+    <Position X="13.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Controllers\CompaniesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.CreateAccountController" Collapsed="true">
+    <Position X="17" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\CreateAccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.CreditController" Collapsed="true">
+    <Position X="18.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABCAAAAAAAAAAAAAAAAAAAAQAAABAAAAAAAAA=</HashCode>
+      <FileName>Controllers\CreditController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.DeletingController" Collapsed="true">
+    <Position X="13.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAIAAAAAAAAAAAAAEAAQAAAAAAAAACAAA=</HashCode>
+      <FileName>Controllers\DeletingController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.InstalmentController" Collapsed="true">
+    <Position X="18.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\InstalmentController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.LoginController" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Controllers\LoginController.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LB1.RegistrationController" Collapsed="true">
+    <Position X="18.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Controllers\RegistrationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.SalaryProjectController" Collapsed="true">
+    <Position X="13.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\SalaryProjectController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.TransferController" Collapsed="true">
+    <Position X="13.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAEACAAAAAAAAAAAAAAAAAAAAAAABAAABgAAAAA=</HashCode>
+      <FileName>Controllers\TransferController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Account" Collapsed="true">
+    <Position X="11.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAEAAAgIACAAAgACigIAAAAAADAgAAOAACCAAA=</HashCode>
+      <FileName>Models\Classes\Banking\Abstraction\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Company" Collapsed="true">
+    <Position X="15.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iICAAjEAgBAIIAEAAAAAACgAARCIAAAIgQAIAAKAACA=</HashCode>
+      <FileName>Models\Classes\Banking\Abstraction\Company.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Credit" Collapsed="true">
+    <Position X="3.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAgkAABAAAAGIAIgIgCgAAAIAgACIgAAIAgAAAgg=</HashCode>
+      <FileName>Models\Classes\Banking\Abstraction\Credit.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LB1.PayByInstalments" Collapsed="true">
+    <Position X="3.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Classes\Banking\Abstraction\PayByInstalments.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LB1.SalaryProject" Collapsed="true">
+    <Position X="11.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAgAAAAAAgECIBIAIgAgAAAIAgAAAgAAIAgAACEA=</HashCode>
+      <FileName>Models\Classes\Banking\Abstraction\SalaryProject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Transfer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAUACABAAAAIAIAAAAAAAAACgCAABCAABgAAAAA=</HashCode>
+      <FileName>Models\Classes\Banking\Abstraction\Transfer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LB1.Bank" Collapsed="true">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAiAgiAAAIAMAAAAAoAAAARmIAAIIAwAIAAKAACA=</HashCode>
+      <FileName>Models\Classes\Banking\Bank.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.User" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARAAAAAQCAHAAAQAAAAIAAEAAAAAAAAACAAAAkAAEIA=</HashCode>
+      <FileName>Models\Classes\Roles\Abstractions\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Admin" Collapsed="true">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Classes\Roles\Admin.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LB1.Client" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iMAAAIABCAFAAA7kAAAAIAiEAECAAAAAgIAIAIkEAAg=</HashCode>
+      <FileName>Models\Classes\Roles\Client.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Manager" Collapsed="true">
+    <Position X="7.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAIAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Classes\Roles\Manager.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LB1.Model" Collapsed="true">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Classes\Roles\Model.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Operator" Collapsed="true">
+    <Position X="0.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAIAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Classes\Roles\Operator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LB1.SideSpecialist" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAIAAAAAgAAAAAAgAA=</HashCode>
+      <FileName>Models\Classes\Roles\SideSpecialist.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Database" Collapsed="true">
+    <Position X="11.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAEAAAAAECAAAAAAAAIAAAAACAACACAAAAAgA=</HashCode>
+      <FileName>Models\Database\Database.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.TableSet" Collapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAABAQAhAAABAAAAACAAE=</HashCode>
+      <FileName>Models\Database\TableSet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Program" Collapsed="true">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.AccInfoForm" Collapsed="true">
+    <Position X="10" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIBIAAYASAAIBCgAVWABgACAAAAARQAAMBCgpgACKA=</HashCode>
+      <FileName>Views\AccInfoForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.AccountForm" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAABAAAECAAAAiAAAAAAAAAAAAAACAAIA=</HashCode>
+      <FileName>Views\AccountForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.CashOutForm" Collapsed="true">
+    <Position X="10" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAIBEAAACAAAACAIABAAIAAAAAAAQgAAA=</HashCode>
+      <FileName>Views\CashOutForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.CreditForm" Collapsed="true">
+    <Position X="10" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>cACAAAAYACAAYBAAQ8CIACAHACAbASAABCAAAQAAAIg=</HashCode>
+      <FileName>Views\CreditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.DepositForm" Collapsed="true">
+    <Position X="15.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAIBEAAACAIEACAIABAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Views\DepositForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.HomeForm" Collapsed="true">
+    <Position X="17" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAJCCEAYgAAAQCABgACgEAAAQAKABAABBAAAJA=</HashCode>
+      <FileName>Views\HomeForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.LoginForm" Collapsed="true">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQQACAAIAAAAACAAAQCAAhAAAAEAAAgEAAAAAA=</HashCode>
+      <FileName>Views\LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.RegisterForm" Collapsed="true">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgBAAZIBCAEIBIAAQiiAIwCAAhAggAEgAAgQEBAEAA=</HashCode>
+      <FileName>Views\RegisterForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.SalaryProjectForm" Collapsed="true">
+    <Position X="15.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIACAAIBAAAQCIAEACAgABAQAABAAAABAAIIA=</HashCode>
+      <FileName>Views\SalaryProjectForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.StartForm" Collapsed="true">
+    <Position X="18.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAABAAAAACAAIAAAAACAAAAiAQAAAQAAAACEAAAAAAA=</HashCode>
+      <FileName>Views\StartForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.TransferForm" Collapsed="true">
+    <Position X="15.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AECAAAAAACAAKBAAAECAAAECAAABAQCCAEAAAAgAAMQ=</HashCode>
+      <FileName>Views\TransferForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Properties.Resources" Collapsed="true">
+    <Position X="10" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LB1.Properties.Settings" Collapsed="true">
+    <Position X="17" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="LB1.ILoginController" Collapsed="true">
+    <Position X="13.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Controllers\Interfaces\ILoginController.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LB1.ICredit" Collapsed="true">
+    <Position X="11.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAgAAABAAAAGIAIgIgCAAAAAAAAAAgAAIAAAAAgg=</HashCode>
+      <FileName>Models\Interfaces\Banking\ICredit.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LB1.IPayByInstalments" Collapsed="true">
+    <Position X="15.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\Banking\IPayByInstalments.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LB1.ITransfer" Collapsed="true">
+    <Position X="18.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\Banking\ITransfer.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LB1.IAdmin" Collapsed="true">
+    <Position X="10" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\Roles\IAdmin.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LB1.IManager" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\Roles\IManager.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LB1.IOperator" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAIAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\Roles\IOperator.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LB1.ISideSpecialist" Collapsed="true">
+    <Position X="17" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Interfaces\Roles\ISideSpecialist.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

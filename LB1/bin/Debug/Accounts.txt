@@ -1,3 +1,2 @@
 urName,accNum,UserID,moneyType,balance,isFreezed
-
-
+"Альфа-Банк","1","1","USD","1000","false"

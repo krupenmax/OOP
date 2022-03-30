@@ -103,6 +103,62 @@ namespace LB1
             }
         }
 
+        public void showInfo()
+        {
+            accountInfoController = new AccountInfoController(clientController);
+            string accNum = "";
+            string urName = "";
+            int i = 0;
+            while (accBox.Text[i] != ',')
+            {
+                accNum += accBox.Text[i];
+                i++;
+            }
+            i += 2;
+            while (i < accBox.Text.Length)
+            {
+                urName += accBox.Text[i];
+                i++;
+            }
+
+            if (accountInfoController.getActiveAccount(accNum, urName).getIsFreezed() == true)
+            {
+                isFreezedBox.Text = "Заморожен";
+                depositBtn.Enabled = false;
+                depositBtn.Visible = true;
+                freezeBtn.Enabled = false;
+                freezeBtn.Visible = true;
+                activateBtn.Enabled = true;
+            }
+            else
+            {
+                isFreezedBox.Text = "Активен";
+                activateBtn.Enabled = false;
+                activateBtn.Visible = true;
+                freezeBtn.Enabled = true;
+                depositBtn.Enabled = true;
+            }
+            balanceBox.Text = Convert.ToString(accountInfoController.getActiveAccount(accNum, urName).getBalance());
+            dataCreationBox.Text = Convert.ToString(accountInfoController.getActiveAccount(accNum, urName).getCreationTime());
+            moneyTypeBox.Text = Convert.ToString(accountInfoController.getActiveAccount(accNum, urName).getMoneyType());
+            ownerBox.Text = clientController.ActiveClient.getSecondName() + " " + clientController.ActiveClient.getFirstName() + " " + clientController.ActiveClient.getFatherName();
+            switch (moneyTypeBox.Text)
+            {
+                case "USD":
+                    balanceBox.Text += " $";
+                    break;
+                case "EUR":
+                    balanceBox.Text += " €";
+                    break;
+                case "BYR":
+                    balanceBox.Text += " BYR";
+                    break;
+                case "RUB":
+                    balanceBox.Text += " RUB";
+                    break;
+            }
+        }
+
         private void deleteBtn_Click(object sender, EventArgs e)
         {
             if (accBox.Text != "")
@@ -180,12 +236,8 @@ namespace LB1
             }
             TransferController transferController = new TransferController(accountInfoController.getActiveAccount(accNum, urName), null, null, clientController.ActiveClient);
             transferController.deposit(amount);
-            accBox.Text = "";
-            moneyTypeBox.Text = "";
-            balanceBox.Text = "";
-            ownerBox.Text = "";
-            dataCreationBox.Text = "";
-            isFreezedBox.Text = "";
+            showInfo();
+            MessageBox.Show("Баланс успешно пополнен");
         }
 
         public void cashOut(double amount)
@@ -204,14 +256,16 @@ namespace LB1
                 urName += accBox.Text[i];
                 i++;
             }
-            TransferController transferController = new TransferController(accountInfoController.getActiveAccount(accNum, urName), null, null, clientController.ActiveClient);
-            transferController.deposit(amount);
-            accBox.Text = "";
-            moneyTypeBox.Text = "";
-            balanceBox.Text = "";
-            ownerBox.Text = "";
-            dataCreationBox.Text = "";
-            isFreezedBox.Text = "";
+            if (accountInfoController.getActiveAccount(accNum, urName).getBalance() > -1 * amount)
+            {
+                TransferController transferController = new TransferController(accountInfoController.getActiveAccount(accNum, urName), null, null, clientController.ActiveClient);
+                transferController.deposit(amount);
+                showInfo();
+            }
+            else
+            {
+                MessageBox.Show("Недостаточно средств.");
+            }
         }
 
         private void freezeBtn_Click(object sender, EventArgs e)
@@ -239,15 +293,7 @@ namespace LB1
                     clientController.ActiveClient.overwriteAcc(accountInfoController.getActiveAccount(accNum, urName), accNum, urName);
                     BankController bankController = new BankController();
                     bankController.getBank(urName).overwriteAcc(accountInfoController.getActiveAccount(accNum, urName), accNum);
-                    accBox.Items.Clear();
-                    getAccountsToBox();
-                    accBox.Text = "";
-                    accBox.Text = "";
-                    moneyTypeBox.Text = "";
-                    balanceBox.Text = "";
-                    ownerBox.Text = "";
-                    dataCreationBox.Text = "";
-                    isFreezedBox.Text = "";
+                    showInfo();
                 }
             }
             else
@@ -281,15 +327,7 @@ namespace LB1
                     clientController.ActiveClient.overwriteAcc(accountInfoController.getActiveAccount(accNum, urName), accNum, urName);
                     BankController bankController = new BankController();
                     bankController.getBank(urName).overwriteAcc(accountInfoController.getActiveAccount(accNum, urName), accNum);
-                    accBox.Items.Clear();
-                    getAccountsToBox();
-                    accBox.Text = "";
-                    accBox.Text = "";
-                    moneyTypeBox.Text = "";
-                    balanceBox.Text = "";
-                    ownerBox.Text = "";
-                    dataCreationBox.Text = "";
-                    isFreezedBox.Text = "";
+                    showInfo();
                 }
 
             }

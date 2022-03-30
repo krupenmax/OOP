@@ -231,6 +231,11 @@ namespace LB1
             column.ColumnName = "creationTime";
             table.Columns.Add(column);
 
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "moneyType";
+            table.Columns.Add(column);
+
             Data.Tables.Add(table);
         }
 
@@ -276,6 +281,11 @@ namespace LB1
             column = new DataColumn();
             column.DataType = System.Type.GetType("System.DateTime");
             column.ColumnName = "creationTime";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "moneyType";
             table.Columns.Add(column);
 
             Data.Tables.Add(table);
