@@ -1,2 +1,3 @@
-urName,accNum,UserID,moneyType,balance,isFreezed
-"Альфа-Банк","1","1","USD","1000","false"
+urName,accNum,UserID,moneyType,balance,creationTime,isFreezed
+"Альфа-Банк","1","1","USD","850","03.04.2022 21:12:19","False"
+"Альфа-Банк","2","1","USD","1050","03.04.2022 21:12:19","False"

@@ -39,13 +39,21 @@ namespace LB1
             RegistrationController registrationController = new RegistrationController();
             if (ConfirmBox.Text == PasswordBox.Text)
             {
-                registrationController.Registrate(LoginBox.Text, PasswordBox.Text, FirstNameBox.Text, SecondNameBox.Text, FatherNameBox.Text, PassportDataBox.Text, IdNumberBox.Text, PhoneNumBox.Text, EmailBox.Text);
-                this.Hide();
-                StartForm StartForm = new StartForm();
-                Thread myThread1 = new Thread(StartForm.Open);
-                myThread1.Start();
-                this.Close();
-                this.Dispose();
+                if (LoginBox.Text != "" && PasswordBox.Text != "" && FirstNameBox.Text != "" && SecondNameBox.Text != "" && FatherNameBox.Text != "" && PassportDataBox.Text != "" && IdNumberBox.Text != "" && PhoneNumBox.Text != "" && EmailBox.Text != "")
+                {
+                    registrationController.Registrate(LoginBox.Text, PasswordBox.Text, FirstNameBox.Text, SecondNameBox.Text, FatherNameBox.Text, PassportDataBox.Text,
+                        IdNumberBox.Text, PhoneNumBox.Text, EmailBox.Text);
+                    this.Hide();
+                    StartForm StartForm = new StartForm();
+                    Thread myThread1 = new Thread(StartForm.Open);
+                    myThread1.Start();
+                    this.Close();
+                    this.Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("Заполните все поля");
+                }
             }
             else
             {

@@ -5,9 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using GenericParsing;
+using System.IO;
 namespace LB1
 {
-    public class Database 
+    public class Database
     {
         public TableSet tableSet = new TableSet();
         public Bank[] BankSet = new Bank[3];
@@ -47,14 +48,14 @@ namespace LB1
                     tableSet.Data.Tables["Companies"].Rows.Add(new object[] { parser["Type"], parser["urName"], parser["UNP"], parser["BIK"], parser["adress"], parser["bank"], parser["UserID"] });
                 }
 
-                 parser.SetDataSource("Clients.txt");
+                parser.SetDataSource("Clients.txt");
 
-                
 
-                 while (parser.Read())
-                 {
+
+                while (parser.Read())
+                {
                     tableSet.Data.Tables["Clients"].Rows.Add(new object[] { Convert.ToInt16(parser["UserID"]), parser["login"], parser["password"], parser["firstName"], parser["secondName"], parser["fatherName"], parser["passportData"], parser["idNumber"], parser["phoneNumber"], parser["email"] });
-                 }
+                }
 
 
             }
@@ -63,7 +64,14 @@ namespace LB1
         public void AddClient(int UserID, string login, string password, string firstName, string secondName, string fatherName, string passportData, string idNumber, string phoneNumber, string email)
         {
             tableSet.Data.Tables["Clients"].Rows.Add(new object[] { UserID, login, password, firstName, secondName, fatherName, passportData, idNumber, phoneNumber, email });
+            string path = "Clients.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.Write("\n\"" + UserID + "\"" + ",\"" + login + "\"" + ",\"" + password + "\"" + ",\"" + firstName + "\"" + ",\"" + secondName + "\"" + ",\"" + fatherName + "\"" + ",\"" + passportData + "\"" + ",\"" + idNumber + "\"" + ",\"" + phoneNumber + "\"" + ",\"" + email + "\"");
+            }
         }
+    
+        
 
         public Client FindByLogin(string login, string password)
         {

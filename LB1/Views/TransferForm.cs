@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace LB1
 {
@@ -68,11 +69,45 @@ namespace LB1
                                 {
                                     if (receiverBox.Text + ", " + bankBox.Text != senderBox.Text)
                                     {
+                                        Account Sender = accountInfoController.getActiveAccount(accNum, urName);
+                                        string accStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
+                                        + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
+                                        string str = "";
+                                        using (StreamReader reader = File.OpenText("Accounts.txt"))
+                                        {
+                                            str = reader.ReadToEnd();
+                                        }
+
+                                        Account receiver = bankController.getBank(bankBox.Text).findAcc(Convert.ToString(receiverBox.Text));
+                                        string accStr2 = "\n\"" + receiver.getUrName() + "\",\"" + receiver.getAccNum() + "\",\"" + Convert.ToString(receiver.getUserID()) + "\",\"" + receiver.getMoneyType() + "\",\""
+                                        + Convert.ToString(receiver.getBalance()) + "\",\"" + Convert.ToString(receiver.getCreationTime()) + "\",\"" + Convert.ToString(receiver.getIsFreezed()) + "\"";
+
+                                        using (StreamReader reader = File.OpenText("Accounts.txt"))
+                                        {
+                                            str = reader.ReadToEnd();
+                                        }
+
                                         TransferController transferController = new TransferController(accountInfoController.getActiveAccount(accNum, urName),
                                         bankController.getBank(bankBox.Text).findAcc(Convert.ToString(receiverBox.Text)),
                                         bankController.getBank(bankBox.Text),
                                         clientController.ActiveClient);
                                         transferController.doTransfer(Convert.ToDouble(amountBox.Text));
+
+                                        Sender = accountInfoController.getActiveAccount(accNum, urName);
+                                        string replaceStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
+                                        + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
+
+                                        receiver = bankController.getBank(bankBox.Text).findAcc(Convert.ToString(receiverBox.Text));
+                                        string replaceStr2 = "\n\"" + receiver.getUrName() + "\",\"" + receiver.getAccNum() + "\",\"" + Convert.ToString(receiver.getUserID()) + "\",\"" + receiver.getMoneyType() + "\",\""
+                                        + Convert.ToString(receiver.getBalance()) + "\",\"" + Convert.ToString(receiver.getCreationTime()) + "\",\"" + Convert.ToString(receiver.getIsFreezed()) + "\"";
+
+                                        str = str.Replace(accStr, replaceStr);
+                                        str = str.Replace(accStr2, replaceStr2);
+                                        using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                                        {
+                                            writer.Write(str);
+                                        }
+
                                         MessageBox.Show("Перевод выполнен успешно.");
                                     }
                                     else

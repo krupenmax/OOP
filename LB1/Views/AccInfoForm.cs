@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace LB1
 {
@@ -177,8 +178,26 @@ namespace LB1
                     urName += accBox.Text[i];
                     i++;
                 }
+
+                Account Sender = accountInfoController.getActiveAccount(accNum, urName);
+                string accStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
+                + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
+                string str = "";
+                using (StreamReader reader = File.OpenText("Accounts.txt"))
+                {
+                    str = reader.ReadToEnd();
+                }
+
+                str = str.Replace(accStr, "");
+
                 BankController bankController = new BankController();
                 DeletingController deleteController = new DeletingController(accNum, urName, clientController, bankController.getBank(urName));
+
+                using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                {
+                    writer.Write(str);
+                }
+
                 accBox.Items.Clear();
                 getAccountsToBox();
                 accBox.Text = "";
@@ -234,9 +253,31 @@ namespace LB1
                 urName += accBox.Text[i];
                 i++;
             }
+
+            Account sender = accountInfoController.getActiveAccount(accNum, urName);
+            string accStr = "\n\"" + sender.getUrName() + "\",\"" + sender.getAccNum() + "\",\"" + Convert.ToString(sender.getUserID()) + "\",\"" + sender.getMoneyType() + "\",\""
+            + Convert.ToString(sender.getBalance()) + "\",\"" + Convert.ToString(sender.getCreationTime()) + "\",\"" + Convert.ToString(sender.getIsFreezed()) + "\"";
+
+            string str = "";
+            using (StreamReader reader = File.OpenText("Accounts.txt"))
+            {
+                str = reader.ReadToEnd();
+            }
+
             TransferController transferController = new TransferController(accountInfoController.getActiveAccount(accNum, urName), null, null, clientController.ActiveClient);
             transferController.deposit(amount);
             showInfo();
+
+            sender = accountInfoController.getActiveAccount(accNum, urName);
+            string replaceStr = "\n\"" + sender.getUrName() + "\",\"" + sender.getAccNum() + "\",\"" + Convert.ToString(sender.getUserID()) + "\",\"" + sender.getMoneyType() + "\",\""
+            + Convert.ToString(sender.getBalance()) + "\",\"" + Convert.ToString(sender.getCreationTime()) + "\",\"" + Convert.ToString(sender.getIsFreezed()) + "\"";
+
+            str = str.Replace(accStr, replaceStr);
+            using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+            {
+                writer.Write(str);
+            }
+
             MessageBox.Show("Баланс успешно пополнен");
         }
 
@@ -258,9 +299,30 @@ namespace LB1
             }
             if (accountInfoController.getActiveAccount(accNum, urName).getBalance() > -1 * amount)
             {
+                Account sender = accountInfoController.getActiveAccount(accNum, urName);
+                string accStr = "\n\"" + sender.getUrName() + "\",\"" + sender.getAccNum() + "\",\"" + Convert.ToString(sender.getUserID()) + "\",\"" + sender.getMoneyType() + "\",\""
+                + Convert.ToString(sender.getBalance()) + "\",\"" + Convert.ToString(sender.getCreationTime()) + "\",\"" + Convert.ToString(sender.getIsFreezed()) + "\"";
+                string str = "";
+                using (StreamReader reader = File.OpenText("Accounts.txt"))
+                {
+                    str = reader.ReadToEnd();
+                }
+
                 TransferController transferController = new TransferController(accountInfoController.getActiveAccount(accNum, urName), null, null, clientController.ActiveClient);
                 transferController.deposit(amount);
                 showInfo();
+
+                sender = accountInfoController.getActiveAccount(accNum, urName);
+                string replaceStr = "\n\"" + sender.getUrName() + "\",\"" + sender.getAccNum() + "\",\"" + Convert.ToString(sender.getUserID()) + "\",\"" + sender.getMoneyType() + "\",\""
+                + Convert.ToString(sender.getBalance()) + "\",\"" + Convert.ToString(sender.getCreationTime()) + "\",\"" + Convert.ToString(sender.getIsFreezed()) + "\"";
+
+                str = str.Replace(accStr, replaceStr);
+                using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                {
+                    writer.Write(str);
+                }
+
+                MessageBox.Show("Средства успешно сняты.");
             }
             else
             {
@@ -289,11 +351,31 @@ namespace LB1
                         urName += accBox.Text[i];
                         i++;
                     }
+
+                    Account Sender = accountInfoController.getActiveAccount(accNum, urName);
+                    string accStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
+                    + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
+                    string str = "";
+                    using (StreamReader reader = File.OpenText("Accounts.txt"))
+                    {
+                        str = reader.ReadToEnd();
+                    }
+
                     accountInfoController.freezeAcc(accNum, urName);
                     clientController.ActiveClient.overwriteAcc(accountInfoController.getActiveAccount(accNum, urName), accNum, urName);
                     BankController bankController = new BankController();
                     bankController.getBank(urName).overwriteAcc(accountInfoController.getActiveAccount(accNum, urName), accNum);
                     showInfo();
+
+                    Sender = accountInfoController.getActiveAccount(accNum, urName);
+                    string replaceStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
+                    + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
+
+                    str = str.Replace(accStr, replaceStr);
+                    using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                    {
+                        writer.Write(str);
+                    }
                 }
             }
             else
@@ -323,11 +405,31 @@ namespace LB1
                         urName += accBox.Text[i];
                         i++;
                     }
+
+                    Account Sender = accountInfoController.getActiveAccount(accNum, urName);
+                    string accStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
+                    + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
+                    string str = "";
+                    using (StreamReader reader = File.OpenText("Accounts.txt"))
+                    {
+                        str = reader.ReadToEnd();
+                    }
+
                     accountInfoController.activateAcc(accNum, urName);
                     clientController.ActiveClient.overwriteAcc(accountInfoController.getActiveAccount(accNum, urName), accNum, urName);
                     BankController bankController = new BankController();
                     bankController.getBank(urName).overwriteAcc(accountInfoController.getActiveAccount(accNum, urName), accNum);
                     showInfo();
+
+                    Sender = accountInfoController.getActiveAccount(accNum, urName);
+                    string replaceStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
+                    + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
+
+                    str = str.Replace(accStr, replaceStr);
+                    using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                    {
+                        writer.Write(str);
+                    }
                 }
 
             }

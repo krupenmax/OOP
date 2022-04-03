@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using GenericParsing;
 using System.Data;
+using System.IO;
+using System.Threading;
 
 namespace LB1
 {
@@ -94,7 +96,7 @@ namespace LB1
                 {
                     if (Convert.ToString(parser["urName"]) == urName)
                     {
-                        bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]), DateTime.Now, Convert.ToBoolean(parser["isFreezed"]) });
+                        bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, parser["accNum"], Convert.ToInt16(parser["UserID"]), parser["moneyType"], Convert.ToSingle(parser["balance"]), Convert.ToDateTime(parser["creationTime"]), Convert.ToBoolean(parser["isFreezed"]) });
                     }
                 }
 
@@ -150,7 +152,12 @@ namespace LB1
                 }
                 i++;
             }
-            bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, accNum, UserID, moneyType, 0, DateTime.Now, false });
+            string path = "Accounts.txt";
+            bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, accNum, UserID, moneyType, 0, DateTime.Now, false });            
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.Write("\n\"" + urName + "\",\"" + accNum + "\",\"" + UserID + "\",\"" + moneyType + "\",\"" + 0 + "\",\"" + DateTime.Now + "\"," + "\"False\"");
+            }
         }
         
         public void deleteAcc(string accNum)
