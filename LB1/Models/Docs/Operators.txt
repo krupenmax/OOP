@@ -1,0 +1,2 @@
+login,password,firstName,secondName,fatherName
+Operator,123,max,krupen,dzmitrievitch

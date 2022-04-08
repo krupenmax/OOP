@@ -206,6 +206,8 @@ namespace LB1
                 ownerBox.Text = "";
                 dataCreationBox.Text = "";
                 isFreezedBox.Text = "";
+
+                MessageBox.Show("Счет удален");
             }
             else
             {

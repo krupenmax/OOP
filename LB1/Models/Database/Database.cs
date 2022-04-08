@@ -92,6 +92,28 @@ namespace LB1
             return NewClient;
         }
 
+        public Client FindClient(string login)
+        {
+            Client NewClient = new Client();
+            DataRow[] row = tableSet.Data.Tables["Clients"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToString(row[i]["login"]) == login)
+                {
+                    NewClient.setLogin(Convert.ToString(row[0]["login"]));
+                    NewClient.setPassword(Convert.ToString(row[0]["password"]));
+                    NewClient.setFirstName(Convert.ToString(row[0]["firstName"]));
+                    NewClient.setSecondName(Convert.ToString(row[0]["secondName"]));
+                    NewClient.setFatherName(Convert.ToString(row[0]["fatherName"]));
+                    NewClient.setPassportData(Convert.ToString(row[0]["passportData"]));
+                    NewClient.setIdNumber(Convert.ToString(row[0]["idNumber"]));
+                    NewClient.setPhoneNumber(Convert.ToString(row[0]["phoneNumber"]));
+                    NewClient.setEmail(Convert.ToString(row[0]["email"]));
+                }
+            }
+            return NewClient;
+        }
+
         public void SetBanks(System.Windows.Forms.ComboBox comboBox)
         {
             DataRow[] row = tableSet.Data.Tables["Banks"].Select();

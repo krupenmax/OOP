@@ -138,6 +138,10 @@ namespace LB1
             DataRow[] row = ClientTables.Data.Tables["Accounts"].Select(" accNum = '" + accNum + "' AND urName = '" + urName + "'");
             row[0].Delete();
             ClientTables.Data.Tables["Accounts"].AcceptChanges();
+            BankController bankController = new BankController();
+            getLog += deleteLog;
+            getLog?.Invoke(bankController.getBank(urName), accNum);
+            getLog -= deleteLog;
         }
 
         public delegate void log(Bank bank, string accNum);
@@ -148,7 +152,16 @@ namespace LB1
             string path = "../../Models/Docs/AccountLogs.txt";
             using (StreamWriter writer = new StreamWriter(path, true))
             {
-                writer.WriteLine(getLogin() + " создал счет в банке " + bank.getUrName() + " под номером: №" + accNum);
+                writer.WriteLine(DateTime.Now + ": " + getLogin() + " создал счет в банке \"" + bank.getUrName() + "\" под номером: №" + accNum);
+            }
+        }
+
+        public void deleteLog(Bank bank, string accNum)
+        {
+            string path = "../../Models/Docs/AccountLogs.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine(DateTime.Now + ": " + getLogin() + " удалил счет в банке \"" + bank.getUrName() + "\" под номером: №" + accNum);
             }
         }
 

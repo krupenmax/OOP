@@ -37,7 +37,20 @@ namespace LB1
             }
             else
             {
-                MessageBox.Show("Логин или пароль введены неверно");
+                OperatorController operatorController = new OperatorController();
+                if (operatorController.login(LoginBox.Text, PasswordBox.Text).getLogin() != null)
+                {
+                    this.Hide();
+                    OperatorForm OperatorForm = new OperatorForm();
+                    Thread myThread1 = new Thread(OperatorForm.Open);
+                    myThread1.Start();
+                    this.Close();
+                    this.Dispose();
+                }
+                else
+                {
+                    MessageBox.Show("Логин или пароль введены неверно");
+                }
             }
         }
 

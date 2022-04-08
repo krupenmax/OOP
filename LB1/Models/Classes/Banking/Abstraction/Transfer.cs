@@ -75,11 +75,11 @@ namespace LB1
             {
                 if (amount > 0)
                 {
-                    writer.WriteLine(client.getLogin() + " пополнил счет №" + sender.getAccNum() + " (" + sender.getUrName() + ") на сумму: " + amount + " " + sender.getMoneyType());
+                    writer.WriteLine(DateTime.Now + ": " + client.getLogin() + " пополнил счет №" + sender.getAccNum() + " (" + sender.getUrName() + ") на сумму: " + amount + " " + sender.getMoneyType());
                 }
                 else
                 {
-                    writer.WriteLine(client.getLogin() + " снял со счета №" + sender.getAccNum() + " (" + sender.getUrName() + ") сумму: " + -1 * amount + " " + sender.getMoneyType());
+                    writer.WriteLine(DateTime.Now + ": " + client.getLogin() + " снял со счета №" + sender.getAccNum() + " (" + sender.getUrName() + ") сумму: " + -1 * amount + " " + sender.getMoneyType());
                 }
             }
             getLog -= depositLog;
@@ -90,7 +90,7 @@ namespace LB1
             string path = "../../Models/Docs/TransferLogs.txt";
             using (StreamWriter writer = new StreamWriter(path, true))
             {
-                writer.WriteLine(client.getLogin() + " совершил перевод со счета №" + sender.getAccNum() + "(" + sender.getUrName() + ") на счет №" + receiver.getAccNum() + "(" + receiver.getUrName() + ") в размере: " + amount + " " + sender.getMoneyType());
+                writer.WriteLine(DateTime.Now + ": " + client.getLogin() + " совершил перевод со счета №" + sender.getAccNum() + "(" + sender.getUrName() + ") на счет №" + receiver.getAccNum() + "(" + receiver.getUrName() + ") в размере: " + amount + " " + sender.getMoneyType());
                 getLog -= transferLog;
             }
         }
