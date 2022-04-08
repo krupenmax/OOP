@@ -36,6 +36,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.applyBtn = new System.Windows.Forms.Button();
             this.BackBtn = new System.Windows.Forms.Button();
+            this.moneyTypeBox = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // amountBox
@@ -92,7 +94,7 @@
             // 
             // applyBtn
             // 
-            this.applyBtn.Location = new System.Drawing.Point(108, 162);
+            this.applyBtn.Location = new System.Drawing.Point(110, 179);
             this.applyBtn.Name = "applyBtn";
             this.applyBtn.Size = new System.Drawing.Size(75, 23);
             this.applyBtn.TabIndex = 7;
@@ -110,11 +112,31 @@
             this.BackBtn.UseVisualStyleBackColor = true;
             this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
+            // moneyTypeBox
+            // 
+            this.moneyTypeBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.moneyTypeBox.FormattingEnabled = true;
+            this.moneyTypeBox.Location = new System.Drawing.Point(144, 139);
+            this.moneyTypeBox.Name = "moneyTypeBox";
+            this.moneyTypeBox.Size = new System.Drawing.Size(100, 21);
+            this.moneyTypeBox.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(90, 142);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Валюта:";
+            // 
             // SalaryProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.moneyTypeBox);
             this.Controls.Add(this.BackBtn);
             this.Controls.Add(this.applyBtn);
             this.Controls.Add(this.label3);
@@ -141,5 +163,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button applyBtn;
         private System.Windows.Forms.Button BackBtn;
+        private System.Windows.Forms.ComboBox moneyTypeBox;
+        private System.Windows.Forms.Label label4;
     }
 }

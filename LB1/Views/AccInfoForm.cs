@@ -183,7 +183,7 @@ namespace LB1
                 string accStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
                 + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
                 string str = "";
-                using (StreamReader reader = File.OpenText("Accounts.txt"))
+                using (StreamReader reader = File.OpenText("../../Models/Docs/Accounts.txt"))
                 {
                     str = reader.ReadToEnd();
                 }
@@ -193,7 +193,7 @@ namespace LB1
                 BankController bankController = new BankController();
                 DeletingController deleteController = new DeletingController(accNum, urName, clientController, bankController.getBank(urName));
 
-                using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                using (StreamWriter writer = new StreamWriter("../../Models/Docs/Accounts.txt"))
                 {
                     writer.Write(str);
                 }
@@ -259,7 +259,7 @@ namespace LB1
             + Convert.ToString(sender.getBalance()) + "\",\"" + Convert.ToString(sender.getCreationTime()) + "\",\"" + Convert.ToString(sender.getIsFreezed()) + "\"";
 
             string str = "";
-            using (StreamReader reader = File.OpenText("Accounts.txt"))
+            using (StreamReader reader = File.OpenText("../../Models/Docs/Accounts.txt"))
             {
                 str = reader.ReadToEnd();
             }
@@ -273,7 +273,7 @@ namespace LB1
             + Convert.ToString(sender.getBalance()) + "\",\"" + Convert.ToString(sender.getCreationTime()) + "\",\"" + Convert.ToString(sender.getIsFreezed()) + "\"";
 
             str = str.Replace(accStr, replaceStr);
-            using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+            using (StreamWriter writer = new StreamWriter("../../Models/Docs/Accounts.txt"))
             {
                 writer.Write(str);
             }
@@ -303,7 +303,7 @@ namespace LB1
                 string accStr = "\n\"" + sender.getUrName() + "\",\"" + sender.getAccNum() + "\",\"" + Convert.ToString(sender.getUserID()) + "\",\"" + sender.getMoneyType() + "\",\""
                 + Convert.ToString(sender.getBalance()) + "\",\"" + Convert.ToString(sender.getCreationTime()) + "\",\"" + Convert.ToString(sender.getIsFreezed()) + "\"";
                 string str = "";
-                using (StreamReader reader = File.OpenText("Accounts.txt"))
+                using (StreamReader reader = File.OpenText("../../Models/Docs/Accounts.txt"))
                 {
                     str = reader.ReadToEnd();
                 }
@@ -317,7 +317,7 @@ namespace LB1
                 + Convert.ToString(sender.getBalance()) + "\",\"" + Convert.ToString(sender.getCreationTime()) + "\",\"" + Convert.ToString(sender.getIsFreezed()) + "\"";
 
                 str = str.Replace(accStr, replaceStr);
-                using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                using (StreamWriter writer = new StreamWriter("../../Models/Docs/Accounts.txt"))
                 {
                     writer.Write(str);
                 }
@@ -356,7 +356,7 @@ namespace LB1
                     string accStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
                     + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
                     string str = "";
-                    using (StreamReader reader = File.OpenText("Accounts.txt"))
+                    using (StreamReader reader = File.OpenText("../../Models/Docs/Accounts.txt"))
                     {
                         str = reader.ReadToEnd();
                     }
@@ -372,7 +372,7 @@ namespace LB1
                     + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
 
                     str = str.Replace(accStr, replaceStr);
-                    using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                    using (StreamWriter writer = new StreamWriter("../../Models/Docs/Accounts.txt"))
                     {
                         writer.Write(str);
                     }
@@ -410,7 +410,7 @@ namespace LB1
                     string accStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
                     + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
                     string str = "";
-                    using (StreamReader reader = File.OpenText("Accounts.txt"))
+                    using (StreamReader reader = File.OpenText("../../Models/Docs/Accounts.txt"))
                     {
                         str = reader.ReadToEnd();
                     }
@@ -426,7 +426,7 @@ namespace LB1
                     + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
 
                     str = str.Replace(accStr, replaceStr);
-                    using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                    using (StreamWriter writer = new StreamWriter("../../Models/Docs/Accounts.txt"))
                     {
                         writer.Write(str);
                     }

@@ -103,7 +103,7 @@
   <Class Name="LB1.Credit" Collapsed="true">
     <Position X="3.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ACAAAgkAABAAAAGIAIgIgCgAAAIAgACIgAAIAgAAAgg=</HashCode>
+      <HashCode>ACAAAgkAABAAAAGIAIgIiCgAAAIAgACIgAAIAgCAAgg=</HashCode>
       <FileName>Models\Classes\Banking\Abstraction\Credit.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -126,7 +126,7 @@
   <Class Name="LB1.Transfer" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="11.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAUACABAAAAIAIAAAAAAAAACgCAABCAABgAAAAA=</HashCode>
+      <HashCode>AAgAAAUACABAAAAIAIQAAAAAAAGCgCAABCAABgAAAAA=</HashCode>
       <FileName>Models\Classes\Banking\Abstraction\Transfer.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
@@ -156,7 +156,7 @@
   <Class Name="LB1.Client" Collapsed="true">
     <Position X="5.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>iMAAAIABCAFAAA7kAAAAIAiEAECAAAAAgIAIAIkEAAg=</HashCode>
+      <HashCode>iMAAAIABCAFAAA7kAAAAIAiEAECAAAAAgIAIAIkEIAg=</HashCode>
       <FileName>Models\Classes\Roles\Client.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -178,7 +178,7 @@
   <Class Name="LB1.Operator" Collapsed="true">
     <Position X="0.75" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAIAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Classes\Roles\Operator.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -214,7 +214,7 @@
   <Class Name="LB1.AccInfoForm" Collapsed="true">
     <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>ABIBIAAYASAAIBCgAVWABgACAAAAARQAAMBCgpgACKA=</HashCode>
+      <HashCode>ABIBIAAYASAAIBCgAVWABgQCAAAAARQAAMBCgpgACKA=</HashCode>
       <FileName>Views\AccInfoForm.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -235,7 +235,7 @@
   <Class Name="LB1.CreditForm" Collapsed="true">
     <Position X="10" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>cACAAAAYACAAYBAAQ8CIACAHACAbASAABCAAAQAAAIg=</HashCode>
+      <HashCode>8ACAAAAYACAAYBAAQ8CIACAHACAbASAABCAAAQAAAIg=</HashCode>
       <FileName>Views\CreditForm.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -270,7 +270,7 @@
   <Class Name="LB1.SalaryProjectForm" Collapsed="true">
     <Position X="15.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAIACAAIBAAAQCIAEACAgABAQAABAAAABAAIIA=</HashCode>
+      <HashCode>AAAAAAAIACAAIBAAAUCIAEACAgABAQAABAAAABAAIIA=</HashCode>
       <FileName>Views\SalaryProjectForm.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -345,7 +345,7 @@
   <Interface Name="LB1.IOperator" Collapsed="true">
     <Position X="0.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAABAIAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Interfaces\Roles\IOperator.cs</FileName>
     </TypeIdentifier>
   </Interface>

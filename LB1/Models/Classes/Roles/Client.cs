@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data;
+using System.IO;
 
 namespace LB1
 {
@@ -102,9 +103,9 @@ namespace LB1
             DataRow[] row = bank.getBankData().Data.Tables["Credits"].Select();
             for (int i = 0; i < row.Length; i++)
             {
-                if (Convert.ToInt16(row[i]["UserID"]) == UserID + 1)
+                if (Convert.ToInt16(row[i]["UserID"]) == UserID)
                 {
-                    ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["owner"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"], row[i]["moneyType"] });
+                    ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"], row[i]["moneyType"] });
                 }
             }
         }
@@ -114,9 +115,9 @@ namespace LB1
             DataRow[] row = bank.getBankData().Data.Tables["InstalmentPayments"].Select();
             for (int i = 0; i < row.Length; i++)
             {
-                if (Convert.ToInt16(row[i]["UserID"]) == UserID + 1)
+                if (Convert.ToInt16(row[i]["UserID"]) == UserID)
                 {
-                    ClientTables.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["owner"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"], row[i]["moneyType"] });
+                    ClientTables.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"], row[i]["moneyType"] });
                 }
             }
         }
@@ -139,10 +140,25 @@ namespace LB1
             ClientTables.Data.Tables["Accounts"].AcceptChanges();
         }
 
-        public void addAccToClient(Bank bank)
+        public delegate void log(Bank bank, string accNum);
+        public static event log getLog;
+
+        public void accLog(Bank bank, string accNum)
         {
+            string path = "../../Models/Docs/AccountLogs.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine(getLogin() + " создал счет в банке " + bank.getUrName() + " под номером: №" + accNum);
+            }
+        }
+
+        public void addAccToClient(Bank bank)
+        {           
             DataRow[] row = bank.getBankData().Data.Tables["Accounts"].Select();
             ClientTables.Data.Tables["Accounts"].Rows.Add(new object[] { row[row.Length - 1]["urName"], row[row.Length - 1]["accNum"], row[row.Length - 1]["UserID"], row[row.Length - 1]["moneyType"], row[row.Length - 1]["balance"], row[row.Length - 1]["creationTime"], row[row.Length - 1]["isFreezed"] });
+            getLog += accLog;
+            getLog?.Invoke(bank, Convert.ToString(row[row.Length - 1]["accNum"]));
+            getLog -= accLog;
         }
 
         public Account getActiveAcc(string accNum, string urName)

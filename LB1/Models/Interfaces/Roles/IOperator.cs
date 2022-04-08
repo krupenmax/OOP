@@ -8,8 +8,5 @@ namespace LB1
 {
     interface IOperator
     {
-        void checkStatistics();
-        void cancelAction();
-        void approve();
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using GenericParsing;
+using System.IO;
 
 namespace LB1
 {
@@ -112,7 +113,7 @@ namespace LB1
         {
             using (GenericParser parser = new GenericParser())
             {
-                parser.SetDataSource("SalaryProjects.txt");
+                parser.SetDataSource("../../Models/Docs/SalaryProjects.txt");
 
                 parser.ColumnDelimiter = ',';
                 parser.FirstRowHasHeader = true;
@@ -158,7 +159,7 @@ namespace LB1
             return acc;
         }
 
-        public void addSalaryProject(int period, double amount, int UserID)
+        public void addSalaryProject(int period, double amount, int UserID, string moneyType)
         {
             int ID = 0;
             int i = 1;
@@ -180,7 +181,12 @@ namespace LB1
                 }
                 i++;
             }
-            CompanyTables.Data.Tables["SalaryProjects"].Rows.Add(new object[] { ID, urName, period, amount, false, UserID});
+            CompanyTables.Data.Tables["SalaryProjects"].Rows.Add(new object[] { ID, urName, period, amount, false, UserID, moneyType});
+            string path = "../../Models/Docs/SalaryProjects.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine("\"" + Convert.ToString(ID) + "\",\"" + urName + "\",\"" + Convert.ToString(period) + "\",\"" + Convert.ToString(amount) + "\",\"" + "False" + "\",\"" + Convert.ToString(UserID + 1) + "\",\"" + moneyType + "\"");
+            }
         }
     }
 }

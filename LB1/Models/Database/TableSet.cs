@@ -325,6 +325,11 @@ namespace LB1
             column.ColumnName = "UserID";
             table.Columns.Add(column);
 
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "moneyType";
+            table.Columns.Add(column);
+
             Data.Tables.Add(table);
         }
     }

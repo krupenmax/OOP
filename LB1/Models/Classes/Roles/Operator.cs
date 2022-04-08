@@ -8,17 +8,6 @@ namespace LB1
 {
     class Operator : User, IOperator
     {
-        public void checkStatistics()
-        {
 
-        }
-        public void cancelAction()
-        {
-           
-        }
-        public void approve()
-        {
-
-        }
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace LB1
 {
@@ -91,6 +92,7 @@ namespace LB1
                     {
                         bankController.getBank(bankBox.Text).addCredit(Convert.ToDouble(amountBox.Text), getPercent(), getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now, moneyTypeBox.Text);
                         clientController.addCreditToClient(bankController.getBank(bankBox.Text));
+                        
                         MessageBox.Show("Кредит успешно оформлен");
                         InfoBox.Items.Clear();
                         creditController.getCreditsToBox(InfoBox);
@@ -101,7 +103,7 @@ namespace LB1
                     }
                     else
                     {
-                        bankController.getBank(bankBox.Text).addInstalmentPayment(Convert.ToDouble(amountBox.Text), 0, getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now);
+                        bankController.getBank(bankBox.Text).addInstalmentPayment(Convert.ToDouble(amountBox.Text), 0, getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now, moneyTypeBox.Text);
                         clientController.addInstalmentPaymentToClient(bankController.getBank(bankBox.Text));
                         MessageBox.Show("Рассрочка успешно оформлена ");
                         InstalInfoBox.Items.Clear();
@@ -190,6 +192,10 @@ namespace LB1
             percentInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getPercent());
             periodInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getPeriod());
             creationTimeInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getCreationTime());
+            InstalInfoBox.Text = "";
+            InstalInfoBox.Items.Clear();
+            instalmentController.getInstalmentPaymentsToBox(InstalInfoBox);
+            InstalInfoBox.Text = "";
         }
 
         private void InstalInfoBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -230,6 +236,9 @@ namespace LB1
             percentInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getPercent());
             periodInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getPeriod());
             creationTimeInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getCreationTime());
+            InfoBox.Items.Clear();
+            creditController.getCreditsToBox(InfoBox);
+            InfoBox.Text = "";
         }
     }
 }

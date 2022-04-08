@@ -13,7 +13,9 @@ namespace LB1
         Account sender;
         double amount;
         Bank bank;
-        Client client; 
+        Client client;
+
+        
 
         public Transfer(Account sender, Account receiver, double amount, Bank bank, Client client)
         {
@@ -22,6 +24,15 @@ namespace LB1
             this.amount = amount;
             this.bank = bank;
             this.client = client;
+            if (receiver == null)
+            {
+                getLog += depositLog;
+            }
+            else
+            {
+                getLog += transferLog;
+            }
+            
         }
 
         public Account getReceiver()
@@ -54,6 +65,36 @@ namespace LB1
             this.amount = amount;
         }
 
+        public delegate void log();
+        public static event log getLog;
+
+        public void depositLog()
+        {
+            string path = "../../Models/Docs/TransferLogs.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                if (amount > 0)
+                {
+                    writer.WriteLine(client.getLogin() + " пополнил счет №" + sender.getAccNum() + " (" + sender.getUrName() + ") на сумму: " + amount + " " + sender.getMoneyType());
+                }
+                else
+                {
+                    writer.WriteLine(client.getLogin() + " снял со счета №" + sender.getAccNum() + " (" + sender.getUrName() + ") сумму: " + -1 * amount + " " + sender.getMoneyType());
+                }
+            }
+            getLog -= depositLog;
+        }
+
+        public void transferLog()
+        {
+            string path = "../../Models/Docs/TransferLogs.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine(client.getLogin() + " совершил перевод со счета №" + sender.getAccNum() + "(" + sender.getUrName() + ") на счет №" + receiver.getAccNum() + "(" + receiver.getUrName() + ") в размере: " + amount + " " + sender.getMoneyType());
+                getLog -= transferLog;
+            }
+        }
+
         public void doTransfer()
         {
             if (sender.getUserID() != receiver.getUserID())
@@ -79,15 +120,17 @@ namespace LB1
                 bank = bankController.getBank(sender.getUrName());
                 bank.overwriteAcc(sender, sender.getAccNum());
             }
+            getLog?.Invoke();
         }
 
         public void deposit()
-        {
+        {         
             sender.setBalance(sender.getBalance() + amount);
             client.overwriteAcc(sender, sender.getAccNum(), sender.getUrName());
             BankController bankController = new BankController();
             bank = bankController.getBank(sender.getUrName());
             bank.overwriteAcc(sender, sender.getAccNum());
+            getLog?.Invoke();
         }
 
         public void convertMoney()

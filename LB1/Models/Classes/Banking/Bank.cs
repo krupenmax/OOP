@@ -86,7 +86,7 @@ namespace LB1
             bankData.BuildInstalmentPayTable();
             using (GenericParser parser = new GenericParser())
             {
-                parser.SetDataSource("Accounts.txt");
+                parser.SetDataSource("../../Models/Docs/Accounts.txt");
 
                 parser.ColumnDelimiter = ',';
                 parser.FirstRowHasHeader = true;
@@ -100,7 +100,7 @@ namespace LB1
                     }
                 }
 
-                parser.SetDataSource("Credits.txt");
+                parser.SetDataSource("../../Models/Docs/Credits.txt");
 
                 parser.ColumnDelimiter = ',';
                 parser.FirstRowHasHeader = true;
@@ -108,14 +108,14 @@ namespace LB1
 
                 while (parser.Read())
                 {
-                    if (Convert.ToString(parser["bank"]) == urName)
+                    if (Convert.ToString(parser["urName"]) == urName)
                     {
-                        bankData.Data.Tables["Credits"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"], parser["moneyType"] });
+                        bankData.Data.Tables["Credits"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["urName"], parser["UserID"], parser["isApproved"], parser["creationTime"], parser["moneyType"] });
 
                     }
                 }
 
-                parser.SetDataSource("InstalmentPayments.txt");
+                parser.SetDataSource("../../Models/Docs/InstalmentPayments.txt");
 
                 parser.ColumnDelimiter = ',';
                 parser.FirstRowHasHeader = true;
@@ -123,9 +123,9 @@ namespace LB1
 
                 while (parser.Read())
                 {
-                    if (Convert.ToString(parser["bank"]) == urName)
+                    if (Convert.ToString(parser["urName"]) == urName)
                     {
-                        bankData.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["bank"], parser["UserID"], parser["isApproved"], parser["creationTime"], parser["moneyType"] });
+                        bankData.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { parser["creditNum"], parser["amount"], parser["percent"], parser["period"], parser["urName"], parser["UserID"], parser["isApproved"], parser["creationTime"], parser["moneyType"] });
                     }
                 }
             }
@@ -152,7 +152,7 @@ namespace LB1
                 }
                 i++;
             }
-            string path = "Accounts.txt";
+            string path = "../../Models/Docs/Accounts.txt";
             bankData.Data.Tables["Accounts"].Rows.Add(new object[] { urName, accNum, UserID, moneyType, 0, DateTime.Now, false });            
             using (StreamWriter writer = new StreamWriter(path, true))
             {
@@ -218,7 +218,14 @@ namespace LB1
                 }
                 i++;
             }
-            bankData.Data.Tables["Credits"].Rows.Add(new object[] { creditNum, amount, percent, period, urName, UserID, isApproved, creationTime, moneyType });
+            bankData.Data.Tables["Credits"].Rows.Add(new object[] { creditNum, amount, percent, period, urName, UserID + 1, isApproved, creationTime, moneyType });
+
+            string path = "../../Models/Docs/Credits.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine("\"" + Convert.ToString(creditNum) + "\",\"" + Convert.ToString(amount) + "\",\"" + Convert.ToString(percent) + "\",\"" + Convert.ToString(period) + "\",\"" + urName + "\",\"" + Convert.ToString(UserID + 1)
+                    + "\",\"" + Convert.ToString(isApproved) + "\",\"" + Convert.ToString(creationTime) + "\",\"" + moneyType + "\"");
+            }
         }
 
         public Credit findCredit(string creditNum, string urName)
@@ -236,7 +243,7 @@ namespace LB1
             return credit;
         }
 
-        public void addInstalmentPayment(double amount, double percent, int period, int UserID, bool isApproved, DateTime creationTime)
+        public void addInstalmentPayment(double amount, double percent, int period, int UserID, bool isApproved, DateTime creationTime, string moneyType)
         {
             int creditNum = 0;
             int i = 1;
@@ -258,7 +265,14 @@ namespace LB1
                 }
                 i++;
             }
-            bankData.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { creditNum, amount, percent, period, urName, UserID, isApproved, creationTime });
+            bankData.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { creditNum, amount, percent, period, urName, UserID + 1, isApproved, creationTime, moneyType });
+
+            string path = "../../Models/Docs/InstalmentPayments.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.WriteLine("\"" + Convert.ToString(creditNum) + "\",\"" + Convert.ToString(amount) + "\",\"" + Convert.ToString(percent) + "\",\"" + Convert.ToString(period) + "\",\"" + urName + "\",\"" + Convert.ToString(UserID + 1)
+                    + "\",\"" + Convert.ToString(isApproved) + "\",\"" + Convert.ToString(creationTime) + "\",\"" + moneyType + "\"");
+            }
         }
 
         public PayByInstalments findInstalmentPayment(string creditNum, string urName)

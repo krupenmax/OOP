@@ -1,0 +1,1 @@
+creditNum,amount,percent,period,urName,UserID,isApproved,creationTime,moneyType"1","100","6","6","Альфа-Банк","1","False","04.04.2022 16:03:24","USD"

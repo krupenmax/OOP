@@ -20,7 +20,7 @@ namespace LB1
             tableSet.BuiltBankTable();
             using (GenericParser parser = new GenericParser())
             {
-                parser.SetDataSource("Banks.txt");
+                parser.SetDataSource("../../Models/Docs/Banks.txt");
 
                 parser.ColumnDelimiter = ',';
                 parser.FirstRowHasHeader = true;
@@ -41,14 +41,14 @@ namespace LB1
                     i++;
                 }
 
-                parser.SetDataSource("Companies.txt");
+                parser.SetDataSource("../../Models/Docs/Companies.txt");
 
                 while (parser.Read())
                 {
                     tableSet.Data.Tables["Companies"].Rows.Add(new object[] { parser["Type"], parser["urName"], parser["UNP"], parser["BIK"], parser["adress"], parser["bank"], parser["UserID"] });
                 }
 
-                parser.SetDataSource("Clients.txt");
+                parser.SetDataSource("../../Models/Docs/Clients.txt");
 
 
 
@@ -64,7 +64,7 @@ namespace LB1
         public void AddClient(int UserID, string login, string password, string firstName, string secondName, string fatherName, string passportData, string idNumber, string phoneNumber, string email)
         {
             tableSet.Data.Tables["Clients"].Rows.Add(new object[] { UserID, login, password, firstName, secondName, fatherName, passportData, idNumber, phoneNumber, email });
-            string path = "Clients.txt";
+            string path = "../../Models/Docs/Clients.txt";
             using (StreamWriter writer = new StreamWriter(path, true))
             {
                 writer.Write("\n\"" + UserID + "\"" + ",\"" + login + "\"" + ",\"" + password + "\"" + ",\"" + firstName + "\"" + ",\"" + secondName + "\"" + ",\"" + fatherName + "\"" + ",\"" + passportData + "\"" + ",\"" + idNumber + "\"" + ",\"" + phoneNumber + "\"" + ",\"" + email + "\"");

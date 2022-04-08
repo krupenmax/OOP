@@ -27,6 +27,10 @@ namespace LB1
             periodBox.Items.Add("6 месяцев");
             periodBox.Items.Add("12 месяцев");
             periodBox.Items.Add("24 месяца");
+            moneyTypeBox.Items.Add("USD");
+            moneyTypeBox.Items.Add("EUR");
+            moneyTypeBox.Items.Add("BYR");
+            moneyTypeBox.Items.Add("RUB");
 
         }
 
@@ -62,7 +66,7 @@ namespace LB1
                 double num = 0.0;
                 if (Double.TryParse(amountBox.Text, out num))
                 {
-                    companiesController.getCompany(companyBox.Text).addSalaryProject(getPeriod(), Convert.ToDouble(amountBox.Text), clientController.ActiveClient.getUserId());
+                    companiesController.getCompany(companyBox.Text).addSalaryProject(getPeriod(), Convert.ToDouble(amountBox.Text), clientController.ActiveClient.getUserId(), moneyTypeBox.Text);
                     clientController.addSalaryProject(companiesController.getCompany(companyBox.Text));
                     MessageBox.Show("Заяка отправлена.");
                 }

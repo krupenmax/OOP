@@ -73,7 +73,7 @@ namespace LB1
                                         string accStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
                                         + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
                                         string str = "";
-                                        using (StreamReader reader = File.OpenText("Accounts.txt"))
+                                        using (StreamReader reader = File.OpenText("../../Models/Docs/Accounts.txt"))
                                         {
                                             str = reader.ReadToEnd();
                                         }
@@ -82,7 +82,7 @@ namespace LB1
                                         string accStr2 = "\n\"" + receiver.getUrName() + "\",\"" + receiver.getAccNum() + "\",\"" + Convert.ToString(receiver.getUserID()) + "\",\"" + receiver.getMoneyType() + "\",\""
                                         + Convert.ToString(receiver.getBalance()) + "\",\"" + Convert.ToString(receiver.getCreationTime()) + "\",\"" + Convert.ToString(receiver.getIsFreezed()) + "\"";
 
-                                        using (StreamReader reader = File.OpenText("Accounts.txt"))
+                                        using (StreamReader reader = File.OpenText("../../Models/Docs/Accounts.txt"))
                                         {
                                             str = reader.ReadToEnd();
                                         }
@@ -103,7 +103,7 @@ namespace LB1
 
                                         str = str.Replace(accStr, replaceStr);
                                         str = str.Replace(accStr2, replaceStr2);
-                                        using (StreamWriter writer = new StreamWriter("Accounts.txt"))
+                                        using (StreamWriter writer = new StreamWriter("../../Models/Docs/Accounts.txt"))
                                         {
                                             writer.Write(str);
                                         }
