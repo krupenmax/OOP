@@ -332,5 +332,70 @@ namespace LB1
 
             Data.Tables.Add(table);
         }
+
+        public void BuildSideSpecialistTable()
+        {
+            DataTable table = new DataTable("SideSpecialists");
+            DataColumn column = new DataColumn();
+            column.DataType = System.Type.GetType("System.Int16");
+            column.ColumnName = "UserID";
+            column.Unique = true;
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "login";
+            column.Unique = true;
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "password";
+            column.ReadOnly = true;
+
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "firstName";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "secondName";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "fatherName";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "passportData";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "idNumber";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "phoneNumber";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "email";
+            table.Columns.Add(column);
+
+            column = new DataColumn();
+            column.DataType = System.Type.GetType("System.String");
+            column.ColumnName = "myCompany";
+            table.Columns.Add(column);
+
+            Data.Tables.Add(table);
+        }
     }
 }

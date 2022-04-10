@@ -70,6 +70,7 @@ namespace LB1
 
         public void cancelAction(string log)
         {
+            string logFull = log;
             string container = log;
             log = "";
             for (int i = 21; i < container.Length; i++)
@@ -96,15 +97,114 @@ namespace LB1
             switch (actionDecider)
             {
                 case "пополнил":
-                    cancelDeposit(log, j, clientName);
+                    cancelDeposit(log, j, clientName, logFull);
                     break;
                 case "совершил":
-
+                    cancelTransfer(log, j, clientName, logFull);
+                    break;
+                case "снял":
+                    
                     break;
             }
         }
 
-        public void cancelDeposit(string log, int j, string clientName)
+        public void cancelTransfer(string log, int j, string clientName, string logFull)
+        {
+            j += 19;
+            string accNum = "";
+            while (log[j] != '(')
+            {
+                accNum += log[j];
+                j++;
+            }
+
+            j ++;
+            string urName = "";
+            while (log[j] != ')')
+            {
+                urName += log[j];
+                j++;
+            }
+            
+            while (log[j] != '№')
+            {
+                j++;
+            }
+            j++;
+            string receiverNum = "";
+            while (log[j] != '(')
+            {
+                receiverNum += log[j];
+                j++;
+            }
+            j++;
+
+            string receiverUrName = "";
+            while (log[j] != ')')
+            {
+                receiverUrName += log[j];
+                j++;
+            }
+            j += 13;
+
+            string amount = "";
+            while (log[j] != ' ')
+            {
+                amount += log[j];
+                j++;
+            }
+
+            string moneyType = "";
+            while (j < log.Length)
+            {
+                moneyType += log[j];
+                j++;
+            }
+
+            BankController bankController = new BankController();
+            Bank bank = bankController.getBank(receiverUrName);
+
+            Account Sender = bank.findAcc(accNum);
+            string accStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
+                                       + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
+            string str = "";
+            using (StreamReader reader = File.OpenText("../../Models/Docs/Accounts.txt"))
+            {
+                str = reader.ReadToEnd();
+            }
+
+            Account receiver = bank.findAcc(receiverNum);
+            string accStr2 = "\n\"" + receiver.getUrName() + "\",\"" + receiver.getAccNum() + "\",\"" + Convert.ToString(receiver.getUserID()) + "\",\"" + receiver.getMoneyType() + "\",\""
+            + Convert.ToString(receiver.getBalance()) + "\",\"" + Convert.ToString(receiver.getCreationTime()) + "\",\"" + Convert.ToString(receiver.getIsFreezed()) + "\"";
+
+            using (StreamReader reader = File.OpenText("../../Models/Docs/Accounts.txt"))
+            {
+                str = reader.ReadToEnd();
+            }
+
+            TransferController transfer = new TransferController(bank.findAcc(accNum), bank.findAcc(receiverNum), bank, Program.database.FindClient(clientName));
+            transfer.doTransfer(-1 * Convert.ToInt16(amount));
+
+            Sender = bankController.getBank(urName).findAcc(accNum);
+            string replaceStr = "\n\"" + Sender.getUrName() + "\",\"" + Sender.getAccNum() + "\",\"" + Convert.ToString(Sender.getUserID()) + "\",\"" + Sender.getMoneyType() + "\",\""
+            + Convert.ToString(Sender.getBalance()) + "\",\"" + Convert.ToString(Sender.getCreationTime()) + "\",\"" + Convert.ToString(Sender.getIsFreezed()) + "\"";
+
+            receiver = bank.findAcc(Convert.ToString(receiverNum));
+            string replaceStr2 = "\n\"" + receiver.getUrName() + "\",\"" + receiver.getAccNum() + "\",\"" + Convert.ToString(receiver.getUserID()) + "\",\"" + receiver.getMoneyType() + "\",\""
+            + Convert.ToString(receiver.getBalance()) + "\",\"" + Convert.ToString(receiver.getCreationTime()) + "\",\"" + Convert.ToString(receiver.getIsFreezed()) + "\"";
+
+            str = str.Replace(accStr, replaceStr);
+            str = str.Replace(accStr2, replaceStr2);
+            using (StreamWriter writer = new StreamWriter("../../Models/Docs/Accounts.txt"))
+            {
+                writer.Write(str);
+            }
+
+            overWriteFile();
+            deleteLogStr(logFull);
+        }
+
+        public void cancelDeposit(string log, int j, string clientName, string logFull)
         {
             j += 7;
             string accNum = "";
@@ -161,6 +261,77 @@ namespace LB1
             using (StreamWriter writer = new StreamWriter("../../Models/Docs/Accounts.txt"))
             {
                 writer.Write(str);
+            }
+            overWriteFile();
+            deleteLogStr(logFull);
+        }
+
+        public void overWriteFile()
+        {
+            int i = 0;
+            using (GenericParser parser = new GenericParser())
+            {
+                parser.SetDataSource("../../Models/Docs/TransferLogs.txt");
+                while (parser.Read())
+                {
+                    i++;
+                }
+            }
+            string[] str = new string[i];
+
+            using (GenericParser parser = new GenericParser())
+            { 
+                parser.SetDataSource("../../Models/Docs/TransferLogs.txt");
+                int count = 0;
+                while (parser.Read())
+                {
+                    str[count] = parser[0];
+                    count++;
+                }
+            }
+
+            using (StreamWriter writer = new StreamWriter("../../Models/Docs/TransferLogs.txt", false))
+            {
+                for (int j = 0; j < str.Length - 1; j++)
+                {
+                    writer.WriteLine(str[j]);
+                }
+            }
+        }
+
+        public void deleteLogStr(string log)
+        {
+            int i = 0;
+            using (GenericParser parser = new GenericParser())
+            {
+                parser.SetDataSource("../../Models/Docs/TransferLogs.txt");
+                while (parser.Read())
+                {
+                    i++;
+                }
+            }
+            string[] str = new string[i - 1];
+
+            using (GenericParser parser = new GenericParser())
+            {
+                parser.SetDataSource("../../Models/Docs/TransferLogs.txt");
+                int count = 0;
+                while (parser.Read())
+                {
+                    if (log != Convert.ToString(parser[0]))
+                    {
+                        str[count] = parser[0];
+                        count++;
+                    }
+                    
+                }
+            }
+            using (StreamWriter writer = new StreamWriter("../../Models/Docs/TransferLogs.txt", false))
+            {
+                for (int j = 0; j < str.Length; j++)
+                {
+                    writer.WriteLine(str[j]);
+                }
             }
         }
     }

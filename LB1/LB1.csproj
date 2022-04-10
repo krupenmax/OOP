@@ -59,13 +59,16 @@
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\CreateAccountController.cs" />
     <Compile Include="Controllers\CreditController.cs" />
+    <Compile Include="Controllers\CreditLoadController.cs" />
     <Compile Include="Controllers\DeletingController.cs" />
     <Compile Include="Controllers\InstalmentController.cs" />
     <Compile Include="Controllers\Interfaces\ILoginController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\OperatorController.cs" />
     <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\SalaryProjectController.cs" />
+    <Compile Include="Controllers\SideSpecialistController.cs" />
     <Compile Include="Controllers\TransferController.cs" />
     <Compile Include="Models\Classes\Banking\Abstraction\Account.cs" />
     <Compile Include="Models\Classes\Banking\Abstraction\SalaryProject.cs" />
@@ -79,7 +82,6 @@
     <Compile Include="Models\Database\Database.cs" />
     <Compile Include="Models\Classes\Banking\Abstraction\Company.cs" />
     <Compile Include="Models\Classes\Roles\Client.cs" />
-    <Compile Include="Models\Classes\Roles\Model.cs" />
     <Compile Include="Models\Interfaces\Roles\IAdmin.cs" />
     <Compile Include="Models\Interfaces\Banking\ICredit.cs" />
     <Compile Include="Models\Interfaces\Roles\IManager.cs" />
@@ -134,6 +136,12 @@
     <Compile Include="Views\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ManagerForm.Designer.cs">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\OperatorForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +159,12 @@
     </Compile>
     <Compile Include="Views\SalaryProjectForm.Designer.cs">
       <DependentUpon>SalaryProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SideSpecialistForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SideSpecialistForm.Designer.cs">
+      <DependentUpon>SideSpecialistForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\StartForm.cs">
       <SubType>Form</SubType>
@@ -194,6 +208,9 @@
     <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\ManagerForm.resx">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\OperatorForm.resx">
       <DependentUpon>OperatorForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SalaryProjectForm.resx">
       <DependentUpon>SalaryProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SideSpecialistForm.resx">
+      <DependentUpon>SideSpecialistForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>

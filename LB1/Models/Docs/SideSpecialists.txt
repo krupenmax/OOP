@@ -1,0 +1,4 @@
+UserID,login,password,firstName,secondName,fatherName,passportData,idNumber,phoneNumber,email,myCompany
+"4","hqej","123","wegf","wef","wgq","GW3131313","1343131J131JL1","+375(29) 714-89-01","ef","Евроопт"
+"5","side","123","srg","rg","rg","GS3113131","3113131G131GG1","+375(29) 611-66-50","srgsrg","Белмаркет"
+"6","og","123","rsg","srugi","srjgk","HJ2414214","2141241J124JJ4","+375(62) 961-61-61","sykel","Яндекс"

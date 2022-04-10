@@ -55,6 +55,12 @@
             this.label12 = new System.Windows.Forms.Label();
             this.moneyTypeBox = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.moneyTypeCredit = new System.Windows.Forms.TextBox();
+            this.isApprovedBox = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.periodAd = new System.Windows.Forms.TextBox();
+            this.periodLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // periodBox
@@ -96,7 +102,7 @@
             // 
             // percentBox
             // 
-            this.percentBox.Location = new System.Drawing.Point(678, 165);
+            this.percentBox.Location = new System.Drawing.Point(678, 205);
             this.percentBox.Name = "percentBox";
             this.percentBox.ReadOnly = true;
             this.percentBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -106,7 +112,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(619, 168);
+            this.label3.Location = new System.Drawing.Point(619, 208);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(53, 13);
             this.label3.TabIndex = 5;
@@ -307,11 +313,72 @@
             this.label13.TabIndex = 26;
             this.label13.Text = "Вид валюты:";
             // 
+            // moneyTypeCredit
+            // 
+            this.moneyTypeCredit.Location = new System.Drawing.Point(237, 435);
+            this.moneyTypeCredit.Name = "moneyTypeCredit";
+            this.moneyTypeCredit.ReadOnly = true;
+            this.moneyTypeCredit.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.moneyTypeCredit.Size = new System.Drawing.Size(164, 20);
+            this.moneyTypeCredit.TabIndex = 27;
+            // 
+            // isApprovedBox
+            // 
+            this.isApprovedBox.Location = new System.Drawing.Point(237, 409);
+            this.isApprovedBox.Name = "isApprovedBox";
+            this.isApprovedBox.ReadOnly = true;
+            this.isApprovedBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.isApprovedBox.Size = new System.Drawing.Size(164, 20);
+            this.isApprovedBox.TabIndex = 28;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(82, 412);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(79, 13);
+            this.label14.TabIndex = 29;
+            this.label14.Text = "Подтвержден:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(82, 438);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(48, 13);
+            this.label15.TabIndex = 30;
+            this.label15.Text = "Валюта:";
+            // 
+            // periodAd
+            // 
+            this.periodAd.Location = new System.Drawing.Point(682, 164);
+            this.periodAd.Name = "periodAd";
+            this.periodAd.Size = new System.Drawing.Size(33, 20);
+            this.periodAd.TabIndex = 31;
+            this.periodAd.Text = "24";
+            this.periodAd.Visible = false;
+            // 
+            // periodLabel
+            // 
+            this.periodLabel.AutoSize = true;
+            this.periodLabel.Location = new System.Drawing.Point(619, 168);
+            this.periodLabel.Name = "periodLabel";
+            this.periodLabel.Size = new System.Drawing.Size(48, 13);
+            this.periodLabel.TabIndex = 32;
+            this.periodLabel.Text = "Период:";
+            this.periodLabel.Visible = false;
+            // 
             // CreditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 561);
+            this.Controls.Add(this.periodLabel);
+            this.Controls.Add(this.periodAd);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.isApprovedBox);
+            this.Controls.Add(this.moneyTypeCredit);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.moneyTypeBox);
             this.Controls.Add(this.label12);
@@ -376,5 +443,11 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox moneyTypeBox;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox moneyTypeCredit;
+        private System.Windows.Forms.TextBox isApprovedBox;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox periodAd;
+        private System.Windows.Forms.Label periodLabel;
     }
 }

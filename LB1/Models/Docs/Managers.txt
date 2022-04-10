@@ -1,0 +1,2 @@
+login,password,firstName,secondName,fatherName
+Manager,123,max,krupen,dzmitrievitch

@@ -123,7 +123,7 @@ namespace LB1
                 {
                     if (parser["companyName"] == urName)
                     {
-                        CompanyTables.Data.Tables["SalaryProjects"].Rows.Add(new object[] { parser["ID"], parser["companyName"], parser["period"], parser["amount"], parser["isApproved"], parser["UserID"] });
+                        CompanyTables.Data.Tables["SalaryProjects"].Rows.Add(new object[] { parser["ID"], parser["companyName"], parser["period"], parser["amount"], parser["isApproved"], parser["UserID"], parser["moneyType"] });
                     }
                 }
             }
@@ -187,6 +187,103 @@ namespace LB1
             {
                 writer.WriteLine("\"" + Convert.ToString(ID) + "\",\"" + urName + "\",\"" + Convert.ToString(period) + "\",\"" + Convert.ToString(amount) + "\",\"" + "False" + "\",\"" + Convert.ToString(UserID + 1) + "\",\"" + moneyType + "\"");
             }
+        }
+
+        public SalaryProject getSalaryProject(int ID)
+        {
+            SalaryProject salaryProject = new SalaryProject();
+            DataRow[] row = CompanyTables.Data.Tables["SalaryProjects"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToInt16(row[i]["ID"]) == ID)
+                {
+                    salaryProject.setID(ID);
+                    salaryProject.setCompanyName(Convert.ToString(row[i]["companyName"]));
+                    salaryProject.setPeriod(Convert.ToInt16(row[i]["period"]));
+                    salaryProject.setAmount(Convert.ToInt16(row[i]["amount"]));
+                    salaryProject.setIsApproved(Convert.ToBoolean(row[i]["isApproved"]));
+                    salaryProject.setUserID(Convert.ToInt16(row[i]["UserID"]));
+                    salaryProject.setMoneyType(Convert.ToString(row[i]["moneyType"]));
+                }
+            }
+            return salaryProject;
+        }
+
+        public void approveSalaryProject(int ID)
+        {
+            DataRow[] row = CompanyTables.Data.Tables["SalaryProjects"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToInt16(row[i]["ID"]) == ID + 1)
+                {
+                    row[i]["isApproved"] = "True";
+                }
+            }
+
+            string replaceStr = "";
+            using (GenericParser parser = new GenericParser())
+            {
+                parser.SetDataSource("../../Models/Docs/SalaryProjects.txt");
+                parser.ColumnDelimiter = ',';
+                parser.FirstRowHasHeader = true;
+                parser.TextQualifier = '\"';
+
+                while (parser.Read())
+                {
+                    if (ID == Convert.ToInt16(parser["ID"]))
+                    {
+                        replaceStr = "\"" + parser["ID"] + "\",\"" + parser["companyName"] + "\",\"" + parser["period"] + "\",\"" + parser["amount"] + "\",\"" + parser["isApproved"] + "\",\"" + parser["UserID"] + "\",\"" + parser["moneyType"];
+                        break;
+                    }
+                }
+            }
+
+            string newStr = replaceStr.Replace("False", "True");
+
+            string path = "../../Models/Docs/SalaryProjects.txt";
+            string str = "";
+            using (StreamReader reader = new StreamReader(path))
+            {
+                str = reader.ReadToEnd();
+            }
+
+            str = str.Replace(replaceStr, newStr);
+
+            using (StreamWriter writer = new StreamWriter(path, false))
+            {
+                writer.WriteLine(str);
+            }
+        }
+
+        public void deleteSalaryProject(int ID)
+        {
+            DataRow[] row = CompanyTables.Data.Tables["SalaryProjects"].Select();
+            string replaceStr = "";
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToInt16(row[i]["ID"]) == ID)
+                {
+                    replaceStr = "\"" + row[i]["ID"] + "\",\"" + row[i]["companyName"] + "\",\"" + row[i]["period"] + "\",\"" + row[i]["amount"] + "\",\"" + row[i]["isApproved"] + "\",\"" + row[i]["UserID"] + "\",\"" + row[i]["moneyType"] + "\"";
+                    row[i].Delete();
+                    CompanyTables.Data.Tables["SalaryProjects"].AcceptChanges();
+                    break;
+                }
+            }
+
+            string path = "../../Models/Docs/SideSpecialistSlrPrjcts.txt";
+            string str = "";
+            using (StreamReader reader = new StreamReader(path))
+            {
+                str = reader.ReadToEnd();
+            }
+
+            str = str.Replace(replaceStr, "");
+
+            using (StreamWriter writer = new StreamWriter(path, false))
+            {
+                writer.WriteLine(str);
+            }
+
         }
     }
 }

@@ -17,5 +17,25 @@ namespace LB1
         {
             return Program.database.getBank(bankName);
         }
+        
+        public Credit findCredit(string accNum, string urName)
+        {
+            return getBank(urName).findCredit(accNum);
+        }
+
+        public PayByInstalments findInstalment(string accNum, string urName)
+        {
+            return getBank(urName).findInstalment(accNum);
+        }
+
+        public void approveCredit(string creditNum, string urName)
+        {
+            getBank(urName).approveCredit(creditNum);
+        }
+
+        public void approveInstalment(string creditNum, string urName)
+        {
+            getBank(urName).approveInstalment(creditNum);
+        }
     }
 }

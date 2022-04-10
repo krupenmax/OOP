@@ -228,19 +228,136 @@ namespace LB1
             }
         }
 
-        public Credit findCredit(string creditNum, string urName)
+        public void getCredits(System.Windows.Forms.ComboBox comboBox)
         {
-            DataRow[] row = bankData.Data.Tables["Credits"].Select(" creditNum = '" + creditNum + "' AND bank = '" + urName + "'");
+            DataRow[] row = bankData.Data.Tables["Credits"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToBoolean(row[i]["isApproved"]) == false)
+                {
+                    comboBox.Items.Add(row[i]["creditNum"] + ", " + row[i]["urName"]);
+                }
+            }
+        }
+
+        public void getInstalments(System.Windows.Forms.ComboBox comboBox)
+        {
+            DataRow[] row = bankData.Data.Tables["InstalmentPayments"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToBoolean(row[i]["isApproved"]) == false)
+                {
+                    comboBox.Items.Add(row[i]["creditNum"] + ", " + row[i]["urName"]);
+                }
+            }
+        }
+
+        public Credit findCredit(string creditNum)
+        {
             Credit credit = new Credit();
-            credit.setCreditNum(Convert.ToString(row[0]["creditNum"]));
-            credit.setAmount(Convert.ToDouble(row[0]["amount"]));
-            credit.setPercent(Convert.ToDouble(row[0]["percent"]));
-            credit.setPeriod(Convert.ToInt16(row[0]["period"]));
-            credit.setUserID(Convert.ToInt16(row[0]["UserID"]));
-            credit.setBank(Convert.ToString(row[0]["bank"]));
-            credit.setIsApproved(Convert.ToBoolean(row[0]["isApproved"]));
-            credit.setCreationTime(Convert.ToDateTime(row[0]["creationTime"]));
+            DataRow[] row = bankData.Data.Tables["Credits"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (creditNum == Convert.ToString(row[i]["creditNum"]))
+                {
+                    credit.setCreditNum(Convert.ToString(row[i]["creditNum"]));
+                    credit.setAmount(Convert.ToDouble(row[i]["amount"]));
+                    credit.setPercent(Convert.ToDouble(row[i]["percent"]));
+                    credit.setPeriod(Convert.ToInt16(row[i]["period"]));
+                    credit.setUserID(Convert.ToInt16(row[i]["UserID"]));
+                    credit.setBank(Convert.ToString(row[i]["urName"]));
+                    credit.setIsApproved(Convert.ToBoolean(row[i]["isApproved"]));
+                    credit.setCreationTime(Convert.ToDateTime(row[i]["creationTime"]));
+                    credit.setMoneyType(Convert.ToString(row[i]["moneyType"]));
+                }
+            }
+
             return credit;
+        }
+
+        public void approveCredit(string creditNum)
+        {
+            string replaceStr = "";
+            string newStr = "";
+            DataRow[] row = bankData.Data.Tables["Credits"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToString(row[i]["creditNum"]) == creditNum)
+                {
+                    replaceStr = "\"" + row[i]["creditNum"] + "\",\"" + row[i]["amount"] + "\",\"" + row[i]["percent"] + "\",\"" + row[i]["period"] + "\",\"" + row[i]["urName"] + "\",\"" + row[i]["UserID"] + "\",\"" + row[i]["isApproved"] + "\",\"" + row[i]["creationTime"] + "\",\"" + row[i]["moneyType"] + "\"";
+                    row[i]["isApproved"] = "True";
+                    newStr = "\"" + row[i]["creditNum"] + "\",\"" + row[i]["amount"] + "\",\"" + row[i]["percent"] + "\",\"" + row[i]["period"] + "\",\"" + row[i]["urName"] + "\",\"" + row[i]["UserID"] + "\",\"" + row[i]["isApproved"] + "\",\"" + row[i]["creationTime"] + "\",\"" + row[i]["moneyType"] + "\"";
+                }
+            }
+
+            string path = "../../Models/Docs/Credits.txt";
+            string str = "";
+            using (StreamReader reader = new StreamReader(path))
+            {
+                str = reader.ReadToEnd();
+            }
+
+            str = str.Replace(replaceStr, newStr);
+
+            using (StreamWriter writer = new StreamWriter(path, false))
+            {
+                writer.WriteLine(str);
+            }
+             
+        }
+
+        public void approveInstalment(string creditNum)
+        {
+            string replaceStr = "";
+            string newStr = "";
+            DataRow[] row = bankData.Data.Tables["InstalmentPayments"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToString(row[i]["creditNum"]) == creditNum)
+                {
+                    replaceStr = "\"" + row[i]["creditNum"] + "\",\"" + row[i]["amount"] + "\",\"" + row[i]["percent"] + "\",\"" + row[i]["period"] + "\",\"" + row[i]["urName"] + "\",\"" + row[i]["UserID"] + "\",\"" + row[i]["isApproved"] + "\",\"" + row[i]["creationTime"] + "\",\"" + row[i]["moneyType"] + "\"";
+                    row[i]["isApproved"] = "True";
+                    newStr = "\"" + row[i]["creditNum"] + "\",\"" + row[i]["amount"] + "\",\"" + row[i]["percent"] + "\",\"" + row[i]["period"] + "\",\"" + row[i]["urName"] + "\",\"" + row[i]["UserID"] + "\",\"" + row[i]["isApproved"] + "\",\"" + row[i]["creationTime"] + "\",\"" + row[i]["moneyType"] + "\"";
+                }
+            }
+
+            string path = "../../Models/Docs/InstalmentPayments.txt";
+            string str = "";
+            using (StreamReader reader = new StreamReader(path))
+            {
+                str = reader.ReadToEnd();
+            }
+
+            str = str.Replace(replaceStr, newStr);
+
+            using (StreamWriter writer = new StreamWriter(path, false))
+            {
+                writer.WriteLine(str);
+            }
+
+        }
+
+        public PayByInstalments findInstalment(string creditNum)
+        {
+            PayByInstalments payByInstalments = new PayByInstalments();
+            DataRow[] row = bankData.Data.Tables["InstalmentPayments"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (creditNum == Convert.ToString(row[i]["creditNum"]))
+                {
+                    payByInstalments.setCreditNum(Convert.ToString(row[i]["creditNum"]));
+                    payByInstalments.setAmount(Convert.ToDouble(row[i]["amount"]));
+                    payByInstalments.setPercent(Convert.ToDouble(row[i]["percent"]));
+                    payByInstalments.setPeriod(Convert.ToInt16(row[i]["period"]));
+                    payByInstalments.setUserID(Convert.ToInt16(row[i]["UserID"]));
+                    payByInstalments.setBank(Convert.ToString(row[i]["urName"]));
+                    payByInstalments.setIsApproved(Convert.ToBoolean(row[i]["isApproved"]));
+                    payByInstalments.setCreationTime(Convert.ToDateTime(row[i]["creationTime"]));
+                    payByInstalments.setMoneyType(Convert.ToString(row[i]["moneyType"]));
+                }
+            }
+
+            return payByInstalments;
         }
 
         public void addInstalmentPayment(double amount, double percent, int period, int UserID, bool isApproved, DateTime creationTime, string moneyType)

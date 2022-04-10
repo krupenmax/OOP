@@ -9,7 +9,6 @@ namespace LB1
     class OperatorController
     {
         Operator oper = new Operator();
-
         public Operator login(string login, string password)
         {
             return oper.login(login, password);

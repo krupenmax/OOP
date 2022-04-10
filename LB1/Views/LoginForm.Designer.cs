@@ -34,6 +34,7 @@
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.AuthorizeBtn = new System.Windows.Forms.Button();
             this.ReturnBtn = new System.Windows.Forms.Button();
+            this.sideSpecialistCheck = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // LoginBox
@@ -71,7 +72,7 @@
             // 
             // AuthorizeBtn
             // 
-            this.AuthorizeBtn.Location = new System.Drawing.Point(225, 158);
+            this.AuthorizeBtn.Location = new System.Drawing.Point(226, 184);
             this.AuthorizeBtn.Name = "AuthorizeBtn";
             this.AuthorizeBtn.Size = new System.Drawing.Size(150, 23);
             this.AuthorizeBtn.TabIndex = 4;
@@ -81,19 +82,31 @@
             // 
             // ReturnBtn
             // 
-            this.ReturnBtn.Location = new System.Drawing.Point(12, 12);
+            this.ReturnBtn.Location = new System.Drawing.Point(226, 228);
             this.ReturnBtn.Name = "ReturnBtn";
-            this.ReturnBtn.Size = new System.Drawing.Size(75, 23);
+            this.ReturnBtn.Size = new System.Drawing.Size(150, 23);
             this.ReturnBtn.TabIndex = 5;
             this.ReturnBtn.Text = "Назад";
             this.ReturnBtn.UseVisualStyleBackColor = true;
             this.ReturnBtn.Click += new System.EventHandler(this.ReturnBtn_Click);
+            // 
+            // sideSpecialistCheck
+            // 
+            this.sideSpecialistCheck.AutoSize = true;
+            this.sideSpecialistCheck.CheckAlign = System.Drawing.ContentAlignment.TopRight;
+            this.sideSpecialistCheck.Location = new System.Drawing.Point(243, 140);
+            this.sideSpecialistCheck.Name = "sideSpecialistCheck";
+            this.sideSpecialistCheck.Size = new System.Drawing.Size(157, 17);
+            this.sideSpecialistCheck.TabIndex = 6;
+            this.sideSpecialistCheck.Text = "Представитель компании";
+            this.sideSpecialistCheck.UseVisualStyleBackColor = true;
             // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(584, 361);
+            this.Controls.Add(this.sideSpecialistCheck);
             this.Controls.Add(this.ReturnBtn);
             this.Controls.Add(this.AuthorizeBtn);
             this.Controls.Add(this.PasswordLabel);
@@ -116,5 +129,6 @@
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Button AuthorizeBtn;
         private System.Windows.Forms.Button ReturnBtn;
+        private System.Windows.Forms.CheckBox sideSpecialistCheck;
     }
 }

@@ -21,3 +21,5 @@ C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\D
 C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.CashOutForm.resources
 C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.SalaryProjectForm.resources
 C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.OperatorForm.resources
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.SideSpecialistForm.resources
+C:\Users\GoodWin\Documents\Visual Studio 2015\Projects\4sem\OP\1LB\LB1\LB1\obj\Debug\LB1.ManagerForm.resources

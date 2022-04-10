@@ -18,6 +18,7 @@ namespace LB1
             tableSet.BuildClientTable();
             tableSet.BuiltCompanyTable();
             tableSet.BuiltBankTable();
+            tableSet.BuildSideSpecialistTable();
             using (GenericParser parser = new GenericParser())
             {
                 parser.SetDataSource("../../Models/Docs/Banks.txt");
@@ -57,6 +58,14 @@ namespace LB1
                     tableSet.Data.Tables["Clients"].Rows.Add(new object[] { Convert.ToInt16(parser["UserID"]), parser["login"], parser["password"], parser["firstName"], parser["secondName"], parser["fatherName"], parser["passportData"], parser["idNumber"], parser["phoneNumber"], parser["email"] });
                 }
 
+                parser.SetDataSource("../../Models/Docs/SideSpecialists.txt");
+
+
+
+                while (parser.Read())
+                {
+                    tableSet.Data.Tables["SideSpecialists"].Rows.Add(new object[] { Convert.ToInt16(parser["UserID"]), parser["login"], parser["password"], parser["firstName"], parser["secondName"], parser["fatherName"], parser["passportData"], parser["idNumber"], parser["phoneNumber"], parser["email"], parser["myCompany"] });
+                }
 
             }
         }
@@ -70,8 +79,18 @@ namespace LB1
                 writer.Write("\n\"" + UserID + "\"" + ",\"" + login + "\"" + ",\"" + password + "\"" + ",\"" + firstName + "\"" + ",\"" + secondName + "\"" + ",\"" + fatherName + "\"" + ",\"" + passportData + "\"" + ",\"" + idNumber + "\"" + ",\"" + phoneNumber + "\"" + ",\"" + email + "\"");
             }
         }
-    
-        
+
+        public void AddSideSpecialist(int UserID, string login, string password, string firstName, string secondName, string fatherName, string passportData, string idNumber, string phoneNumber, string email, string myCompany)
+        {
+            tableSet.Data.Tables["SideSpecialists"].Rows.Add(new object[] { UserID, login, password, firstName, secondName, fatherName, passportData, idNumber, phoneNumber, email, myCompany });
+            string path = "../../Models/Docs/SideSpecialists.txt";
+            using (StreamWriter writer = new StreamWriter(path, true))
+            {
+                writer.Write("\n\"" + UserID + "\"" + ",\"" + login + "\"" + ",\"" + password + "\"" + ",\"" + firstName + "\"" + ",\"" + secondName + "\"" + ",\"" + fatherName + "\"" + ",\"" + passportData + "\"" + ",\"" + idNumber + "\"" + ",\"" + phoneNumber + "\"" + ",\"" + email + "\",\"" + myCompany + "\"");
+            }
+        }
+
+
 
         public Client FindByLogin(string login, string password)
         {

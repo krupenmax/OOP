@@ -41,8 +41,24 @@ namespace LB1
             {
                 if (LoginBox.Text != "" && PasswordBox.Text != "" && FirstNameBox.Text != "" && SecondNameBox.Text != "" && FatherNameBox.Text != "" && PassportDataBox.Text != "" && IdNumberBox.Text != "" && PhoneNumBox.Text != "" && EmailBox.Text != "")
                 {
-                    registrationController.Registrate(LoginBox.Text, PasswordBox.Text, FirstNameBox.Text, SecondNameBox.Text, FatherNameBox.Text, PassportDataBox.Text,
-                        IdNumberBox.Text, PhoneNumBox.Text, EmailBox.Text);
+                    if (checkBox1.Checked == false)
+                    {
+                        registrationController.Registrate(LoginBox.Text, PasswordBox.Text, FirstNameBox.Text, SecondNameBox.Text, FatherNameBox.Text, PassportDataBox.Text,
+                            IdNumberBox.Text, PhoneNumBox.Text, EmailBox.Text);
+                    }
+                    else
+                    {
+                        if (companyNameBox.Text != "")
+                        {
+                            SideSpecialistController sideSpecialistController = new SideSpecialistController();
+                            sideSpecialistController.Registrate(LoginBox.Text, PasswordBox.Text, FirstNameBox.Text, SecondNameBox.Text, FatherNameBox.Text, PassportDataBox.Text,
+                            IdNumberBox.Text, PhoneNumBox.Text, EmailBox.Text, companyNameBox.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Заполните все поля.");
+                        }
+                    }
                     this.Hide();
                     StartForm StartForm = new StartForm();
                     Thread myThread1 = new Thread(StartForm.Open);
@@ -107,6 +123,18 @@ namespace LB1
             myThread1.Start();
             this.Close();
             this.Dispose();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                companyNameBox.Enabled = true;
+            }
+            else
+            {
+                companyNameBox.Enabled = false;
+            }
         }
     }
 }

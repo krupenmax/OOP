@@ -50,11 +50,14 @@
             this.PhoneNumBox = new System.Windows.Forms.MaskedTextBox();
             this.EmailBox = new System.Windows.Forms.MaskedTextBox();
             this.IdNumberBox = new System.Windows.Forms.MaskedTextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.companyNameBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // RegistrateButton
             // 
-            this.RegistrateButton.Location = new System.Drawing.Point(227, 326);
+            this.RegistrateButton.Location = new System.Drawing.Point(231, 348);
             this.RegistrateButton.Name = "RegistrateButton";
             this.RegistrateButton.Size = new System.Drawing.Size(130, 23);
             this.RegistrateButton.TabIndex = 11;
@@ -238,11 +241,44 @@
             this.IdNumberBox.Size = new System.Drawing.Size(100, 20);
             this.IdNumberBox.TabIndex = 23;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1.Location = new System.Drawing.Point(387, 291);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkBox1.Size = new System.Drawing.Size(157, 17);
+            this.checkBox1.TabIndex = 24;
+            this.checkBox1.Text = "Представитель компании";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
+            // companyNameBox
+            // 
+            this.companyNameBox.Enabled = false;
+            this.companyNameBox.Location = new System.Drawing.Point(444, 314);
+            this.companyNameBox.Name = "companyNameBox";
+            this.companyNameBox.Size = new System.Drawing.Size(100, 20);
+            this.companyNameBox.TabIndex = 25;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(261, 314);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 13);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Компания:";
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(584, 414);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.companyNameBox);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.IdNumberBox);
             this.Controls.Add(this.EmailBox);
             this.Controls.Add(this.PhoneNumBox);
@@ -298,5 +334,8 @@
         private System.Windows.Forms.MaskedTextBox PhoneNumBox;
         private System.Windows.Forms.MaskedTextBox EmailBox;
         private System.Windows.Forms.MaskedTextBox IdNumberBox;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TextBox companyNameBox;
+        private System.Windows.Forms.Label label3;
     }
 }

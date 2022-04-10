@@ -23,5 +23,20 @@ namespace LB1
         {
             return database.getCompany(urName);
         }
+
+        public SalaryProject getSalaryProject(int ID, string companyName)
+        {
+            return getCompany(companyName).getSalaryProject(ID);
+        }
+
+        public void approveSalaryProject(int ID, string companyName)
+        {
+            getCompany(companyName).approveSalaryProject(ID);
+        }
+
+        public void deleteSalaryProject(int ID, string companyName)
+        {
+            getCompany(companyName).deleteSalaryProject(ID);
+        }
     }
 }

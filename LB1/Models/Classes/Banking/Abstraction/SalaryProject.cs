@@ -14,6 +14,17 @@ namespace LB1
         double amount;
         bool isApproved;
         int UserID;
+        string moneyType;
+
+        public string getMoneyType()
+        {
+            return moneyType;
+        }
+
+        public void setMoneyType(string moneyType)
+        {
+            this.moneyType = moneyType;
+        }
 
         public int getUserID()
         {

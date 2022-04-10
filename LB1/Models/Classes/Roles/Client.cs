@@ -103,7 +103,7 @@ namespace LB1
             DataRow[] row = bank.getBankData().Data.Tables["Credits"].Select();
             for (int i = 0; i < row.Length; i++)
             {
-                if (Convert.ToInt16(row[i]["UserID"]) == UserID)
+                if (Convert.ToInt16(row[i]["UserID"]) == UserID + 1)
                 {
                     ClientTables.Data.Tables["Credits"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"], row[i]["moneyType"] });
                 }
@@ -115,7 +115,7 @@ namespace LB1
             DataRow[] row = bank.getBankData().Data.Tables["InstalmentPayments"].Select();
             for (int i = 0; i < row.Length; i++)
             {
-                if (Convert.ToInt16(row[i]["UserID"]) == UserID)
+                if (Convert.ToInt16(row[i]["UserID"]) == UserID + 1)
                 {
                     ClientTables.Data.Tables["InstalmentPayments"].Rows.Add(new object[] { row[i]["creditNum"], row[i]["amount"], row[i]["percent"], row[i]["period"], bank.getUrName(), UserID, row[i]["isApproved"], row[i]["creationTime"], row[i]["moneyType"] });
                 }
@@ -228,7 +228,7 @@ namespace LB1
         public void addSalaryProject(Company company)
         {
             DataRow[] row = company.getCompanyTables().Data.Tables["SalaryProjects"].Select();
-            ClientTables.Data.Tables["SalaryProjects"].Rows.Add(new object[] { row[row.Length - 1]["ID"], row[row.Length - 1]["companyName"], row[row.Length - 1]["period"], row[row.Length - 1]["amount"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["UserID"] });
+            ClientTables.Data.Tables["SalaryProjects"].Rows.Add(new object[] { row[row.Length - 1]["ID"], row[row.Length - 1]["companyName"], row[row.Length - 1]["period"], row[row.Length - 1]["amount"], row[row.Length - 1]["isApproved"], row[row.Length - 1]["UserID"], row[row.Length - 1]["moneyType"] });
         }
 
         public Credit getActiveCredit(string creditNum, string urName)

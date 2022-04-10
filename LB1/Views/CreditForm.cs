@@ -33,6 +33,7 @@ namespace LB1
             periodBox.Items.Add("6 месяца");
             periodBox.Items.Add("12 месяца");
             periodBox.Items.Add("24 месяца");
+            periodBox.Items.Add("24+ месяца");
             pickBox.Items.Add("Кредит");
             pickBox.Items.Add("Рассрочка");
             this.homeForm = homeForm;
@@ -52,12 +53,28 @@ namespace LB1
         {
             string period = "";
             int i = 0;
-            while(periodBox.Text[i] != ' ')
+            if (periodBox.Text == "24+ месяца")
             {
-                period += periodBox.Text[i];
-                i++;
+                double num = 0.0;
+                if (Double.TryParse(periodAd.Text, out num))
+                {
+                    return Convert.ToInt16(periodAd.Text);
+                }
+                else
+                {
+                    MessageBox.Show("Введите цифры.");
+                    return 0;
+                }
             }
-            return Convert.ToInt16(period);
+            else
+            {
+                while (periodBox.Text[i] != ' ')
+                {
+                    period += periodBox.Text[i];
+                    i++;
+                }
+                return Convert.ToInt16(period);
+            }
         }
 
         public double getPercent()
@@ -85,38 +102,61 @@ namespace LB1
         {
             if (pickBox.Text != "" && amountBox.Text != "" && periodBox.Text != "" && percentBox.Text != "" && moneyTypeBox.Text != "" && bankBox.Text != "")
             {
-                double num = 0.0;
-                if (double.TryParse(amountBox.Text, out num))
+                if ((periodAd.Visible == true && periodAd.Text != "") || periodAd.Visible == false)
                 {
-                    if (pickBox.Text == "Кредит")
+                    double num2 = 0.0;
+                    if (double.TryParse(periodAd.Text, out num2))
                     {
-                        bankController.getBank(bankBox.Text).addCredit(Convert.ToDouble(amountBox.Text), getPercent(), getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now, moneyTypeBox.Text);
-                        clientController.addCreditToClient(bankController.getBank(bankBox.Text));
-                        
-                        MessageBox.Show("Кредит успешно оформлен");
-                        InfoBox.Items.Clear();
-                        creditController.getCreditsToBox(InfoBox);
-                        amountInfoBox.Text = "";
-                        percentInfoBox.Text = "";
-                        periodInfoBox.Text = "";
-                        creationTimeInfoBox.Text = "";
+                        if (Convert.ToInt16(periodAd.Text) >= 24)
+                        {
+                            double num = 0.0;
+                            if (double.TryParse(amountBox.Text, out num))
+                            {
+                                if (pickBox.Text == "Кредит")
+                                {
+                                    bankController.getBank(bankBox.Text).addCredit(Convert.ToDouble(amountBox.Text), getPercent(), getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now, moneyTypeBox.Text);
+                                    clientController.addCreditToClient(bankController.getBank(bankBox.Text));
+
+                                    MessageBox.Show("Кредит успешно оформлен");
+                                    InfoBox.Items.Clear();
+                                    creditController.getCreditsToBox(InfoBox);
+                                    amountInfoBox.Text = "";
+                                    percentInfoBox.Text = "";
+                                    periodInfoBox.Text = "";
+                                    creationTimeInfoBox.Text = "";
+                                }
+                                else
+                                {
+                                    bankController.getBank(bankBox.Text).addInstalmentPayment(Convert.ToDouble(amountBox.Text), 0, getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now, moneyTypeBox.Text);
+                                    clientController.addInstalmentPaymentToClient(bankController.getBank(bankBox.Text));
+                                    MessageBox.Show("Рассрочка успешно оформлена ");
+                                    InstalInfoBox.Items.Clear();
+                                    instalmentController.getInstalmentPaymentsToBox(InstalInfoBox);
+                                    amountInfoBox.Text = "";
+                                    percentInfoBox.Text = "";
+                                    periodInfoBox.Text = "";
+                                    creationTimeInfoBox.Text = "";
+                                }
+                            }
+
+                            else
+                            {
+                                MessageBox.Show("Вводите только цифры в поле сумма.");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Введите число более 24");
+                        }
                     }
                     else
                     {
-                        bankController.getBank(bankBox.Text).addInstalmentPayment(Convert.ToDouble(amountBox.Text), 0, getPeriod(), clientController.ActiveClient.getUserId(), false, DateTime.Now, moneyTypeBox.Text);
-                        clientController.addInstalmentPaymentToClient(bankController.getBank(bankBox.Text));
-                        MessageBox.Show("Рассрочка успешно оформлена ");
-                        InstalInfoBox.Items.Clear();
-                        instalmentController.getInstalmentPaymentsToBox(InstalInfoBox);
-                        amountInfoBox.Text = "";
-                        percentInfoBox.Text = "";
-                        periodInfoBox.Text = "";
-                        creationTimeInfoBox.Text = "";
+                        MessageBox.Show("Введите только цифры в поле период");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Вводите только цифры в поле сумма.");
+                    MessageBox.Show("Заполните все поля.");
                 }
             }
             else
@@ -127,9 +167,20 @@ namespace LB1
 
         private void periodBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (pickBox.Text == "Кредит")
+            if (periodBox.Text == "24+ месяца")
             {
-                percentBox.Text = Convert.ToString(getPercent());
+                periodLabel.Visible = true;
+                periodAd.Visible = true;
+                percentBox.Text = "15";
+            }
+            else
+            {
+                if (pickBox.Text == "Кредит")
+                {
+                    percentBox.Text = Convert.ToString(getPercent());
+                }
+                periodLabel.Visible = false;
+                periodAd.Visible = false;
             }
         }
 
@@ -192,6 +243,8 @@ namespace LB1
             percentInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getPercent());
             periodInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getPeriod());
             creationTimeInfoBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getCreationTime());
+            isApprovedBox.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getIsApproved());
+            moneyTypeCredit.Text = Convert.ToString(creditController.getActiveCredit(creditNum, urName).getMoneyType());
             InstalInfoBox.Text = "";
             InstalInfoBox.Items.Clear();
             instalmentController.getInstalmentPaymentsToBox(InstalInfoBox);
@@ -236,6 +289,8 @@ namespace LB1
             percentInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getPercent());
             periodInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getPeriod());
             creationTimeInfoBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getCreationTime());
+            isApprovedBox.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getIsApproved());
+            moneyTypeCredit.Text = Convert.ToString(creditController.getActivePayment(creditNum, urName).getMoneyType());
             InfoBox.Items.Clear();
             creditController.getCreditsToBox(InfoBox);
             InfoBox.Text = "";
