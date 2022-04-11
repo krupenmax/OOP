@@ -1,5 +1,2 @@
 ID,companyName,period,amount,isApproved,UserID,moneyType
-
-
-
-
+"10","Евроопт","6","300","False","1","EUR"

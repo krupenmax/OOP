@@ -101,7 +101,7 @@ namespace LB1
         {
             using (StreamWriter writer = new StreamWriter("../../Models/Docs/SideSpecialistLogs.txt", true))
             {
-                writer.WriteLine(DateTime.Now + ": " + getLogin() + " подал заявку на зарплатный проект под номером №" + Convert.ToString(ID));
+                writer.Write(DateTime.Now + ": " + getLogin() + " подал заявку на зарплатный проект под номером №" + Convert.ToString(ID) + "\n");
             }
         }
 

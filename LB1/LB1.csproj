@@ -78,6 +78,7 @@
     <Compile Include="Models\Classes\Banking\Abstraction\PayByInstalments.cs" />
     <Compile Include="Models\Classes\Roles\SideSpecialist.cs" />
     <Compile Include="Models\Classes\Banking\Abstraction\Transfer.cs" />
+    <Compile Include="Models\Database\Encrypter.cs" />
     <Compile Include="Models\Database\TableSet.cs" />
     <Compile Include="Models\Database\Database.cs" />
     <Compile Include="Models\Classes\Banking\Abstraction\Company.cs" />

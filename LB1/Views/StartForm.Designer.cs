@@ -35,7 +35,7 @@
             // 
             // RegisterButton
             // 
-            this.RegisterButton.Location = new System.Drawing.Point(225, 100);
+            this.RegisterButton.Location = new System.Drawing.Point(128, 77);
             this.RegisterButton.Name = "RegisterButton";
             this.RegisterButton.Size = new System.Drawing.Size(150, 30);
             this.RegisterButton.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(225, 150);
+            this.LoginButton.Location = new System.Drawing.Point(128, 127);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(150, 30);
             this.LoginButton.TabIndex = 3;
@@ -55,7 +55,7 @@
             // 
             // killBtn
             // 
-            this.killBtn.Location = new System.Drawing.Point(225, 200);
+            this.killBtn.Location = new System.Drawing.Point(128, 177);
             this.killBtn.Name = "killBtn";
             this.killBtn.Size = new System.Drawing.Size(150, 33);
             this.killBtn.TabIndex = 4;
@@ -67,7 +67,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 361);
+            this.ClientSize = new System.Drawing.Size(410, 306);
             this.Controls.Add(this.killBtn);
             this.Controls.Add(this.LoginButton);
             this.Controls.Add(this.RegisterButton);

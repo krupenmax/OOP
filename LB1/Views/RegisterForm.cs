@@ -136,5 +136,10 @@ namespace LB1
                 companyNameBox.Enabled = false;
             }
         }
+
+        private void PassportDataBox_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }

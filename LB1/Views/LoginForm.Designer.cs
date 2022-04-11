@@ -97,7 +97,7 @@
             this.sideSpecialistCheck.Location = new System.Drawing.Point(243, 140);
             this.sideSpecialistCheck.Name = "sideSpecialistCheck";
             this.sideSpecialistCheck.Size = new System.Drawing.Size(157, 17);
-            this.sideSpecialistCheck.TabIndex = 6;
+            this.sideSpecialistCheck.TabIndex = 2;
             this.sideSpecialistCheck.Text = "Представитель компании";
             this.sideSpecialistCheck.UseVisualStyleBackColor = true;
             // 

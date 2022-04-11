@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using System.Data;
 using GenericParsing;
 using System.IO;
+using System.Threading;
 namespace LB1
 {
     public class Database
     {
         public TableSet tableSet = new TableSet();
         public Bank[] BankSet = new Bank[3];
+        public string key = "b14ca5898a4e4133bbce2ea2315a1916";
 
         public void GetData()
         {
@@ -107,6 +109,7 @@ namespace LB1
                 NewClient.setIdNumber(Convert.ToString(row[0]["idNumber"]));
                 NewClient.setPhoneNumber(Convert.ToString(row[0]["phoneNumber"]));
                 NewClient.setEmail(Convert.ToString(row[0]["email"]));
+                NewClient.setUserId(Convert.ToInt16(row[0]["UserID"]));
             }
             return NewClient;
         }

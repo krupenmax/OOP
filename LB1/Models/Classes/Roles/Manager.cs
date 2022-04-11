@@ -83,7 +83,7 @@ namespace LB1
             switch (actionDecider)
             {
                 case "создал":
-                    cancelAcc();
+                    cancelAcc(log);
                     break;
                 case "запросил":
                     cancelTransfer(log);
@@ -119,8 +119,118 @@ namespace LB1
             }
         }
 
-        public void cancelAcc()
+        public void cancelAcc(string log)
         {
+            int count = 0;
+            while (log[count] != '"')
+            {
+                count++;
+            }
+            count++;
+
+            string bankName = "";
+            while (log[count] != '"')
+            {
+                bankName += log[count];
+                count++;
+            }
+
+            string accNum = "";
+            while (log[count] != '№')
+            {
+                count++;
+            }
+            count++;
+            for (int i = count; i < log.Length; i++)
+            {
+                accNum += log[i];
+            }
+
+            int Length = 0;
+            using (GenericParser parser = new GenericParser())
+            {
+                parser.SetDataSource("../../Models/Docs/Accounts.txt");
+
+                while (parser.Read())
+                {
+                    Length++;
+                }
+            }
+
+            string[] acc = new string[Length - 1];
+            using (GenericParser parser = new GenericParser())
+            {
+                parser.SetDataSource("../../Models/Docs/Accounts.txt");
+                int i = 0;
+                while (parser.Read())
+                {
+                    if (parser[0] != bankName || parser[1] != accNum)
+                    {
+                        for (int j = 0; j < 7; j++)
+                        {
+                            if (j == 0)
+                            {
+                                acc[i] += "\"" + parser[j] + "\"";
+                            }
+                            else
+                            {
+                                if (j == 6)
+                                {
+                                    acc[i] += ",\"" + parser[j] + "\"";
+                                }
+                                else
+                                {
+                                    acc[i] += ",\"" + parser[j] + "\"";
+                                }
+                            }
+                        }
+                        i++;
+                    }
+                }
+            }
+
+            using (StreamWriter writer = new StreamWriter("../../Models/Docs/Accounts.txt", false))
+            {
+                for (int i = 0; i< acc.Length; i++)
+                {
+                    writer.WriteLine(acc[i]);
+                }
+            }
+
+            int counter = 0;
+            using (GenericParser parser = new GenericParser())
+            {
+                parser.SetDataSource("../../Models/Docs/SideSpecialistLogs.txt");
+
+                while (parser.Read())
+                {
+                    counter++;
+                }
+            }
+
+            string[] str2 = new string[counter - 1];
+
+            using (GenericParser parser = new GenericParser())
+            {
+                parser.SetDataSource("../../Models/Docs/SideSpecialistLogs.txt");
+                int i = 0;
+                while (parser.Read())
+                {
+                    if (parser[0].Contains(log) == false)
+                    {
+                        str2[i] = parser[0];
+                        i++;
+                    }
+                }
+            }
+
+            using (StreamWriter writer = new StreamWriter("../../Models/Docs/SideSpecialistLogs.txt", false))
+            {
+                for (int i = 0; i < str2.Length; i++)
+                {
+                    writer.WriteLine(str2[i]);
+                }
+            }
 
         }
 
@@ -185,7 +295,7 @@ namespace LB1
             {
                 if (Convert.ToString(row[i]["ID"]) == salaryID)
                 {
-                    replaceStr = "\"" + row[i]["ID"] + "\",\"" + row[i]["companyName"] + "\",\"" + row[i]["period"] + "\",\"" + row[i]["amount"] + "\",\"" + row[i]["isApproved"] + "\",\"" + row[i]["UserID"] + "\",\"" + row[i]["moneyType"] + "\"";
+                    replaceStr = "\"" + row[i]["ID"] + "\",\"" + row[i]["companyName"] + "\",\"" + row[i]["period"] + "\",\"" + row[i]["amount"] + "\",\"" + row[i]["isApproved"] + "\",\"" + row[i]["UserID"] + "\",\"" + row[i]["moneyType"] + "\""; 
                     row[i].Delete();
                     sideSpecialist.SideSpecialistTables.Data.Tables["SalaryProjects"].AcceptChanges();
                     break;
@@ -201,23 +311,44 @@ namespace LB1
 
             str = str.Replace(replaceStr, "");
 
-            using (StreamWriter writer = new StreamWriter(path, false))
+            using (StreamWriter writer = new StreamWriter("../../Models/Docs/SideSpecialistSlrPrjcts.txt", false))
             {
                 writer.WriteLine(str);
             }
 
-            path = "../../Models/Docs/SideSpecialistLogs.txt";
-            str = "";
-            using (StreamReader reader = new StreamReader(path))
+            int counter = 0;
+            using (GenericParser parser = new GenericParser())
             {
-                str = reader.ReadToEnd();
+                parser.SetDataSource("../../Models/Docs/SideSpecialistLogs.txt");
+                                
+                while (parser.Read())
+                {
+                    counter++;
+                }
             }
 
-            str = str.Replace(replaceStr, "");
+            string[] str2 = new string[counter - 1];
 
-            using (StreamWriter writer = new StreamWriter(path, false))
+            using (GenericParser parser = new GenericParser())
             {
-                writer.WriteLine(str);
+                parser.SetDataSource("../../Models/Docs/SideSpecialistLogs.txt");
+                int i = 0;
+                while (parser.Read())
+                {
+                    if (parser[0].Contains(log) == false)
+                    {
+                        str2[i] = parser[0];
+                        i++;
+                    }                    
+                }
+            }
+
+            using (StreamWriter writer = new StreamWriter("../../Models/Docs/SideSpecialistLogs.txt", false))
+            {
+                for (int i = 0; i < str2.Length; i++)
+                {
+                    writer.WriteLine(str2[i]);
+                }
             }
         }
     }

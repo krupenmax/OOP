@@ -57,17 +57,17 @@
             // 
             // RegistrateButton
             // 
-            this.RegistrateButton.Location = new System.Drawing.Point(231, 348);
+            this.RegistrateButton.Location = new System.Drawing.Point(123, 355);
             this.RegistrateButton.Name = "RegistrateButton";
             this.RegistrateButton.Size = new System.Drawing.Size(130, 23);
-            this.RegistrateButton.TabIndex = 11;
+            this.RegistrateButton.TabIndex = 12;
             this.RegistrateButton.Text = "Зарегистрироваться";
             this.RegistrateButton.UseVisualStyleBackColor = true;
             this.RegistrateButton.Click += new System.EventHandler(this.RegistrateButton_Click);
             // 
             // FirstNameBox
             // 
-            this.FirstNameBox.Location = new System.Drawing.Point(444, 107);
+            this.FirstNameBox.Location = new System.Drawing.Point(276, 107);
             this.FirstNameBox.Name = "FirstNameBox";
             this.FirstNameBox.Size = new System.Drawing.Size(100, 20);
             this.FirstNameBox.TabIndex = 4;
@@ -75,7 +75,7 @@
             // FirstNameLabel
             // 
             this.FirstNameLabel.AutoSize = true;
-            this.FirstNameLabel.Location = new System.Drawing.Point(266, 110);
+            this.FirstNameLabel.Location = new System.Drawing.Point(69, 114);
             this.FirstNameLabel.Name = "FirstNameLabel";
             this.FirstNameLabel.Size = new System.Drawing.Size(29, 13);
             this.FirstNameLabel.TabIndex = 2;
@@ -84,7 +84,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(266, 137);
+            this.label1.Location = new System.Drawing.Point(69, 141);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 3;
@@ -93,7 +93,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(266, 164);
+            this.label2.Location = new System.Drawing.Point(69, 168);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 4;
@@ -101,14 +101,14 @@
             // 
             // SecondNameBox
             // 
-            this.SecondNameBox.Location = new System.Drawing.Point(444, 134);
+            this.SecondNameBox.Location = new System.Drawing.Point(276, 134);
             this.SecondNameBox.Name = "SecondNameBox";
             this.SecondNameBox.Size = new System.Drawing.Size(100, 20);
             this.SecondNameBox.TabIndex = 5;
             // 
             // FatherNameBox
             // 
-            this.FatherNameBox.Location = new System.Drawing.Point(444, 161);
+            this.FatherNameBox.Location = new System.Drawing.Point(276, 161);
             this.FatherNameBox.Name = "FatherNameBox";
             this.FatherNameBox.Size = new System.Drawing.Size(100, 20);
             this.FatherNameBox.TabIndex = 6;
@@ -116,7 +116,7 @@
             // PassportDataLabel
             // 
             this.PassportDataLabel.AutoSize = true;
-            this.PassportDataLabel.Location = new System.Drawing.Point(266, 190);
+            this.PassportDataLabel.Location = new System.Drawing.Point(69, 194);
             this.PassportDataLabel.Name = "PassportDataLabel";
             this.PassportDataLabel.Size = new System.Drawing.Size(132, 13);
             this.PassportDataLabel.TabIndex = 8;
@@ -125,7 +125,7 @@
             // IdNumberLabel
             // 
             this.IdNumberLabel.AutoSize = true;
-            this.IdNumberLabel.Location = new System.Drawing.Point(266, 216);
+            this.IdNumberLabel.Location = new System.Drawing.Point(69, 220);
             this.IdNumberLabel.Name = "IdNumberLabel";
             this.IdNumberLabel.Size = new System.Drawing.Size(149, 13);
             this.IdNumberLabel.TabIndex = 12;
@@ -134,7 +134,7 @@
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(266, 268);
+            this.EmailLabel.Location = new System.Drawing.Point(69, 272);
             this.EmailLabel.Name = "EmailLabel";
             this.EmailLabel.Size = new System.Drawing.Size(35, 13);
             this.EmailLabel.TabIndex = 13;
@@ -143,7 +143,7 @@
             // PhoneNumLabel
             // 
             this.PhoneNumLabel.AutoSize = true;
-            this.PhoneNumLabel.Location = new System.Drawing.Point(266, 242);
+            this.PhoneNumLabel.Location = new System.Drawing.Point(69, 246);
             this.PhoneNumLabel.Name = "PhoneNumLabel";
             this.PhoneNumLabel.Size = new System.Drawing.Size(52, 13);
             this.PhoneNumLabel.TabIndex = 14;
@@ -151,7 +151,7 @@
             // 
             // PasswordBox
             // 
-            this.PasswordBox.Location = new System.Drawing.Point(444, 53);
+            this.PasswordBox.Location = new System.Drawing.Point(276, 53);
             this.PasswordBox.Name = "PasswordBox";
             this.PasswordBox.PasswordChar = '*';
             this.PasswordBox.Size = new System.Drawing.Size(100, 20);
@@ -159,7 +159,7 @@
             // 
             // LoginBox
             // 
-            this.LoginBox.Location = new System.Drawing.Point(444, 27);
+            this.LoginBox.Location = new System.Drawing.Point(276, 27);
             this.LoginBox.Name = "LoginBox";
             this.LoginBox.Size = new System.Drawing.Size(100, 20);
             this.LoginBox.TabIndex = 1;
@@ -167,7 +167,7 @@
             // LoginLabel
             // 
             this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(266, 30);
+            this.LoginLabel.Location = new System.Drawing.Point(69, 34);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(38, 13);
             this.LoginLabel.TabIndex = 17;
@@ -176,7 +176,7 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(266, 56);
+            this.PasswordLabel.Location = new System.Drawing.Point(69, 60);
             this.PasswordLabel.Name = "PasswordLabel";
             this.PasswordLabel.Size = new System.Drawing.Size(45, 13);
             this.PasswordLabel.TabIndex = 18;
@@ -184,7 +184,7 @@
             // 
             // ConfirmBox
             // 
-            this.ConfirmBox.Location = new System.Drawing.Point(444, 81);
+            this.ConfirmBox.Location = new System.Drawing.Point(276, 81);
             this.ConfirmBox.Name = "ConfirmBox";
             this.ConfirmBox.PasswordChar = '*';
             this.ConfirmBox.Size = new System.Drawing.Size(100, 20);
@@ -193,7 +193,7 @@
             // ConfirmLabel
             // 
             this.ConfirmLabel.AutoSize = true;
-            this.ConfirmLabel.Location = new System.Drawing.Point(266, 84);
+            this.ConfirmLabel.Location = new System.Drawing.Point(69, 88);
             this.ConfirmLabel.Name = "ConfirmLabel";
             this.ConfirmLabel.Size = new System.Drawing.Size(112, 13);
             this.ConfirmLabel.TabIndex = 20;
@@ -202,25 +202,26 @@
             // 
             // BackBtn
             // 
-            this.BackBtn.Location = new System.Drawing.Point(12, 25);
+            this.BackBtn.Location = new System.Drawing.Point(123, 395);
             this.BackBtn.Name = "BackBtn";
-            this.BackBtn.Size = new System.Drawing.Size(75, 23);
-            this.BackBtn.TabIndex = 21;
+            this.BackBtn.Size = new System.Drawing.Size(130, 23);
+            this.BackBtn.TabIndex = 13;
             this.BackBtn.Text = "Назад";
             this.BackBtn.UseVisualStyleBackColor = true;
             this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
             // 
             // PassportDataBox
             // 
-            this.PassportDataBox.Location = new System.Drawing.Point(444, 187);
+            this.PassportDataBox.Location = new System.Drawing.Point(276, 187);
             this.PassportDataBox.Mask = ">LL0000000";
             this.PassportDataBox.Name = "PassportDataBox";
             this.PassportDataBox.Size = new System.Drawing.Size(100, 20);
             this.PassportDataBox.TabIndex = 7;
+            this.PassportDataBox.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.PassportDataBox_MaskInputRejected);
             // 
             // PhoneNumBox
             // 
-            this.PhoneNumBox.Location = new System.Drawing.Point(444, 239);
+            this.PhoneNumBox.Location = new System.Drawing.Point(276, 239);
             this.PhoneNumBox.Mask = "+375(00) 000-00-00";
             this.PhoneNumBox.Name = "PhoneNumBox";
             this.PhoneNumBox.Size = new System.Drawing.Size(100, 20);
@@ -228,28 +229,28 @@
             // 
             // EmailBox
             // 
-            this.EmailBox.Location = new System.Drawing.Point(444, 265);
+            this.EmailBox.Location = new System.Drawing.Point(276, 265);
             this.EmailBox.Name = "EmailBox";
             this.EmailBox.Size = new System.Drawing.Size(100, 20);
-            this.EmailBox.TabIndex = 22;
+            this.EmailBox.TabIndex = 10;
             // 
             // IdNumberBox
             // 
-            this.IdNumberBox.Location = new System.Drawing.Point(444, 213);
+            this.IdNumberBox.Location = new System.Drawing.Point(276, 213);
             this.IdNumberBox.Mask = ">0000000L000LL0";
             this.IdNumberBox.Name = "IdNumberBox";
             this.IdNumberBox.Size = new System.Drawing.Size(100, 20);
-            this.IdNumberBox.TabIndex = 23;
+            this.IdNumberBox.TabIndex = 8;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
             this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1.Location = new System.Drawing.Point(387, 291);
+            this.checkBox1.Location = new System.Drawing.Point(219, 291);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.checkBox1.Size = new System.Drawing.Size(157, 17);
-            this.checkBox1.TabIndex = 24;
+            this.checkBox1.TabIndex = 11;
             this.checkBox1.Text = "Представитель компании";
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
@@ -257,7 +258,7 @@
             // companyNameBox
             // 
             this.companyNameBox.Enabled = false;
-            this.companyNameBox.Location = new System.Drawing.Point(444, 314);
+            this.companyNameBox.Location = new System.Drawing.Point(276, 314);
             this.companyNameBox.Name = "companyNameBox";
             this.companyNameBox.Size = new System.Drawing.Size(100, 20);
             this.companyNameBox.TabIndex = 25;
@@ -265,7 +266,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(261, 314);
+            this.label3.Location = new System.Drawing.Point(64, 318);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(61, 13);
             this.label3.TabIndex = 26;
@@ -275,7 +276,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 414);
+            this.ClientSize = new System.Drawing.Size(433, 456);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.companyNameBox);
             this.Controls.Add(this.checkBox1);

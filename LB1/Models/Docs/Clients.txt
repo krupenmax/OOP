@@ -1,4 +1,4 @@
-﻿UserID,login,password,firstName,secondName,fatherName,passportData,idNumber,phoneNumber,email
-"1","KrupenMax","qwerty","Максим","Крупень","Дмитриевич","MC1234576","31525353","+375296116650","krupendeu@gmail.com"
-"2","Pro100Kirill4k","qwerty123","Кирилл","Тиханович","Сергеевич","MC222222","21141414","+375333784921","tihanovich@gmail.com"
-"3","Denisero21","1","Денис","Ерощенко","Юрьевич","rk31414","14124124","+342325253","Loh@gmail.com"
+UserID,login,password,firstName,secondName,fatherName,passportData,idNumber,phoneNumber,email
+"1","KrupenMax","qwerty","Max","Krupen","Dzmitrievitch","MK4141241","4124124J122JJ4","+375(29) 611-66-50","aefaef"
+"2","Kirill","123","srgkskg","ke","kg","MM311313","3131311J313JL1","+375(29) 129-41-92","aefaef"
+"3","Dima","123","Dima","Krupen","mkgse","IJ1313131","3113131N133KM3","+375(29) 124-91-24","efaef"
