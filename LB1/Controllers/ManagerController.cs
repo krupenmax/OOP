@@ -18,5 +18,10 @@ namespace LB1
         {
             manager.getSideSpecialistLogs(listBox);
         }
+
+        public void cancelAction(System.Windows.Forms.ListBox listBox)
+        {
+            manager.cancelAction(listBox);
+        }
     }
 }

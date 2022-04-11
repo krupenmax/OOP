@@ -3,9 +3,3 @@ ID,companyName,period,amount,isApproved,UserID,moneyType
 
 
 
-
-
-
-
-
-"9","Евроопт","12","200","False","1","EUR"

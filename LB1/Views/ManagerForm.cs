@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using GenericParsing;
 using System.Threading;
+using System.IO;
 
 namespace LB1
 {
@@ -221,15 +222,7 @@ namespace LB1
 
         private void cancelSideSpecialistBtn_Click(object sender, EventArgs e)
         {
-            string log = Convert.ToString(sideSpecialistLogBox.SelectedItem);
-            int count = 21;
-            string login = "";
-            while (log[count] != ' ')
-            {
-                login += log[count];
-                count++;
-            }
-
+            managerController.cancelAction(sideSpecialistLogBox);
         }
     }
 }

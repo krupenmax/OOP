@@ -133,6 +133,30 @@ namespace LB1
             return NewClient;
         }
 
+        public SideSpecialist FindSideSpecialist(string login)
+        {
+            SideSpecialist newSpecialist = new SideSpecialist();
+            DataRow[] row = tableSet.Data.Tables["SideSpecialists"].Select();
+            for (int i = 0; i < row.Length; i++)
+            {
+                if (Convert.ToString(row[i]["login"]) == login)
+                {
+                    newSpecialist.setLogin(Convert.ToString(row[0]["login"]));
+                    newSpecialist.setPassword(Convert.ToString(row[0]["password"]));
+                    newSpecialist.setFirstName(Convert.ToString(row[0]["firstName"]));
+                    newSpecialist.setSecondName(Convert.ToString(row[0]["secondName"]));
+                    newSpecialist.setFatherName(Convert.ToString(row[0]["fatherName"]));
+                    newSpecialist.setPassportData(Convert.ToString(row[0]["passportData"]));
+                    newSpecialist.setIdNumber(Convert.ToString(row[0]["idNumber"]));
+                    newSpecialist.setPhoneNumber(Convert.ToString(row[0]["phoneNumber"]));
+                    newSpecialist.setEmail(Convert.ToString(row[0]["email"]));
+                    CompaniesController companyController = new CompaniesController();
+                    newSpecialist.setMyCompany(companyController.getCompany(Convert.ToString(row[0]["myCompany"])));
+                }
+            }
+            return newSpecialist;
+        }
+
         public void SetBanks(System.Windows.Forms.ComboBox comboBox)
         {
             DataRow[] row = tableSet.Data.Tables["Banks"].Select();

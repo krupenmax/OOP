@@ -9,5 +9,5 @@ ID,companyName,period,amount,isApproved,UserID,moneyType
 "2","Белмаркет","6","340","False","1","EUR"
 "7","Евроопт","6","333","True","1","EUR"
 "8","Евроопт","6","333","True","1","USD"
-
 "9","Евроопт","12","200","False","1","EUR"
+"10","Евроопт","6","300","False","1","EUR"

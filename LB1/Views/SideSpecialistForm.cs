@@ -83,8 +83,8 @@ namespace LB1
         }
 
 
-        public delegate void transferLog(string accNum, string urName);
-        public static event transferLog getTransferLog;
+        //public delegate void transferLog(string accNum, string urName);
+        //public static event transferLog getTransferLog;
 
         public void getTransferLogs(string accNum, string urName)
         {
@@ -116,9 +116,7 @@ namespace LB1
                 writer.WriteLine(str);
             }
 
-            getTransferLog += getTransferLogs;
-            getTransferLog?.Invoke(accNum, urName);
-            getTransferLog -= getTransferLogs;
+            
             MessageBox.Show("Заявка отправлена.");
         }
     }
