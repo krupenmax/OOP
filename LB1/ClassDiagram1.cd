@@ -183,6 +183,13 @@
   </Class>
   <Class Name="LB1.Client" Collapsed="true">
     <Position X="3" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Delegate Name="LB1.Client.log" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Models\Classes\Roles\Client.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
     <TypeIdentifier>
       <HashCode>iMAAAIABCAFAAA7kAAAAIAiEAECAAAAAgIAKAIkEIAg=</HashCode>
       <FileName>Models\Classes\Roles\Client.cs</FileName>
@@ -213,7 +220,7 @@
   <Class Name="LB1.Database" Collapsed="true">
     <Position X="7.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAABAEAAAAAECAAAAAAAAIAAgAACAADACAAAAAgA=</HashCode>
+      <HashCode>AAAAAABAEAAAEAECAAAEAAAAIAAgAACAADACAAAAAgA=</HashCode>
       <FileName>Models\Database\Database.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -297,7 +304,7 @@
   <Class Name="LB1.RegisterForm" Collapsed="true">
     <Position X="16.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgBAAZIBCAEIBMAAQiiAKwCAAhAggAEgAAgQEFAEAA=</HashCode>
+      <HashCode>AAgBAAZIBCAEIBMAQQiiAKwCAAhAggAEgAAgQEFAEAA=</HashCode>
       <FileName>Views\RegisterForm.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -376,7 +383,7 @@
       <FileName>Models\Interfaces\Roles\IAdmin.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="LB1.IManager" Collapsed="true">
+  <Interface Name="LB1.IManager">
     <Position X="0.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
