@@ -8,12 +8,12 @@ namespace Lab2
 {
     class Factory : IFactory
     {
-        public IFigure create(string figureName)
+        public IFigure create(string figureName, System.Windows.Forms.PictureBox pictureBox1)
         {
             switch (figureName)
             {
-                case "Отрезок":
-                    return new Line();
+                case "Линия":
+                    return new Line(pictureBox1);
                 case "Прямоугольник":
                     return new Rectangle();
                 case "Эллипс":
@@ -29,6 +29,6 @@ namespace Lab2
     }
     interface IFactory
     {
-        IFigure create(string figureName);
+        IFigure create(string figureName, System.Windows.Forms.PictureBox pictureBox1);
     }
 }
