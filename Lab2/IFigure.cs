@@ -7,8 +7,11 @@ using System.Drawing;
 
 namespace Lab2
 {
-    interface IFigure
+    public interface IFigure
     {
         void Draw(Graphics g, Pen pen, Point start, Point finish);
+        void Undo(Graphics g, Pen pen);
+        void reDraw(Graphics g);
+        void Fill(Graphics g, Pen pen, Point start, Point finish);
     }
 }

@@ -8,12 +8,18 @@ namespace Lab2
 {
     class Factory : IFactory
     {
-        public IFigure create(string figureName, System.Windows.Forms.PictureBox pictureBox1)
+        System.Windows.Forms.ComboBox comboBox;
+
+        public Factory(System.Windows.Forms.ComboBox comboBox)
+        {
+            this.comboBox = comboBox;
+        }
+        public IFigure create(string figureName)
         {
             switch (figureName)
             {
                 case "Линия":
-                    return new Line(pictureBox1);
+                    return new Line( );
                 case "Прямоугольник":
                     return new Rectangle();
                 case "Эллипс":
@@ -21,14 +27,15 @@ namespace Lab2
                 case "Ломанная":
                     return new BrokenLine();
                 case "Многоугольник":
-                    return new Polygon();
+                    return new Polygon(Convert.ToInt16(comboBox.SelectedItem));
                 default:
                     return null;
             }
         }
     }
+
     interface IFactory
     {
-        IFigure create(string figureName, System.Windows.Forms.PictureBox pictureBox1);
+        IFigure create(string figureName);
     }
 }
